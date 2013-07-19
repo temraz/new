@@ -1,0 +1,8 @@
+/* [ ---- Hagal Admin - ie8 fixes ---- ] */
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {display:inline;min-height:20px !important}
+.select2-container {margin-left:0 !important}
+.flot-base > div {width:inherit !important;height:inherit !important}
+.yaxisLabel {filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);}
+
+.thumbnail {max-width:inherit !important}
