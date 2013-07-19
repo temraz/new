@@ -4,15 +4,15 @@ if (!defined('BASEPATH'))
 
 class Home extends CI_Controller {
 
-    function index() {
+		function index() {
 			if($this->session->userdata('admin_logged_in')){
-         $data['dashboard']=true;
-           $this->load->view('admin/dashboard',$data);
-		   
+			$data['dashboard']=true;
+			$this->load->view('admin/dashboard',$data);
+			
 			}else{
-				$this->load->view('admin/login');
-				}
-    }
+			$this->load->view('admin/login');
+			}
+		 }
 //////////////////////////////////////////
   function valid_loign() {
         
@@ -71,10 +71,19 @@ function add_category(){
  function insert_category() {
         if($this->session->userdata('admin_logged_in')){
         $this->load->library('form_validation');
+		
+		 
+		
         $this->form_validation->set_rules('cat_name', 'Category Name', 'required|trim|max_length[100]|xss_clean');
 
         if ($this->form_validation->run() == false) {            
-            $this->load->view('civou/view_addblogcategory');
+            if($this->sitead->select_category()){
+			$data['categores']=$this->sitead->select_category();
+			$this->load->view('admin/add_category',$data); 
+			 }else{
+				 $this->load->view('admin/add_category',$data);
+				 
+				 }
         } else {
             $categoryname = $this->input->post('cat_name');
             if ($this->sitead->addcategory($categoryname)) {
@@ -112,7 +121,13 @@ function add_category(){
 
         if ($this->form_validation->run() == false) {
            
-            $this->load->view('admin/add_category');
+             if($this->sitead->select_category()){
+			$data['categores']=$this->sitead->select_category();
+			$this->load->view('admin/add_category',$data); 
+			 }else{
+				 $this->load->view('admin/add_category',$data);
+				 
+				 }
         } else {
             $categoryname = $this->input->post('sub_cat_name');
             $categoryid = $this->input->post('categoryid');
@@ -129,7 +144,48 @@ function add_category(){
 	}else{
 			redirect('admin/home/index');
 			}
-		}	
+		}
+		
+	////////////////////////////////////////////////
+	function delete_category(){
+			if($this->session->userdata('admin_logged_in')){
+				 if($this->sitead->select_category()){
+			$data['categores']=$this->sitead->select_category();
+				 }
+			$categoryid = $this->input->post('categoryid');
+			     if ($this->sitead->delete($categoryid, 'category')) {
+                  	$data['delete']=1;	
+				$this->load->view('admin/add_category',$data);
+			} else {
+			   $data['delete']=0;
+				$this->load->view('admin/add_category', $data);   
+                }
+	
+				
+		    }else{
+			redirect('admin/home/index');
+			}
+		}
+		////////////////////////////////////////////////
+	function delete_sub_category(){
+			if($this->session->userdata('admin_logged_in')){
+				 if($this->sitead->select_category()){
+			$data['categores']=$this->sitead->select_category();
+				 }
+			$sub_id = $this->input->post('sub_category_id');
+			     if ($this->sitead->delete($sub_id, 'sub_categ')) {
+                  	$data['delete']=1;	
+				$this->load->view('admin/add_category',$data);
+			} else {
+			   $data['delete']=0;
+				$this->load->view('admin/add_category', $data);   
+                }
+	
+				
+		    }else{
+			redirect('admin/home/index');
+			}
+		}		
 
 }
 ?>

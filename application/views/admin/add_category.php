@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en-US">
-    <head>
+<html lang="en-US"><head>
         <meta charset="UTF-8">
         <title>shelinat Admin panel v1.0</title>
 
@@ -64,6 +63,61 @@
             
             label.error {position:relative;top:-8px;color:#dc0000;font-weight:700}
         </style>
+        
+        
+       <script src="<?php echo base_url();?>admin/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#loader').hide();
+        $('#show_heading').hide();
+             
+        $('#search_category_id').change(function(){
+            $('#show_sub_categories').fadeOut();
+            $('#loader').show();
+            $('#show_heading').show();
+                    
+            $.post("<?php echo site_url('admin/js/get_chid_categories.php') ?>", {
+                parent_id: $('#search_category_id').val()
+            }, function(response){			
+                setTimeout("finishAjax('show_sub_categories', '"+escape(response)+"')", 400);
+            });
+            return false;
+        });
+    });
+
+    function finishAjax(id, response){
+        $('#loader').hide();
+        $('#show_heading').show();
+        $('#'+id).html(unescape(response));
+        $('#'+id).fadeIn();
+    } 
+
+    function alert_id()
+    {
+        if($('#sub_category_id').val() == '')
+            alert('Please select a sub category.');
+        else
+            alert($('#sub_category_id').val());
+        return false;
+    }
+
+</script>
+
+
+<script type="text/javascript" src="<?php echo base_url();?>admin/js/delete_sub_category.js" ></script>
+
+<style>
+    .both h4{ font-family:Arial, Helvetica, sans-serif; margin:0px; font-size:14px;}
+    #search_category_id{ padding:3px; width:200px;}
+    #sub_category_id{ padding:3px; width:200px;}
+    .both{ float:left; margin:0 15px 0 0; padding:0px;}
+</style>        
+<!--end of drop down compobox    -- ---------------------------------------------------------  -->
+<style type="text/css">
+    .error{color:#F00;font-size:18px}
+
+</style>
     </head>
     <body>
         <!-- main wrapper (without footer) -->
@@ -86,7 +140,7 @@
                                 <ul>
                                     <li><a href="#">Home</a></li>
                                     <li class="crumb_sep"><i class="elusive-icon-play"></i></li>
-                                    <li><a href="#">Dashboard</a></li>                                    
+                                    <li><a href="#">Service category</a></li>                                    
                                 </ul>
                             </section>
 
@@ -94,6 +148,13 @@
                             <div class="row-fluid">
                                 <div class="stat_boxes">
                                     <div class="row-fluid">
+                                    <?php if(validation_errors()){?>
+                                    
+                                      <div class="alert alert-error">
+            <a data-dismiss="alert" class="close">×</a>
+            <?php echo validation_errors(); ?>
+            </div>
+                                    <?php }?>
                                       <?php if(isset($insert) && $insert ==1){?>
             <div class="alert alert-success">
             <a data-dismiss="alert" class="close">×</a>
@@ -119,13 +180,27 @@
             <strong>Error! </strong>not saved try again please
             </div>
 
+           <?php }?>
+           
+           <?php if(isset($delete) && $delete ==1){?>
+            <div class="alert alert-success">
+            <a data-dismiss="alert" class="close">×</a>
+            <strong>Success! </strong>category has been deleted
+            </div>
+
+		   <?php }elseif(isset($delete) && $delete ==0){?>
+           <div class="alert alert-error">
+            <a data-dismiss="alert" class="close">×</a>
+            <strong>Error! </strong>can't delete it now try again please
+            </div>
+
            <?php }?>  
                                         <div class="login_box" style="width:20%;float:left;margin-right:10px;">
         <!-- sign in --> 
        
-          <?php echo validation_errors(); ?>
+          
            <?php echo form_open('civou/home/insert_category'); ?>
-                            <h2 style="text-align:center">Enter category</h2>
+                           <h3 style="text-align:center">Enter category</h3>
                 <div class="box_content">
                     <div class="row-fluid">
                         <div class="text-center">
@@ -147,9 +222,9 @@
        
                                       <div class="login_box" style="width:20%;float:left;margin-right:10px;">
         <!-- sign in -->    
-          <?php echo validation_errors(); ?>
+          
            <?php echo form_open('civou/home/insert_sub_category'); ?>
-            <h3 style="text-align:center">Enter Sub category</h2>
+            <h3 style="text-align:center"> Enter Sub category</h3>
                 
                 <div class="box_content">
                     <div class="row-fluid">
@@ -181,19 +256,19 @@
             </form>
        </div>
        
-        <div class="login_box" style="width:20%;float:left">
+        <div class="login_box" style="width:20%;float:left;">
         <!-- sign in -->    
-          <?php echo validation_errors(); ?>
-           <?php echo form_open('civou/home/insert_sub_category'); ?>
+         
+           <?php echo form_open('civou/home/delete_category'); ?>
            
-                <h2 style="text-align:center">Delete category</h2>
+               <h3 style="text-align:center">Delete category</h3>
                 <div class="box_content">
                     <div class="row-fluid">
                    
                         <div class="text-center">
                            
                            
-                                                    <select name="categoryid" id="s2_val" class="span12" style="margin-bottom:48px;" required>
+                                                    <select name="categoryid"  id="search_category_id" class="span12" style="margin-bottom:48px;width:95%" required>
                                                         <option value=""></option>
                                                         
                                                             <option value="" selected>select one </option>
@@ -217,8 +292,16 @@
                 </div>  
             </form>
        </div>
+       <!----------------------------------------------->
        
-        
+       
+         <div style="float:left;margin-left:10px;width:20%">
+<div id="show_sub_categories" align="right" style="width:20%;">
+<img src="<?php echo base_url(); ?>images/loader.gif"  id="loader" alt="" />
+
+
+</div>
+</div>
                                     </div>
                                 </div>
                             </div>
