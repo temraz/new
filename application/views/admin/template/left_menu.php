@@ -11,10 +11,10 @@
                                 <div id="m_dashboard" class="accordion-body collapse">
                                     <div class="accordion-inner">
                                         <ul>
-                                            <li <?php if(isset($add_category)) echo 'class="current"' ;?>><a href="<?php echo base_url()?>civou/home/add_category">Add service category</a></li>
+                                            <li><a href="<?php echo base_url()?>civou/home/add_category">Add service category</a></li>
                                             
-                                             <li><a href="<?php echo base_url()?>admin/civou/add_service/">Add service</a></li>
-                                             <li><a href="<?php echo base_url()?>admin/civou/edit_service/">Edit service</a></li>
+                                             <li><a href="<?php echo base_url()?>civou/home/add_service/">Add service</a></li>
+                                             <li><a href="<?php echo base_url()?>civou/home/edit_service/">Edit service</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -105,7 +105,6 @@
 </script>
 
 
-<script type="text/javascript" src="<?php echo base_url();?>admin/js/delete_sub_category.js" ></script>
 
 <style>
     .both h4{ font-family:Arial, Helvetica, sans-serif; margin:0px; font-size:14px;}
@@ -195,6 +194,21 @@
             </div>
 
            <?php }?>  
+                      
+                         <?php if(isset($sub_delete) && $sub_delete ==1){?>
+            <div class="alert alert-success">
+            <a data-dismiss="alert" class="close">×</a>
+            <strong>Success! </strong>Sub category has been deleted
+            </div>
+
+		   <?php }elseif(isset($sub_delete) && $sub_delete ==0){?>
+           <div class="alert alert-error">
+            <a data-dismiss="alert" class="close">×</a>
+            <strong>Error! </strong>can't delete it now try again please
+            </div>
+
+           <?php }?>  
+                      
                                         <div class="login_box" style="width:20%;float:left;margin-right:10px;">
         <!-- sign in --> 
        
@@ -290,7 +304,7 @@
                 <div class="box_footer text-center clearfix minor_text">
                     
                 </div>  
-            </form>
+              <?php echo form_close(); ?>
        </div>
        <!----------------------------------------------->
        
@@ -325,8 +339,7 @@
         <?php include('template/footer.php'); ?>
         
     <!-- common scripts -->
-        <!-- jQuery library -->
-            <script src="<?php echo base_url();?>admin/js/jquery.min.js"></script>
+         <script src="<?php echo base_url();?>admin/js/jquery.min.js"></script>
             <!-- jQuery migrate -->
             <script src="<?php echo base_url();?>admin/js/jquery-migrate-1.2.1.min.js"></script>
         <!-- bootstrap framework plugins -->

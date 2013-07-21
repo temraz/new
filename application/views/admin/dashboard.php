@@ -66,6 +66,7 @@
                             <div class="row-fluid">
                                 <div class="stat_boxes">
                                     <div class="row-fluid">
+                                    
                                         <div class="span3 stat_box">
                                             <div class="peity_canvas peity_bar_up">2,5,3,6,8,5</div>
                                             <h2 class="stat_title">$10 233,23</h2>

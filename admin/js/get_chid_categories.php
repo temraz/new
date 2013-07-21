@@ -2,12 +2,14 @@
 <?php
 include('dbcon.php');
 if ($_REQUEST) {
+	
     $id = $_REQUEST['parent_id'];
     $query = "select * from sub_categ where c_id = " . $id;
     $results = mysql_query($query);
     ?>
 
-    <div class="login_box" style="float:left;">
+    <div class="login_box" style="float:left;height:270px;overflow-y: scroll;
+    overflow-x: hidden;">
         <!-- sign in -->    
          
            <form action="index.php" method="post"/>
@@ -18,26 +20,22 @@ if ($_REQUEST) {
                    
                         <div class="text-center">
                            
-                           
-                                                    <select name="sub_category_id"  id="search_category_id" class="span12" style="margin-bottom:48px;width:95%" required>
-                                                        <option value=""></option>
-                                                        
-                                                            <option value="" selected>select one </option>
-                                                            <?php
+         <?php
+		 if(isset($id)){
         while ($rows = mysql_fetch_assoc(@$results)) {
             ?>
-            <option value="<?php echo $rows['id']; ?>"><?php echo $rows['name']; ?></option>
+            <a href="http://localhost/new/civou/home/delete_sub_category/<?php echo $rows['id']; ?>"  class="btn btn-block btn-primary btn-large" style="color:#fff" id="delete_sub_cat"> <?php echo $rows['name']; ?> Delete </a>
+
         <?php }
         ?>
                                                            
-                                                        </optgroup>
-                                                        </select>
+                                              
                            
                            
                       
                         </div>
                        
-                        <button class="btn btn-block btn-primary btn-large" id="delete_sub_cat" type="submit">Delete</button>
+                        
                        
                     </div>
                 </div>
@@ -50,5 +48,5 @@ if ($_REQUEST) {
       
 
     <?php
-}
+}}
 ?>

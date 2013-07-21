@@ -99,6 +99,15 @@ class sitead extends CI_Model {
             return false;
         }
     }
+	
+	 function select_sub_category() {
+        $query = $this->db->get('sub_categ');
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
 
     function addsubcategory($categoryname, $categoryid) {
         $data = array("name" => $categoryname, "c_id" => $categoryid);
@@ -125,6 +134,7 @@ class sitead extends CI_Model {
 
         $config = array(
             'source_image' => $image_data['full_path'], //get original image
+			
             'new_image' => $gallery_path . '/thumb', //save as new image //need to create thumbs first
             'maintain_ratio' => true,
             'width' => 300,
@@ -142,6 +152,15 @@ class sitead extends CI_Model {
         return $insert;
     }
 
+    function update_service($data,$id){
+	$this->db->where('id',$id);
+	$this->db->update('service', $data); 
+	 if ($this->db->affected_rows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+	}
     function addemployee($data) {
         $insert = $this->db->insert('employee', $data);
         return $insert;
@@ -152,7 +171,7 @@ class sitead extends CI_Model {
         return $insert;
     }
 
-    function selectAllService() {
+    function select_all_service() {
         $query = $this->db->get('service');
         if ($query->num_rows() > 0) {
             return $query->result();
@@ -161,6 +180,21 @@ class sitead extends CI_Model {
         }
     }
 
+/////////////////////////////////////////
+
+ function select_service_by_id($id) {
+	    $this->db->where('id',$id);
+        $query = $this->db->get('service');
+        if ($query->num_rows() == 1) {
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+
+
+/////////////////////////////////////////
     function selectSercive_by_C($c_id) {
         $this->db->from('service');
         $this->db->from('c_id', $c_id);
