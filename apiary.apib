@@ -1,0 +1,1151 @@
+FORMAT: 1A
+HOST: https://api.classera.com/
+
+# Classera
+
+Classera API allows you to connect your website or application with Classera to provide single sign-on, read/update user information and content, etc.
+
+The API attempts to conform to the RESTful design principles. You interact with the resources exposed via the API by accessing resource collection and element URIs using the HTTP verbs (GET, POST, PUT, and DELETE). 
+Classera REST APIs provides programmatic access to read and write Classera data, such as (User info, courses, lectures, learning objects, etc.). 
+Classera REST API identifies applications and users using OAuth2.
+Classera returns JSON data via its RESTful API.
+
+#OAuth
+Use our OAuth endpoints to connect users to classera and send secure, authorized requests to the classera API.
+
+#REST APIs
+The REST APIs provides programmatic access to read and write classera data.read users courses and lectures, and more. The REST API identifies classera applications and users using OAuth2; responses are available in JSON.
+
+## Group Users
+
+Resources related to users in the API.
+
+## Users Login [/users/users_login?access_token=your_access_token]
+
+### Login [POST]
+
+This action allows your website to login directly to classera system from your website.
+
++ username (string) - The username, login name, email, national ID
++ password (string) - password.
+
++ Request (application/json)
+
+        {
+            "username": "username",
+            "password": "password"
+        }
+
+
+        
++ Response 200 (application/json)
+
+        {"https://api.classera.com/users/redirect_url"}
+
+## Mawhiba Login [/users/mawhiba_login?access_token=your_access_token]
+
+### Mawhiba Login [POST]
+
+This action allows mawhiba users login directly to classera system from your website.
+
++ username (string) - National ID
++ password (string) - Mawhiba ID.
+
++ Request (application/json)
+
+        {
+            "username": "fdtst003",
+            "password": "1001"
+        }
++ Response 200 (application/json)
+
+        {"https://mawhiba.classera.com/users/redirect_url"}
+        
+## Pioneers Login [/users/pioneer_login?access_token=your_access_token]
+
+### Pioneers Login [POST]
+
+This action allows pioneer's users login directly to classera system from your website.
+
++ username (string) - National ID
++ password (string) - Pioneer ID.
+
++ Request (application/json)
+
+        {
+            "username": "fdtst003",
+            "password": "1001"
+        }
+
+
+        
++ Response 200 (application/json)
+
+        {"https://me.classera.com/users/redirect_url"}
+        
+## Create Users [/users/create_user?access_token=your_access_token]
+
+### Create User [POST]
+
+This action allows you to create student, teacher and guardian account to classera system from your website.
+
+Notice level_id is required only when role id = 6 (student)
+
++ username (string, required) - username 
++ school_id (string, required) - school_id 
++ level_id (string, required only if user is student) - level_id 
++ role_id (int, required) - role_id "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13
++ password (string, required) - password 
++ first_name (string, required) - first_name 
++ father_name (string) - father_name 
++ grandfather_name (string) - grandfather_name 
++ family_name (string, required) - family_name 
++ address (string) - address 
++ phone_number (int) - phone_number 
++ mobile_number (int) - mobile_number 
++ email (string) - email 
+
+
++ Response 200 (application/json)
+
+        {"message":"Student has been saved"} 
+
+## Pioneer create User [/users/pioneer_create_user?access_token=your_access_token]
+
+### Pioneer Create User [POST]
+
+This action allows you to create student, teacher and guardian account to classera system from your website.
+
+Notice level_id is required only when role id = 6 (student)
+
++ username (string, required) - username 
++ school_id (string, required) - school_id 
++ level_id (string, required only if user is student) - level_id 
++ role_id (int, required) - role_id "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13
++ password (string, required) - password 
++ first_name (string, required) - first_name 
++ father_name (string) - father_name 
++ grandfather_name (string) - grandfather_name 
++ family_name (string, required) - family_name 
++ address (string) - address 
++ phone_number (int) - phone_number 
++ mobile_number (int) - mobile_number 
++ email (string) - email 
+
+
++ Response 200 (application/json)
+
+        {"message":"Student has been saved"}
+        
+## Mawhiba create Users [/users/mawhiba_create_user?access_token=your_access_token]
+
+### Mawhiba create User [POST]
+
+This action allows you to create student, teacher and guardian account to classera system from your website.
+notice level id is required if the role id = 6 (student)
+
++ username (string, required) - username 
++ school_pioneer_id (string, required) - school_pioneer_id 
++ level_pioneer_id (string, required only if user is student) - level_pioneer_id 
++ stage_pioneer_id (string, required) - stage_pioneer_id 
++ role_id (int, required) - "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13 
++ password (string, required) - password 
++ first_name (string, required) - first_name 
++ father_name (string) - father_name 
++ grandfather_name (string) - grandfather_name 
++ family_name (string, required) - family_name 
++ address (string) - address 
++ phone_number (int) - phone_number 
++ mobile_number (int) - mobile_number 
++ email (string) - email 
+
+
++ Response 200 (application/json)
+
+        {"message":"Student has been saved"}   
+        
+## number of visits for each role [/users/visits_for_each_role?school_id=16&date_from=2014-10-12&date_to=2015-8-26&access_token=your_access_token]
+
+### Visits for each role [GET]
+
+This action allows you to get number of visits for every role in the school.
++ school_id (int) - school id 
++ date_from (date) - year-month-day
++ date_to (date) - year-month-day
+
+        
++ Response 200 (application/json)
+
+        [{"students":4,"teachers":4,"parents":2,"supervisors":1,"kaganCoaches":1,"advisers":1,"managers":1,"Admins":2}]
+        
+        
+## Online visitors right now [/users/online_right_now?admin_user_id=694268&access_token=your_access_token]
+
+### Online visitors right now [GET]
+
+This action allows you to get number of all users online right now in your schools.
+
++ admin_user_id (int) - admin user id 
+        
++ Response 200 (application/json)
+
+        [{"total_online":2435}]
+        
+## Get user schools list [/users/get_schools_list?user_id=694268&access_token=your_access_token]
+
+### get user schools list [GET]
+
+This action allows you to get schools list that belong to the user.
+
++ user_id (int) - user id 
+        
++ Response 200 (application/json)
+
+        [{"School":{"id":"16","name":"FD Test School"}},{"School":{"id":"21","name":"\u0645\u062f\u0627\u0631\u0633 \u0627\u0644\u0623\u0646\u062f\u0644\u0633 \u0627\u0644\u0623\u0647\u0644\u064a\u0629"}},{"School":{"id":"22","name":"\u0645\u062c\u0645\u0639 \u0627\u0644\u0623\u0645\u064a\u0631 \u0633\u0644\u0637\u0627\u0646 \u0627\u0644\u062a\u0639\u0644\u064a\u0645\u064a"}}]
+        
+## Get user info by mawhiba id [/users/get_user_info_by_mawhiba_id?mawhiba_id=694268&access_token=your_access_token]
+
+### get user info by mawhiba id [GET]
+
+This action allows you to get user info by his mawhiba id.
+
++ mawhiba_id (int) - mawhiba id 
+        
++ Response 200 (application/json)
+
+        {"id":"87783","mawhiba_id":"12","pioneer_id":"0","username":"fdtstg1954","notification_settings":"1023","created":"2014-10-15 21:07:11","modified":"2014-10-15 21:07:11","role_id":"3","school_id":"16","first_name":"\u0623\u0645 \u0639\u0628\u062f\u0627\u0644\u0645\u0644\u0643","father_name":"\u0645\u0646\u0635\u0648\u0631","grandfather_name":null,"family_name":"\u0627\u0644\u0645\u0646\u0635\u0648\u0631","name_ara":null,"date_of_birth":null,"place_of_birth_country":null,"place_of_birth":null,"address":null,"phone_number":null,"mobile_number":null,"email":null,"verified_email":false,"nationality_id":"1","dob_hijri":null,"photo_filename":null,"theme_id":"1","deleted":false,"status_id":"1","lang":null,"date_format":"0","login_name":null,"google_login_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0","bio":null,"facebook_account":null,"twitter_account":null,"google_plus_account":null,"instagram_account":null,"linkedin_account":null,"full_name":"\u0623\u0645 \u0639\u0628\u062f\u0627\u0644\u0645\u0644\u0643 \u0645\u0646\u0635\u0648\u0631 \u0627\u0644\u0645\u0646\u0635\u0648\u0631"}
+        
+                
+## Get user info [/users/get_user_info?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### get user info [GET]
+This action allows to get all user data
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        {"id":"10386","nationality_id":"1","mawhiba_id":"222","username":"fdtstadmin","notification_settings":"1023","created":null,"modified":"2015-05-19 13:24:22","role_id":"2","school_id":"16","first_name":"FD","father_name":null,"grandfather_name":null,"family_name":"TST","name_ara":null,"date_of_birth":"2014-04-21","place_of_birth":"","address":"","phone_number":"","mobile_number":"","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"images (155).jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"0","login_name":"","block_reports":false,"number":null,"old_school_id":null,"gender":"0"}
+
+## Get User School ID [/users/get_school_id?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get User School ID [GET]
+
+This action allows to get user school_id
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        {"school_id":"10386"}
+        
+## Get current year & semester  [/users/get_current_semester_id?user_id=12&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get semster and year id [GET]
+
+This action allows to get user current semster_id and year_id
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        {"year_id":"35","semester_id":"32"}
+ 
+## Get student services  [/users/get_student_services?user_id=78785&year_id=224&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + year_id: 100 (optional, number) - year Id integer
+    
+### Get Student Services [GET]
+
+This action allows to get all student services in a specific semester 
+
++ user_id (int) - user_id
++ year_id (int) - year_id
+
++ Response 200 (application/json)
+
+        [{"Service":{"id":"1","title":"\u0628\u0631\u0646\u0627\u0645\u062c \u0627\u0644\u062a\u0644\u0645\u0630\u0629"},"ServiceStatus":{"status":"0"}}]
+                
+## Get user assignments [/users/get_assignments?user_id=10436&year_id=35&lecture_id=938&access_token=&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID of the user in form of an integer
+    + lecture_id: 100 (optional, number) - Lecture Id of the user in form of an integer
+    + year_id: 100 (required, number) - year Id of the user in form of an integer
+
+### Get User assignments [GET]
+
+This action allows to get users assignments in a specific semester 
+
++ user_id (int) - user_id
++ year_id (int) - year_id
++ lecture_id (int) - lecture_id
++ type (string) - type
++ solved (boolean) - type
+
++ Response 200 (application/json)
+
+        [{"Assignment":{"id":"56140","title":"arabic final exam","type":"Exam","mark":"100","time_limit":"10","due_datetime":"2014-12-04 15:29:00","cutoff_datetime":"2014-12-04 15:29:00","status":"draft","publishing_datetime":"2014-12-01 15:44:00","comments":"","accept_submission_attachment":false,"created":"2014-12-01 15:30:17","modified":"2014-12-01 15:31:40","attachment_id":null,"sub_attach_mark":null,"private":false,"deleted":false,"view_answers":false,"new":"true","allow_multiple_submissions":false,"random_questions":false,"random_answers":false,"assignment_password":null,"user_id":"10564","semester_id":"32","grade_category_id":null,"preparation_id":"3","assessment_id":null}},{"Assignment":{"id":"56170","title":"Math2 exam","type":"Exam","mark":"100","time_limit":"12","due_datetime":"2015-04-09 15:16:00","cutoff_datetime":"2015-04-09 15:16:00","status":"draft","publishing_datetime":"2015-04-06 15:31:00","comments":"","accept_submission_attachment":false,"created":"2015-04-06 15:16:59","modified":"2015-04-06 15:16:59","attachment_id":null,"sub_attach_mark":null,"private":false,"deleted":false,"view_answers":false,"new":"true","allow_multiple_submissions":false,"random_questions":false,"random_answers":false,"assignment_password":null,"user_id":"10440","semester_id":"32","grade_category_id":null,"preparation_id":null,"assessment_id":null}}]
+           
+## Get user Assignments/Exam mark [/users/get_student_exam_mark?user_id=12&assignment_id=121&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID of the user in form of an integer
+    + assignment_id: 100 (required, number) - Assignment Id for the user in form of an integer
+  
+
+
+### Get User assignments/Exam mark [GET]
+
+This action allows to get student exam mark 
+
++ user_id (int) - user_id
++ assignment (int) - assignment_id
+
+
++ Response 200 (application/json)
+
+        [{"Assignment":{"full_mark":"20"},"Submission":{"mark":"20","id":"1351427"}}]
+           
+## Get student level  [/users/get_student_level?user_id=12&year_id=12&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + year_id: 100 (required, number) - Year ID in form of an integer
+
+
+### Get Student level [GET]
+
+This action allows to get student level in specific year
+
++ user_id (int) - user_id
++ year_id (int) - user_id
+
++ Response 200 (application/json)
+
+        {"id":"2603","student_id":"3126","year_id":"35","level_id":"212","status":null,"created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00"}
+        
+
+## Get user score info  [/users/get_user_score_info?user_id=12&semester_id=12&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + semester_id: 100 (required, number) - Year ID in form of an integer
+
+
+### Get User Score info [GET]
+
+This action allows to get student level in specific year
+
++ user_id (int) - user_id
++ semester_id (int) - semester_id
+
++ Response 200 (application/json)
+
+        {"user_score":"1200","current_card_title":"Green","current_card_color":"#afd136","user_ratio":33.3333333333,"class_index":4,"class_title":"Green","class_color":"#afd136"}
+        
+                   
+## Get Student Reports List  [/users/get_student_reports_list?level_id=12&school_id=12&semester_id=34&access_token=your_access_token]
+
++ Parameters
+    + level_id: 100 (required, number) - Level ID  in form of an integer
+    + school_id: 100 (required, number) - school ID in form of an integer
+    + semester_id: 100 (required, number) - semester ID in form of an integer
+
+
+### Get Student Reports List [GET]
+
+This action allows to get student level in specific year
+
++ level_id (int) - user_id
++ school_id (int) - school_id
++ semester_id (int) - semester_id
+
++ Response 200 (application/json)
+
+        {"2":"\u0627\u0644\u062a\u0642\u0631\u064a\u0631 \u0627\u0644\u0623\u0633\u0628\u0648\u0639\u064a","21":"\u0627\u0644\u062a\u0642\u0631\u064a\u0631 \u0627\u0644\u0634\u0647\u0631\u064a","22":"\u0627\u0644\u062a\u0642\u0631\u064a\u0631 \u0627\u0644\u0633\u0646\u0648\u064a"}
+        
+## Get student report [/users/get_student_report?user_id=12&report_id=12&semester_id=34&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + report_id: 100 (required, number) - Report ID in form of an integer
+    + semester_id: 100 (required, number) - Semester ID in form of an integer
+
+### Get Student Report [GET]
+
+This action allows to get students reports list in specific semester
+
++ level_id (int) - user_id
++ report_id (int) - report_id
++ semester_id (int) - semester_id
+
++ Response 200 (application/json)
+
+        {"transcript_attributes":[{"TranscriptAttribute":{"id":"238","title":"\u0627\u0644\u0625\u062e\u062a\u0628\u0627\u0631\u0627\u062a","points":"500","type":"0","function":"0","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":null,"finalgrade":false,"deleted":false,"created":"2014-10-26 23:57:51","modified":"2014-10-26 23:57:51"}},{"TranscriptAttribute":{"id":"239","title":"\u0627\u0644\u0648\u0627\u062c\u0628\u0627\u062a","points":"200","type":"3","function":"2","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":null,"finalgrade":false,"deleted":false,"created":"2014-10-26 23:58:36","modified":"2014-10-26 23:58:36"}},{"TranscriptAttribute":{"id":"240","title":"\u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629","points":"5","type":"3","function":"2","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":null,"finalgrade":false,"deleted":false,"created":"2015-02-26 01:34:41","modified":"2015-02-26 01:34:41"}},{"TranscriptAttribute":{"id":"247","title":"test absence","points":"5","type":"5","function":"0","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":"1","finalgrade":false,"deleted":false,"created":"2015-05-19 11:42:31","modified":"2015-05-19 11:42:31"}}],"courses":[{"Course":{"id":"938","title":"\u0641\u064a\u0632\u064a\u0627\u0621","icon":"Slice-03.png","external_url":null,"type":"0"},"Lecture":{"id":"873"}},{"Course":{"id":"834","title":"\u0627\u0644\u062d\u0627\u0633\u0628 \u0627\u0644\u0622\u0644\u064a","icon":"default","external_url":null,"type":"0"},"Lecture":{"id":"1273"}},{"Course":{"id":"1346","title":"\u0622\u062d\u064a\u0627\u0621","icon":"Slice-75.png","external_url":null,"type":"0"},"Lecture":{"id":"1474"}},{"Course":{"id":"1836","title":"English","icon":"Slice-28.png","external_url":"http:\/\/content.accelerate-ed.com\/Lesson\/Elementary\/4th_Grade\/Math4\/Multiplication\/index.html","type":"0"},"Lecture":{"id":"3486"}}],"student_grades":{"2323":{"238":"2","239":133,"240":10,"247":1},"873":{"238":null,"239":0,"240":0,"247":2},"3482":{"238":null,"239":0,"240":0,"247":5},"3486":{"238":null,"239":0,"240":0,"247":4},"1273":{"238":null,"239":0,"240":0,"247":5},"1474":{"238":null,"239":0,"240":0,"247":5}},"absences":{"873":{"unexcused":3},"2323":{"unexcused":4},"2324":{"unexcused":1},"3486":{"unexcused":1}},"total_points":{"238":{"938":"500","1836":"500","834":"500","1346":"500"},"239":{"938":"200","1836":"200","834":"200","1346":"200"},"240":{"938":"5","1836":"5","834":"5","1346":"5"},"247":{"938":"5","1836":"5","834":"5","1346":"5"}}}
+
+## Get Inbox Messages [/users/get_inbox_messages?user_id=12&semester_id=34&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + semester_id: 100 (required, number) - Semester ID in form of an integer
+
+### Get Inbox Messages [GET]
+
+This action allows to get user Inbox in specific semester
+
++ level_id (int) - user_id
++ semester_id (int) - semester_id
+
++ Response 200 (application/json)
+
+        [{"inboxView":{"id":"33_10436","message_id":"33","recipient_id":"10436","sender_id":"10386","sender_photo":"images (155).jpg","full_name":"FD TST","full_name_ara":null,"title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
+        \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","priority":"0","created":"2014-11-30 18:45:33","type":null,"read":false,"has_attachment":"0","school_id":"16","semester_id":"32"},"Message":{"id":"33","title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
+
+        \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","approved":true,"sent":null,"created":"2014-11-30 18:45:33","modified":"2014-11-30 18:45:33","sender_id":"10386","reply_to":null,"attachment_id":null,"priority":"0","deleted":"0","type":null,"semester_id":"32","related_to":null,"related_to_type":null,"is_draft":false},"Recipient":{"id":"10436","nationality_id":"1","mawhiba_id":null,"username":"fdtsts0003","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"0","created":"2011-12-31 13:02:40","modified":"2015-06-04 16:18:41","role_id":"6","school_id":"16","first_name":"\u0645\u062d\u0645\u062f","father_name":"\u0633\u0639\u0648\u062f","grandfather_name":"\u0645\u0633\u0641\u0631","family_name":"\u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646","name_ara":null,"date_of_birth":"1995-12-07","place_of_birth":"","address":"","phone_number":"","mobile_number":"0555856777","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"student.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"1","login_name":"","google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0"}}]
+
+## Get Outbox Messages [/users/get_outbox_messages?user_id=12&semester_id=34&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + semester_id: 100 (required, number) - Semester ID in form of an integer
+
+### Get Outbox Messages [GET]
+
+This action allows to get user outbox in specific semester
+
++ level_id (int) - user_id
++ semester_id (int) - semester_id
+
++ Response 200 (application/json)
+
+        [{"inboxView":{"id":"33_10436","message_id":"33","recipient_id":"10436","sender_id":"10386","sender_photo":"images (155).jpg","full_name":"FD TST","full_name_ara":null,"title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
+        \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","priority":"0","created":"2014-11-30 18:45:33","type":null,"read":false,"has_attachment":"0","school_id":"16","semester_id":"32"},"Message":{"id":"33","title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
+
+        \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","approved":true,"sent":null,"created":"2014-11-30 18:45:33","modified":"2014-11-30 18:45:33","sender_id":"10386","reply_to":null,"attachment_id":null,"priority":"0","deleted":"0","type":null,"semester_id":"32","related_to":null,"related_to_type":null,"is_draft":false},"Recipient":{"id":"10436","nationality_id":"1","mawhiba_id":null,"username":"fdtsts0003","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"0","created":"2011-12-31 13:02:40","modified":"2015-06-04 16:18:41","role_id":"6","school_id":"16","first_name":"\u0645\u062d\u0645\u062f","father_name":"\u0633\u0639\u0648\u062f","grandfather_name":"\u0645\u0633\u0641\u0631","family_name":"\u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646","name_ara":null,"date_of_birth":"1995-12-07","place_of_birth":"","address":"","phone_number":"","mobile_number":"0555856777","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"student.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"1","login_name":"","google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0"}}]
+
+
+
+## Group Absences
+
+Resources related to users absences in the API.
+
+## Add absence [/absences/add_absence?access_token=your_access_token]
+
+### Add absence  [POST]
+
+This action allows to add a new section
+
++ user_id: 100 (optional, intger)
++ date: 2015-6-21 (required, date [yyyy-mm-dd])
++ excused: 1 or 0 (required, intger) 
++ comments: comments (optional, string)
+
+
++ Response 200 (application/json)
+
+        {"message":"Absence has been saved"}
+   
+## Pioneer add absence [/absences/pioneer_add_absence?access_token=your_access_token]
+
+### Pioneer add absence  [POST]
+
+This action allows to edit course
+
++ pioneer_id: 100 (optional, intger)
++ government_id: 100 (optional, intger)
++ date: 2015-6-21 (required, date [yyyy-mm-dd])
++ excused: 1 or 0 (required, intger) 
++ comments: comments (optional, string)
+
+
+
+
++ Response 200 (application/json)
+
+        {"message":"Absence has been saved"} 
+        
+## Get Daily Absences [/absences/get_daily_absences?user_id=100&semester_id=32&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + semester_id: 100 (required, number) - Semester ID in form of an integer
+
+### Get Daily Absences [GET]
+
+This action allows you to get daily absences for student in specific semester.
+
++ user_id (int) - user_id
++ semester_id (int) - semster_id
+
++ Response 200 (application/json)
+
+        [{"StudentAbsencesView":{"id":"28","date":"2014-10-16","excused":false,"comments":null}},{"StudentAbsencesView":{"id":"85","date":"2014-12-03","excused":true,"comments":null}}]
+
+        
+
+## Get Courses Absences [/absences/get_courses_absences?user_id=100&semester_id=32&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + semester_id: 100 (required, number) - Semester ID in form of an integer
+
+### Get Courses Absences [GET]
+
+This action allows you to get courses absences for student in specific semester.
+
++ user_id (int) - user_id
++ semester_id (int) - semster_id
+
++ Response 200 (application/json)
+
+        [{"StudentCoursesView":{"id":"28","date":"2014-10-16","excused":false,"comments":null}},{"StudentAbsencesView":{"id":"85","date":"2014-12-03","excused":true,"comments":null}}]
+
+
+## Group Attachments               
+Resources related to attachments in the API.
+
+## Get user attachments [/attachments/get_attachments?user_id=12&semester_id=10&course_id=121&type=Video&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID of the user in form of an integer
+    + course_id: 100 (optional, number) - Course Id of the user in form of an integer
+    + semester_id: 100 (required, number) - Semester Id of the user in form of an integer
+    + type: Video (optional, string) - Attachment type ('Video','Message','Scorm','Behavior','Material') of the user in form of a string
+
+### Get User Attachments [GET]
+
+This action allows to get users attachments in a specific semester 
+
++ user_id (int) - user_id
++ semester_id (int) - semester_id
++ course_id (int) - course_id
++ type (string) - type
+
++ Response 200 (application/json)
+
+        [{"Attachment":{"id":"1","original_filename":"mJaHARCfcA0","created":"2014-10-16 13:31:10","title":"test","comments":"","deleted":false,"type":"Video","content_type":"YouTube","publish_date":"0000-00-00 00:00:00","sharing_status":"2","user_id":"10564","school_id":"16","original_attachment":null,"duplicate_stss":false,"id_hash":null,"semester_id":"32","file_hash":null,"missing":false,"duplicate_xtxs":false,"blocked":false,"preparation_id":"1","publish_date_Ymd":"2014-10-16"}},{"Attachment":{"id":"2","original_filename":"lynbTm_XPEc","created":"2014-10-20 11:41:34","title":"\u0628\u0633\u0645 \u0627\u0644\u0644\u0647","comments":"","deleted":false,"type":"Video","content_type":"YouTube","publish_date":"0000-00-00 00:00:00","sharing_status":"2","user_id":"17103","school_id":"22","original_attachment":null,"duplicate_stss":false,"id_hash":null,"semester_id":"64","file_hash":null,"missing":false,"duplicate_xtxs":false,"blocked":false,"preparation_id":null,"publish_date_Ymd":"2014-10-20"}},{"Attachment":{"id":"3","original_filename":"20130523_113607.mp4","created":"2014-10-21 18:42:35","title":"test","comments":"tttttttttt","deleted":false,"type":"Video","content_type":"video\/mp4","publish_date":"0000-00-00 00:00:00","sharing_status":"2","user_id":"10564","school_id":"16","original_attachment":null,"duplicate_stss":false,"id_hash":null,"semester_id":"32","file_hash":"267130a9cd943b7f0ccccf2cab26ef46","missing":false,"duplicate_xtxs":false,"blocked":false,"preparation_id":"1","publish_date_Ymd":"2014-10-21"}},{"Attachment":{"id":"4","original_filename":"mJaHARCfcA0","created":"2014-12-07 16:06:28","title":"\u062d\u0635\u0629 \u0631\u0627\u0626\u0639\u0629","comments":"","deleted":false,"type":"Video","content_type":"YouTube","publish_date":"0000-00-00 00:00:00","sharing_status":"2","user_id":"10564","school_id":"16","original_attachment":null,"duplicate_stss":true,"id_hash":null,"semester_id":"32","file_hash":null,"missing":false,"duplicate_xtxs":true,"blocked":true,"preparation_id":"9","publish_date_Ymd":"2014-12-07"}},{"Attachment":{"id":"5","original_filename":"pqzxODkBGfM","created":"2014-12-25 18:49:22","title":"\u0639\u0646\u0648\u0627\u0646 \u0637\u0648\u064a\u064a\u064a\u064a\u064a\u064a\u064a\u064a\u064a\u064a\u064a\u0644 \u062c\u062f\u0627 \u062c\u062f\u0627 \u062c\u062f\u0627 \u0623\u0648\u064a \u062e\u0627\u0644\u0635","comments":"","deleted":false,"type":"Video","content_type":"YouTube","publish_date":"0000-00-00 00:00:00","sharing_status":"2","user_id":"10564","school_id":"16","original_attachment":null,"duplicate_stss":false,"id_hash":null,"semester_id":"32","file_hash":null,"missing":false,"duplicate_xtxs":false,"blocked":false,"preparation_id":null,"publish_date_Ymd":"2014-12-25"}}]
+
+##  Download Attachments [/attachments/download_attachment?attachment_id=12&access_token=your_access_token]
+
++ Parameters
+    + attachment_id: 100 (required, number) - Attachment ID in form of an integer
+   
+
+### Download Attachments [GET]
+
+This action allows to download attachment
+
++ attachment_id (int) - user_id
+
++ Response 200 (application/json)
+
+        {"download_url":"https:\/\/s3.amazonaws.com\/classera\/16\/behavior\/32.pdf?response-content-disposition=attachment%3Bfilename%3D%22kajfaslksdjpoiwjeflaskdjfpowiejfskajdfaslkjdfpaoiefasdjfalksjdfasjdfjaspdifhasdfaskjdfalksdjflasdjfasdpfijad.pdf%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1433933268&Signature=aAio8k3EsrXbkQ7sEdmZ0XpU0cQ%3D"}
+
+##  View attachment [/attachments/view_attachment?attachment_id=12&access_token=your_access_token]
+
++ Parameters
+    + attachment_id: 100 (required, number) - Attachment ID in form of an integer
+   
+
+### View attachment [GET]
+
+This action allows to view attachment
+
++ attachment_id (int) - user_id
+
++ Response 200 (application/json)
+
+        {"Attachment":{"id":"32","original_filename":"kajfaslksdjpoiwjeflaskdjfpowiejfskajdfaslkjdfpaoiefasdjfalksjdfasjdfjaspdifhasdfaskjdfalksdjflasdjfasdpfijad.pdf","created":"2015-02-19 09:07:49","title":"kajfaslksdjpoiwjeflaskdjfpowiejfskajdfaslkjdfpaoiefasdjfalksjdfasjdfjaspdifhasdfaskjdfalksdjflasdjfasdpfijad.pdf","comments":null,"deleted":false,"type":"Behavior","content_type":"application\/pdf","publish_date":"2015-02-19 09:07:49","sharing_status":"0","user_id":"39674","school_id":"16","original_attachment":null,"duplicate_stss":false,"id_hash":null,"semester_id":null,"file_hash":null,"missing":false,"duplicate_xtxs":false,"blocked":false,"preparation_id":null,"publish_date_Ymd":"2015-02-19"}}
+
+## Group Guardians               
+Resources related to guardians in the API.
+
+## Get Children [/guardians/get_chidlren?user_id=12&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID of the user in form of an integer
+    
+### Get Children [GET]
+
+This action allows to get gurdian's children in the system
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        [{"Student":{"id":"3124","number":"2000","english_first_name":"Montaser","english_father_name":"MHD","english_grandfather_name":"Essam","english_family_name":"Al Sawi","user_id":"10434","guardian_id":null,"admission_year":"35","academic_number":null,"created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00"},"User":{"id":"10434","nationality_id":"1","mawhiba_id":null,"username":"fdtsts0001","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"1023","created":"2011-12-31 12:58:20","modified":"2013-09-19 18:43:21","role_id":"6","school_id":"16","first_name":"\u0645\u0646\u062a\u0635\u0631 ","father_name":"\u0645\u062d\u0645\u062f","grandfather_name":"\u0639\u0635\u0627\u0645","family_name":"\u0627\u0644\u0635\u0627\u0648\u064a","name_ara":null,"date_of_birth":"2001-03-07","place_of_birth":"","address":"","phone_number":"","mobile_number":"","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"N\u00e9nuphars.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":null,"date_format":"0","login_name":null,"google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0","profilepic":"\/img\/thumb.png"},"Level":[{"id":"217","title":"\u0627\u0644\u062b\u0627\u0644\u062b \u0627\u0644\u0645\u062a\u0648\u0633\u0637","title_ara":null,"stage_id":"86","order":"6","created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00","StudentsLevel":{"id":"2599","student_id":"3124","year_id":"35","level_id":"217","status":null,"created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00"}}]}]
+
+
+## Get get student gurdians [/guardians/get_student_gurdians?user_id=12&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID of the user in form of an integer
+    
+### Get get student gurdians [GET]
+
+This action allows to get student's gurdians detials
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        [{"User":{"id":"10443","mawhiba_id":"0","pioneer_id":"0","username":"fdtstg0002","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"1023","created":"2011-12-31 13:18:55","modified":"2015-05-12 13:13:20","role_id":"3","school_id":"16","first_name":"\u0646\u0627\u064a\u0641","father_name":"\u062d\u0645\u062f","grandfather_name":"\u0627\u0628\u0631\u0627\u0647\u064a\u0645","family_name":"\u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646","name_ara":null,"date_of_birth":"2011-12-31","place_of_birth_country":null,"place_of_birth":"","address":"","phone_number":"","mobile_number":"0505656108","email":null,"verified_email":false,"nationality_id":"1","dob_hijri":null,"photo_filename":"Photo1.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"0","login_name":"","google_login_token":null,"google_token":null,"block_reports":false,"number":"","old_school_id":null,"gender":"0","bio":null,"facebook_account":null,"twitter_account":null,"google_plus_account":null,"instagram_account":null,"linkedin_account":null,"full_name":"\u0646\u0627\u064a\u0641 \u062d\u0645\u062f \u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646"}},{"User":{"id":"39809","mawhiba_id":"0","pioneer_id":"0","username":"fdtstg1608","password":"3159fd6e22a3be5daa3c9a2397bd65fbe49a5b23","notification_settings":"1023","created":"2013-12-01 15:45:52","modified":"2014-06-07 23:51:50","role_id":"3","school_id":"16","first_name":"\u0645\u0627\u0647\u0631 \u0628\u0646","father_name":"\u0639\u0628\u062f \u0631\u0628 \u0627\u0644\u0631\u0636\u0627","grandfather_name":"","family_name":"\u0628\u0648\u0639\u0644\u064a","name_ara":null,"date_of_birth":"2014-06-07","place_of_birth_country":null,"place_of_birth":"","address":"","phone_number":"966555856777","mobile_number":"966555856777","email":"","verified_email":false,"nationality_id":"1","dob_hijri":null,"photo_filename":null,"theme_id":"1","deleted":false,"status_id":"1","lang":null,"date_format":"0","login_name":"","google_login_token":null,"google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0","bio":null,"facebook_account":null,"twitter_account":null,"google_plus_account":null,"instagram_account":null,"linkedin_account":null,"full_name":"\u0645\u0627\u0647\u0631 \u0628\u0646 \u0639\u0628\u062f \u0631\u0628 \u0627\u0644\u0631\u0636\u0627 \u0628\u0648\u0639\u0644\u064a"}}]
+
+
+
+## Group Behaviors               
+Resources related to behaviors in the API.
+
+## Get Student Behaviors [/behaviors/get_student_behaviors?user_id=12&show_to_guardian=1&semester_id=32&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID of the user in form of an integer
+    + semester_id: 100 (required, number) - Semester ID in form of an integer
+    + show_to_guardian : 1 (required, number) - show_to_guardian in form of an integer of 0 or 1
+    
+### Get Student Behaviors  [GET]
+
+This action allows to get student behaviors in the system
+
++ user_id (int) - user_id
++ semester_id (int) - semester_id
+
+
++ Response 200 (application/json)
+
+        [{"StudentBehavior":{"id":"3","date":"2015-02-19"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]},{"StudentBehavior":{"id":"4","date":"2015-04-21"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]},{"StudentBehavior":{"id":"9","date":"2015-03-15"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]}]
+
+## Group Years               
+Resources related to behaviors in the API.
+
+## Get year semester [/years/get_year_semesters?year_id=67&access_token=your_access_token]
+
++ Parameters
+    + year_id: 100 (required, number)
+    
+### Get Student Behaviors  [GET]
+
+This action allows to get all semesters in a specific year
+
++ year_id (int) - year_id
+
+
++ Response 200 (application/json)
+
+        ["87","987"]
+
+## Get pioneer current semester and year ID [/years/get_pioneer_current_semester_year_id?school_refrence_id=67&access_token=your_access_token]
+
++ Parameters
+    + school_refrence_id: 100 (required, number)
+    
+### Get pioneer current semester and year ID  [GET]
+
+This action allows to get current semesters in a specific year
+
++ school_refrence_id (int) - school_refrence_id
+
+
++ Response 200 (application/json)
+
+        {"semester_id":"32","year_id":"35"}
+        
+## Group Stages               
+Resources related to behaviors in the API.
+
+## Get stage [/stages/get_stage?stage_id=67&access_token=your_access_token]
+
++ Parameters
+    + stage_id: 100 (required, number)
+    
+### Get stage Data  [GET]
+
+This action allows to get stage data in the system
+
++ stage_id (int) - stage_id
+
+
++ Response 200 (application/json)
+
+        {"id":"12","title":"\u0627\u0644\u0627\u0628\u062a\u062f\u0627\u0626\u064a","title_ara":null,"school_id":"8","type":"0","order":"0","created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00","pioneer_id":null,"school_pioneer_id":null}
+        
+## Get school stages [/stages/get_school_stages?school_id=67&access_token=your_access_token]
+
++ Parameters
+    + school_id: 100 (required, number) 
+    
+### Get school stages  [GET]
+
+This action allows to get stage data in the system
+
++ school_id (int) - school_id
+
+
++ Response 200 (application/json)
+
+        [{"Stage":{"id":"796","title":"test1221","title_ara":"","school_id":"211","type":"0","order":"0","created":"2015-10-29 12:16:52","modified":"2015-10-29 13:11:59","pioneer_id":"1231","school_pioneer_id":"12"},"School":{"id":null,"name":null,"english_name":null,"number":null,"address":null,"phone_number":null,"fax_number":null,"website":null,"school_group_id":null,"created":null,"logo":null,"prefix":null,"lang":null,"timezone":null,"date_format":null,"type":null,"registration_open":null,"modified":null,"city":null,"city_id":null,"pioneer_id":null},"Level":[],"ExpenseCategory":[]},{"Stage":{"id":"797","title":"test1","title_ara":"test","school_id":"211","type":"0","order":"0","created":"2015-10-29 13:05:54","modified":"2015-10-29 13:05:54","pioneer_id":"1231","school_pioneer_id":"12"},"School":{"id":null,"name":null,"english_name":null,"number":null,"address":null,"phone_number":null,"fax_number":null,"website":null,"school_group_id":null,"created":null,"logo":null,"prefix":null,"lang":null,"timezone":null,"date_format":null,"type":null,"registration_open":null,"modified":null,"city":null,"city_id":null,"pioneer_id":null},"Level":[],"ExpenseCategory":[]},{"Stage":{"id":"7096","title":"test1221","title_ara":"","school_id":"211","type":"0","order":"0","created":"2015-10-29 13:12:15","modified":"2015-10-29 13:12:15","pioneer_id":"1231","school_pioneer_id":"12"},"School":{"id":null,"name":null,"english_name":null,"number":null,"address":null,"phone_number":null,"fax_number":null,"website":null,"school_group_id":null,"created":null,"logo":null,"prefix":null,"lang":null,"timezone":null,"date_format":null,"type":null,"registration_open":null,"modified":null,"city":null,"city_id":null,"pioneer_id":null},"Level":[{"id":"1303","title":"test1221","title_ara":"","stage_id":"7096","type":"0","order":"0","created":"2015-10-29 13:45:14","modified":"2015-10-29 13:45:14","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":null},{"id":"1304","title":"test1221","title_ara":"","stage_id":"7096","type":"0","order":"0","created":"2015-10-29 13:45:26","modified":"2015-10-29 13:45:26","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":null},{"id":"1305","title":"test1221","title_ara":null,"stage_id":"7096","type":"0","order":"0","created":"2015-10-29 13:46:05","modified":"2015-10-29 13:46:05","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":null},{"id":"1306","title":"test12o21","title_ara":null,"stage_id":"7096","type":"0","order":"0","created":"2015-10-29 13:46:47","modified":"2015-10-29 15:44:00","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":"21"}],"ExpenseCategory":[]}]
+ 
+## add stage [/stages/add?access_token=your_access_token]
+
+### Add stage  [POST]
+
+This action allows to get stage data in the system
+
++ title: 100 (required, string) 
++ title_arabic: 100 (required, string)
++ school_id : 100 (required, intger)
+
+
+
++ Response 200 (application/json)
+
+        {"message":"The stage has been saved"}
+        
+## Pioneer add stage [/stages/pioneer_add?access_token=your_access_token]
+
+### Pioneer add stage  [POST]
+
+This action allows to get stage data in the system
+
++ title: primary  (required, string) 
++ title_arabic: المرحله الابتدائيه (required, string)
++ school_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The stage has been saved"}
+        
+## Edit stage [/stages/edit?access_token=your_access_token]
+
+### Edit stage  [POST]
+
+This action allows to get stage data in the system
++ stage_id: 100 (required, string) - stage id
++ title: 100 (required, string) 
++ title_arabic: 100 (required, string)
++ school_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The stage has been saved"}
+        
+## Pioneer edit stage [/stages/pioneer_edit?access_token=your_access_token]
+
+### Pioneer edit stage  [POST]
+
+This action allows to get stage data in the system
+
++ title: example (required, string) 
++ title_arabic: example (required, string)
++ school_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The stage has been saved"}
+        
+## Group Levels               
+Resources related to behaviors in the API.
+
+## Get level [/levels/get_level?level_id=67&access_token=your_access_token]
+
++ Parameters
+    + level_id: 100 (required, number)
+    
+### Get level Data  [GET]
+
+This action allows to get level data in the system
+
++ level_id (int) - level_id
+
+
++ Response 200 (application/json)
+
+        {"id":"12","title":"\u0627\u0644\u0627\u0628\u062a\u062f\u0627\u0626\u064a","title_ara":null,"school_id":"8","type":"0","order":"0","created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00","pioneer_id":null,"school_pioneer_id":null}
+        
+## Get stage levels [/levels/get_stage_levels?stage_id=67&access_token=your_access_token]
+
++ Parameters
+    + stage_id: 100 (required, number)
+    
+### Get stage levels  [GET]
+
+This action allows to get all levels in a stage
+
++ stage_id (int) - stage_id
+
+
++ Response 200 (application/json)
+
+        [{"Level":{"id":"498","title":"\u0627\u0644\u0635\u0641 \u0627\u0644\u0623\u0648\u0644 \u0627\u0644\u062b\u0627\u0646\u0648\u064a","title_ara":null,"stage_id":"170","type":"0","order":"0","created":"2014-09-06 13:53:59","modified":"2014-09-06 13:53:59","pioneer_id":null,"school_pioneer_id":null,"stage_pioneer_id":null},"Stage":{"id":"170","title":"\u0627\u0644\u0645\u0631\u062d\u0644\u0629 \u0627\u0644\u062b\u0627\u0646\u0648\u064a\u0629","title_ara":null,"school_id":"173","type":"0","order":"0","created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00","pioneer_id":null,"school_pioneer_id":null},"Course":[],"Section":[{"id":"942","title":"1","title_ara":null,"level_id":"498","capacity":null,"type":"0","created":"2014-09-06 13:53:59","modified":"2014-09-06 13:53:59","pioneer_id":null,"school_pioneer_id":null,"stage_pioneer_id":null,"level_pioneer_id":null}],"StudentsLevel":[],"Student":[]}]
+
+               
+## Add level [/levels/add?access_token=your_access_token]
+
+### Add level  [POST]
+
+This action allows to add a new level
+
++ title: level 1 (required, string) 
++ title_arabic: الصف الاول (required, string)
++ stage_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The level has been saved"}
+
+## Pioneer add level [/levels/pioneer_add?access_token=your_access_token]
+
+### Pioneer Add level  [POST]
+
+This action allows to add a new level
+
++ title: level 1 (required, string) 
++ title_arabic: الصف الاول (required, string)
++ stage_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The level has been saved"}        
+               
+## Edit level [/levels/edit?access_token=your_access_token]
+
+### Edit level  [POST]
+
+This action allows to edit level
+
++ level_id: 12 (required, intger) - level ID
++ title: level 1 (required, string) 
++ title_arabic: الصف الاول (required, string)
++ stage_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The level has been saved"}
+
+## Pioneer edit level [/levels/pioneer_edit?access_token=your_access_token]
+
+### Pioneer edit level  [POST]
+
+This action allows to edit level
+
++ title: level 1 (required, string) 
++ title_arabic: الصف الاول (required, string)
++ stage_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The level has been saved"}    
+        
+## Edit assign student to level [/levels/edit_assign_student_to_level?access_token=your_access_token]
+
+### Edit assign student to level  [POST]
+
+This action allows to edit assigned student to level
+
++ user_id: 100 (required, int) 
++ level_id: 101 (required, int)
++ new_level_id: 102 (required, int)
+
++ Response 200 (application/json)
+
+        {"message":"Student assigned to the level has been updated"}  
+        
+## Pioneer edit assign student to level [/levels/pioneer_edit_assign_student_to_level?access_token=your_access_token]
+
+### Pioneer edit assign student to level  [POST]
+
+This action allows to edit assigned student to level
+
++ government_id: 100 (required, int) 
++ user_pioneer_id: 101 (required, int)
++ level_pioneer_id: 100 (required, int) 
++ new_level_pioneer_id: 101 (required, int) 
++ school_pioneer_id: 100 (required, intger)
++ new_school_pioneer_id: 100 (required, intger)
++ stage_pioneer_id: 100 (required, intger)
++ new_stage_pioneer_id: 100 (required, intger)
++ level_pioneer_id: 100 (required, intger)
++ new_level_pioneer_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"Student assigned to the level has been updated"}    
+        
+## Group Sections               
+Resources related to behaviors in the API.
+
+## Get section [/sections/get_section?sectoin_id=67&access_token=your_access_token]
+
++ Parameters
+    + sectoin_id: 100 (required, number)
+    
+### Get section Data  [GET]
+
+This action allows to get section data in the system
+
++ sectoin_id (int) - sectoin_id
+
+
++ Response 200 (application/json)
+
+        {"id":"12","title":"\u0627\u0644\u0627\u0628\u062a\u062f\u0627\u0626\u064a","title_ara":null,"school_id":"8","type":"0","order":"0","created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00","pioneer_id":null,"school_pioneer_id":null}
+
+## Get level sections [/sections/get_level_sections?level_id=67&access_token=your_access_token]
+
++ Parameters
+    + level_id: 100 (required, number)
+    
+### Get level sections Data  [GET]
+
+This action allows to get all sections in a specific stage
+
++ level_id (int) - level_id
+
+
++ Response 200 (application/json)
+
+        [{"Section":{"id":"2742","title":"test12o21","title_ara":null,"level_id":"1306","capacity":null,"type":"0","created":"2015-10-29 15:44:19","modified":"2015-10-29 15:44:19","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":"21","level_pioneer_id":null},"Level":{"id":"1306","title":"test12o21","title_ara":null,"stage_id":"7096","type":"0","order":"0","created":"2015-10-29 13:46:47","modified":"2015-10-29 15:44:00","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":"21"},"Lecture":[],"StudentsSection":[],"Student":[]},{"Section":{"id":"2743","title":"rere","title_ara":"bebe","level_id":"1306","capacity":"20","type":"0","created":"2015-10-29 15:45:05","modified":"2015-10-29 17:14:51","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":"21","level_pioneer_id":"1"},"Level":{"id":"1306","title":"test12o21","title_ara":null,"stage_id":"7096","type":"0","order":"0","created":"2015-10-29 13:46:47","modified":"2015-10-29 15:44:00","pioneer_id":"1231","school_pioneer_id":"12","stage_pioneer_id":"21"},"Lecture":[],"StudentsSection":[],"Student":[]}]
+               
+## add section [/sections/add?access_token=your_access_token]
+
+### Add section  [POST]
+
+This action allows to add a new section
+
++ title: section 1 (required, string) 
++ title_arabic: الفصل الاول (required, string)
++ level_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The section has been saved"}
+        
+## Pioneer add section [/sections/pioneer_add?access_token=your_access_token]
+
+### Pioneer add section  [POST]
+
+This action allows to add a new section
+
++ title: section 1 (required, string) 
++ title_arabic: الفصل الاول (required, string)
++ level_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
++ level_pioneer_id:100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The section has been saved"}        
+   
+## edit section [/sections/edit?access_token=your_access_token]
+
+### Edit section  [POST]
+
+This action allows to edit section
+
++ section_id: 100 (required, intger)
++ title: section 2 (required, string) 
++ title_arabic: الفصل الاول (required, string)
++ level_id: 100 (required, intger)
+
+
++ Response 200 (application/json)
+
+        {"message":"The section has been saved"}  
+
+## Pioneer edit section [/sections/pioneer_edit?access_token=your_access_token]
+
+### Pioneer edit section  [POST]
+
+This action allows to edit section
+
++ title: section 2 (required, string) 
++ title_arabic: الفصل الاول (required, string)
++ level_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
++ level_pioneer_id:100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The section has been saved"} 
+
+## assign student to section [/sections/assign_student_to_section?access_token=your_access_token]
+
+### Assign student to section  [POST]
+
+This action allows to edit section
+
++ user_id: 100 (required, intger)
++ section_id: 200 (required, string) 
+
++ Response 200 (application/json)
+
+        {"message":"The section has been saved"}      
+
+## Pioneer assign student to section [/sections/pioneer_assign_student_to_section?access_token=your_access_token]
+
+### Pioneer assign student to section  [POST]
+
+This action allows to edit section
+
++ government_id: 100 (required, intger)
++ user_pioneer_id: 100 (required, intger)
++ section_id: section 2 (required, string) 
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
++ level_pioneer_id:100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"Student has been assigned to the section"}  
+        
+## Edit assign student to section [/sections/edit_assign_student_to_section?access_token=your_access_token]
+
+### Edit assign student to section  [POST]
+
+This action allows to edit section
+
++ user_id: 100 (required, intger)
++ section_id: 200 (required, string) 
++ new_section_id: 101 (required, string)
+
++ Response 200 (application/json)
+
+        {"message":"The section has been saved"} 
+
+## Pioneer edit assign student to section [/sections/pioneer_edit_assign_student_to_section?access_token=your_access_token]
+
+### Pioneer edit assign student to section  [POST]
+
+This action allows to edit section
+
++ government_id: 100 (required, intger)
++ user_pioneer_id: 100 (required, intger)
++ section_pioneer_id: 100 (required, int) 
++ new_section_pioneer_id: 101 (required, int) 
++ level_pioneer_id: 100 (required, int) 
++ new_level_pioneer_id: 101 (required, int) 
++ school_pioneer_id: 100 (required, intger)
++ new_school_pioneer_id: 100 (required, intger)
++ stage_pioneer_id: 100 (required, intger)
++ new_stage_pioneer_id: 100 (required, intger)
++ level_pioneer_id: 100 (required, intger)
++ new_level_pioneer_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"Student has been assigned to the section"}       
+
+## Group Courses               
+Resources related to courses in the API.
+
+## Get student courses  [/courses/get_student_courses?user_id=10436&semester_id=32&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + semester_id: 100 (required, number) - Semester Id of the user in form of an integer
+    
+### Get Student Courses [GET]
+
+This action allows to get all student courses in a specific semester 
+
++ user_id (int) - user_id
++ semester_id (int) - semester_id
+
++ Response 200 (application/json)
+
+        ["status" => ( 0 = inprogress, 1 = success, -1 = failed) ]
+        [{"Course":{"id":"818","title":"\u0631\u064a\u0627\u0636\u064a\u0627\u062a","icon":"course_math.png","type":false},"Lecture":{"id":"2323"},"CourseStatus":{"status":"0"}},{"Course":{"id":"834","title":"\u0627\u0644\u062d\u0627\u0633\u0628 \u0627\u0644\u0622\u0644\u064a","icon":"default","type":false},"Lecture":{"id":"1273"},"CourseStatus":{"status":"0"}},{"Course":{"id":"938","title":"\u0641\u064a\u0632\u064a\u0627\u0621","icon":"Slice-03.png","type":false},"Lecture":{"id":"873"},"CourseStatus":{"status":"0"}},{"Course":{"id":"1346","title":"\u0622\u062d\u064a\u0627\u0621","icon":"Slice-75.png","type":false},"Lecture":{"id":"1474"},"CourseStatus":{"status":"0"}},{"Course":{"id":"1347","title":"\u0622\u062d\u064a\u0627\u0621","icon":"course_science.png","type":false},"Lecture":{"id":"3482"},"CourseStatus":{"status":"0"}},{"Course":{"id":"1836","title":"English","icon":"Slice-28.png","type":false},"Lecture":{"id":"3486"},"CourseStatus":{"status":"0"}},{"Course":{"id":"3288","title":"Java course","icon":"course_science.png","type":true},"Lecture":{"id":"7923"},"CourseStatus":{"status":"-1"}},{"Course":{"id":"3289","title":"Bootstrap","icon":"exams.png","type":true},"Lecture":{"id":"7924"},"CourseStatus":{"status":"1"}},{"Course":{"id":"3293","title":"paython","icon":"audio_library.png","type":true},"Lecture":{"id":"7925"},"CourseStatus":{"status":"0"}}]
+        
+## Add course [/courses/add?access_token=your_access_token]
+
+### Add course  [POST]
+
+This action allows to add a new course
+
++ title: section 1 (required, string) 
++ title_arabic: الفصل الاول (required, string)
++ level_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The course has been saved"}
+   
+## Pioneer add course [/courses/pioneer_add?access_token=your_access_token]
+
+### Pioneer add course  [POST]
+
+This action allows to add a new course
+
++ title: arabic course (required, string) 
++ title_arabic: arabic course (required, string)g)
++ level_id: 100 (required, intger)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
++ level_pioneer_id:100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The course has been saved"}
+        
+## Edit course [/courses/edit?access_token=your_access_token]
+
+### Edit course  [POST]
+
+This action allows to edit course
+
++ course_id: 100 (required, intger)
++ title: arabic course (required, string) 
++ title_arabic: arabic course (required, string)
++ level_id: 100 (required, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The course has been saved"}      
+
+## Pioneer edit course [/courses/pioneer_edit?access_token=your_access_token]
+
+### Pioneer edit course  [POST]
+
+This action allows to edit course
+
++ title: section 2 (required, string) 
++ title_arabic: الفصل الاول (required, string)
++ pioneer_id: 100 (optional, intger)
++ school_pioneer_id: 100 (optional, intger)
++ stage_pioneer_id: 100 (optional, intger)
++ level_pioneer_id:100 (optional, intger)
+
++ Response 200 (application/json)
+
+        {"message":"The course has been saved"} 
