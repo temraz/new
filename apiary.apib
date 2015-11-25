@@ -1149,3 +1149,67 @@ This action allows to edit course
 + Response 200 (application/json)
 
         {"message":"The course has been saved"} 
+        
+## Group Lectures              
+Resources related to Lectures in the API.
+
+## Add lecture [/lectures/add?access_token=your_access_token]
+
+### Add lecture  [POST]
+
+This action allows to add a new lecture
+
++ course_id: course_id 1 (required, int) 
++ section_id: section_id 2 (required,int )
++ teacher_user_id: teacher_user_id 1001 (required, int)
+
++ Response 200 (application/json)
+
+        {"message":"The teacher has been assigned"}
+   
+## Pioneer add lecture [/lectures/pioneer_add?access_token=your_access_token]
+
+### Pioneer add course  [POST]
+
+This action allows to edit a new lecture
+
++ course_pioneer_id: course_id 1 (required, int) 
++ section_pioneer_id: section_id 2 (required,int )
++ user_pioneer_id: user_pioneer_id 1001 (required, int)
++ government_id: government_id 1001 (required, int)
+
++ Response 200 (application/json)
+
+        {"message":"The teacher has been assigned"}
+        
+## Edit lecture [/lectures/edit?access_token=your_access_token]
+
+### Edit lecture  [POST]
+
+This action allows to edit lecture
+
++ lecture_id : 100 (required, int)
++ new_teacher_user_id: 120 (required, int) 
+
++ Response 200 (application/json)
+
+        {"message":"The lecture has been saved"}      
+
+## Pioneer edit lecture [/lectures/pioneer_edit?access_token=your_access_token]
+
+### Pioneer edit lecture  [POST]
+
+This action allows to edit lecture by only assign it to anew teacher
+
++ user_pioneer_id: 120 (required, int) 
++ goverment_id: 1240 (required, int) 
++ course_pioneer_id: 1210 (required, int) 
++ section_pioneer_id: 1210 (required, int) 
+
++ new_user_pioneer_id: 1120 (required, int) 
++ new_goverment_id: 1210 (required, int) 
+
++ Response 200 (application/json)
+
+        {"message":"The lecture has been saved"}   
+
