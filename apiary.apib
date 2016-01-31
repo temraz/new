@@ -95,6 +95,7 @@ Notice level_id is required only when role id = 6 (student)
 + school_id (string, required) - school_id 
 + level_id (string, required only if user is student) - level_id 
 + role_id (int, required) - role_id "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13
++ number (string, required) - number = government_id 
 + password (string, required) - password 
 + first_name (string, required) - first_name 
 + father_name (string) - father_name 
@@ -104,6 +105,9 @@ Notice level_id is required only when role id = 6 (student)
 + phone_number (int) - phone_number 
 + mobile_number (int) - mobile_number 
 + email (string) - email 
++ place_of_birth (string) - place_of_birth 
++ date_of_birth (date) - date_of_birth YYYY-MM-DD 
+
 
 
 + Response 200 (application/json)
@@ -123,6 +127,7 @@ Notice level_id is required only when role id = 6 (student)
 + school_pioneer_id (string, integr required) - school_pioneer_id 
 + level_pioneer_id (string, integr required) - level_pioneer_id 
 + stage_pioneer_id (string, integr required) - stage_pioneer_id 
++ nationality_pioneer_id (string) - nationality_pioneer_id
 
 + role_id (int, required) - role_id "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13
 + password (string, required) - password 
@@ -134,7 +139,8 @@ Notice level_id is required only when role id = 6 (student)
 + phone_number (int) - phone_number 
 + mobile_number (int) - mobile_number 
 + email (string) - email 
-
++ place_of_birth (string) - place_of_birth 
++ date_of_birth (date) - date_of_birth YYYY-MM-DD 
 
 + Response 200 (application/json)
 
@@ -156,6 +162,8 @@ This action allows you to edit student, teacher and guardian account to classera
 + phone_number (int) - phone_number 
 + mobile_number (int) - mobile_number 
 + email (string) - email 
++ place_of_birth (string) - place_of_birth 
++ date_of_birth (date) - date_of_birth YYYY-MM-DD 
 
 + Response 200 (application/json)
 
@@ -178,6 +186,8 @@ This action allows you to edit student, teacher and guardian account to classera
 + phone_number (int) - phone_number 
 + mobile_number (int) - mobile_number 
 + email (string) - email 
++ place_of_birth (string) - place_of_birth 
++ date_of_birth (date) - date_of_birth YYYY-MM-DD 
 
 + Response 200 (application/json)
 
