@@ -1262,5 +1262,20 @@ This action allows to edit lecture by only assign it to anew teacher
 
 + Response 200 (application/json)
 
-        {"message":"The lecture has been saved"}   
+        {"message":"The lecture has been saved"} ## Pioneer edit lecture [/lectures/pioneer_edit?access_token=your_access_token]
+        
+## Pioneer delete lecture [/lectures/pioneer_delete?access_token=your_access_token]
+### Pioneer delete lecture  [POST]
 
+This action allows to delete lecture that doesn't have any attachments or assignments 
+
++ user_pioneer_id: 120 (required, int) 
++ goverment_id: 1240 (required, int) 
++ course_pioneer_id: 1210 (required, int) 
++ section_pioneer_id: 1210 (required, int) 
+
++ Response 200 (application/json)
+
+        {"status":200,"message":"Lecture has been deleted"}
+        request faild
+        {"status":406,"message":"The lecture could not be deleted because it has some attachments and assignments. it should be delete from the system"}
