@@ -79,7 +79,12 @@ Notice level_id is required only when role id = 6 (student)
 
 This action allows you to create student, teacher and guardian account to classera system from your website.
 
-Notice level_id is required only when role id = 6 (student)
+Notice-1: level_id is required only when role id = 6 (student)
+
+Notice-2: student_pioneer_id is required only when role id = 3 (Parent)
+
+Notice-3: student_government_id is required only when role id = 3 (Parent)
+
 
 + pioneer_id (string, integr required) - pioneer_id
 + government_id (string, integr required) - government_id
@@ -100,6 +105,9 @@ Notice level_id is required only when role id = 6 (student)
 + email (string) - email 
 + place_of_birth (string) - place_of_birth 
 + date_of_birth (date) - date_of_birth YYYY-MM-DD 
+
++ student_pioneer_id (string, integr require only if role_id = 3 parent) - student_pioneer_id
++ student_government_id (string, integr require only if role_id = 3 parent) - student_government_id
 
 + Response 200 (application/json)
 
