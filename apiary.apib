@@ -40,8 +40,23 @@ This action allows your website to login directly to classera system from your w
         
 + Response 200 (application/json)
 
-        {"https://api.classera.com/users/redirect_url"}
+        {"0":"https:\/\/me.classera.com\/users\/api_auth_login\/5fcfd17dd69de6527882650daccc4f03","1":{"User":{"id":"78785","username":"etss0001","role_id":"6"}},"status":"true","auth_token":"43b29ce52639ea06c991d0c6b86170c1"}
+ 
         
+## Logout   [/Users/logout?Authtoken=ebe49b73134fd0c1844dff2b30a43a81&access_token=your_access_token]
+
++ Parameters
+    + Authtoken: ebe49b73134fd0c1844dff2b30a43a81 (required, text) - Authtoken for user 
+    
+### Logout  [POST]
+This action allows to logout from application   .
+
++ Authtoken: (text) - Authtoken
+
++ Response 200 (application/json)
+        
+        {"message": "Logged out" }         
+   
 ## Create Users [/users/create_user?access_token=your_access_token]
 
 ### Create User [POST]
@@ -51,8 +66,8 @@ This action allows you to create student, teacher and guardian account to classe
 Notice level_id is required only when role id = 6 (student)
 
 + username (string, required) - username 
-+ school_id (string, required) - school_id 
-+ level_id (string, required only if user is student) - level_id 
++ school_id (int, required) - school_id 
++ level_id (int, required only if user is student) - level_id 
 + role_id (int, required) - role_id "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13
 + number (string, required) - number = government_id 
 + password (string, required) - password 
@@ -61,10 +76,10 @@ Notice level_id is required only when role id = 6 (student)
 + grandfather_name (string) - grandfather_name 
 + family_name (string, required) - family_name 
 + address (string) - address 
-+ phone_number (int) - phone_number 
-+ mobile_number (int) - mobile_number 
++ phone_number (string) - phone_number 
++ mobile_number (string) - mobile_number 
 + email (string) - email 
-+ place_of_birth (string) - place_of_birth 
++ place_of_birth (int) - place_of_birth 
 + date_of_birth (date) - date_of_birth YYYY-MM-DD 
 
 
@@ -354,77 +369,82 @@ This action allows to get student level in specific year
         {"user_score":"1200","current_card_title":"Green","current_card_color":"#afd136","user_ratio":33.3333333333,"class_index":4,"class_title":"Green","class_color":"#afd136"}
         
                    
-## Get Student Reports List  [/users/get_student_reports_list?level_id=12&school_id=12&semester_id=34&access_token=your_access_token]
+## Get Student Reports List  [/users/get_student_reports_list?user_id=100&access_token=your_access_token]
 
 + Parameters
-    + level_id: 100 (required, number) - Level ID  in form of an integer
-    + school_id: 100 (required, number) - school ID in form of an integer
-    + semester_id: 100 (required, number) - semester ID in form of an integer
-
+   + user_id: 100 (required, number) - User ID  in form of an integer
 
 ### Get Student Reports List [GET]
 
-This action allows to get student level in specific year
+This action allows to get student report list
 
-+ level_id (int) - user_id
-+ school_id (int) - school_id
-+ semester_id (int) - semester_id
++ user_id (int) - user_id
+
 
 + Response 200 (application/json)
 
-        {"2":"\u0627\u0644\u062a\u0642\u0631\u064a\u0631 \u0627\u0644\u0623\u0633\u0628\u0648\u0639\u064a","21":"\u0627\u0644\u062a\u0642\u0631\u064a\u0631 \u0627\u0644\u0634\u0647\u0631\u064a","22":"\u0627\u0644\u062a\u0642\u0631\u064a\u0631 \u0627\u0644\u0633\u0646\u0648\u064a"}
-        
-## Get student report [/users/get_student_report?user_id=12&report_id=12&semester_id=34&access_token=your_access_token]
+        [{"ReportCards":{"id":"754","title":"Layla Report","created":"2016-05-23 10:28:31"}}]
+
+## Get student report [/users/get_student_report?user_id=12&report_id=12&access_token=your_access_token]
 
 + Parameters
     + user_id: 100 (required, number) - User ID  in form of an integer
     + report_id: 100 (required, number) - Report ID in form of an integer
-    + semester_id: 100 (required, number) - Semester ID in form of an integer
+    
 
 ### Get Student Report [GET]
 
-This action allows to get students reports list in specific semester
+This action allows to get students reports details
 
-+ level_id (int) - user_id
++ user_id (int) - user_id
 + report_id (int) - report_id
-+ semester_id (int) - semester_id
 
 + Response 200 (application/json)
+        
+        {"report":[{"ReportCards":{"title":"Layla Report"}}],"lectures":[{"lecture_id":"323274","course_id":"48918","course_title":"\u062f\u0648\u0631\u0629 \u0627\u0644\u0631\u0648\u0628\u0648\u062a","excused":0,"unexcused":0,"transcript_attribute":[{"grade":0,"point":"100","transcript_attribute_id":"209","transcript_attribute_title":"Mid-Term Exam"},{"grade":0,"point":"0","transcript_attribute_id":"208","transcript_attribute_title":"Exams Average"},{"grade":0,"point":"100","transcript_attribute_id":"516","transcript_attribute_title":"\u0645\u0634\u0631\u0648\u0639 \u0627\u0644\u0645\u0627\u062f\u0629"},{"grade":0,"point":"100","transcript_attribute_id":"886","transcript_attribute_title":"Total"}]},{"lecture_id":"287253","course_id":"41259","course_title":"\u062f\u0648\u0631\u0629 \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0634\u0627\u0631\u064a\u0639","excused":0,"unexcused":0,"transcript_attribute":[{"grade":0,"point":"100","transcript_attribute_id":"209","transcript_attribute_title":"Mid-Term Exam"},{"grade":0,"point":"0","transcript_attribute_id":"208","transcript_attribute_title":"Exams Average"},{"grade":0,"point":"100","transcript_attribute_id":"516","transcript_attribute_title":"\u0645\u0634\u0631\u0648\u0639 \u0627\u0644\u0645\u0627\u062f\u0629"},{"grade":0,"point":"100","transcript_attribute_id":"886","transcript_attribute_title":"Total"}]},{"lecture_id":"30445","course_id":"7127","course_title":"Math-101","excused":0,"unexcused":0,"transcript_attribute":[{"grade":100,"point":"100","transcript_attribute_id":"209","transcript_attribute_title":"Mid-Term Exam"},{"grade":0,"point":"100","transcript_attribute_id":"516","transcript_attribute_title":"\u0645\u0634\u0631\u0648\u0639 \u0627\u0644\u0645\u0627\u062f\u0629"},{"grade":0,"point":"0","transcript_attribute_id":"208","transcript_attribute_title":"Exams Average"},{"grade":100,"point":"100","transcript_attribute_id":"886","transcript_attribute_title":"Total"}]},{"lecture_id":"30449","course_id":"7129","course_title":"English-101","excused":0,"unexcused":0,"transcript_attribute":[{"grade":0,"point":"100","transcript_attribute_id":"209","transcript_attribute_title":"Mid-Term Exam"},{"grade":0,"point":"100","transcript_attribute_id":"516","transcript_attribute_title":"\u0645\u0634\u0631\u0648\u0639 \u0627\u0644\u0645\u0627\u062f\u0629"},{"grade":0,"point":"0","transcript_attribute_id":"208","transcript_attribute_title":"Exams Average"},{"grade":0,"point":"100","transcript_attribute_id":"886","transcript_attribute_title":"Total"}]},{"lecture_id":"908613","course_id":"53191","course_title":"\u062f\u0648\u0631\u0629 \u0645\u0647\u0627\u0631\u062a \u0627\u062a\u0635\u0627\u0644","excused":0,"unexcused":0,"transcript_attribute":[{"grade":0,"point":"100","transcript_attribute_id":"209","transcript_attribute_title":"Mid-Term Exam"},{"grade":0,"point":"0","transcript_attribute_id":"208","transcript_attribute_title":"Exams Average"},{"grade":0,"point":"100","transcript_attribute_id":"516","transcript_attribute_title":"\u0645\u0634\u0631\u0648\u0639 \u0627\u0644\u0645\u0627\u062f\u0629"},{"grade":0,"point":"100","transcript_attribute_id":"886","transcript_attribute_title":"Total"}]}],"StudentBehavior":[{"StudentBehavior":{"id":"28310","date":"2016-05-25","details":"Test attachment 1","attachment_id":"3145697","behavior_title":"\u0639\u062f\u0645 \u0627\u0644\u062a\u0642\u064a\u062f \u0628\u0627\u0644\u0644\u0628\u0627\u0633 \u0627\u0644\u0631\u0633\u0645\u064a \u0627\u0644\u062e\u0627\u0635 \u0628\u0627\u0644\u0645\u062f\u0631\u0633\u0629 ","behavior_description":"\r\n\t\u0639\u062f\u0645 \u0627\u0644\u062a\u0642\u064a\u062f \u0628\u0627\u0644\u0644\u0628\u0627\u0633 \u0627\u0644\u0631\u0633\u0645\u064a \u0627\u0644\u062e\u0627\u0635 \u0628\u0627\u0644\u0645\u062f\u0631\u0633\u0629  \u0623\u0648 \u0647\u064a\u0626\u0629 \u0645\u062e\u0627\u0644\u0641\u0629 \u0644\u0644\u0646\u0638\u0627\u0645 \u0627\u0644\u0645\u062f\u0631\u0633\u064a <\/p>\r\n","behavior_points":"1","action_title":"1- \u0627\u0644\u062a\u0646\u0628\u064a\u0647 \u0627\u0644\u0634\u0641\u0648\u064a ","action_description":"\r\n\t\u0627\u0644\u062a\u0646\u0628\u064a\u0647 \u0627\u0644\u0634\u0641\u0648\u064a \u0627\u0644\u0625\u0646\u0641\u0631\u0627\u062f\u064a \u0645\u0646 \u0627\u0644\u0645\u0639\u0644\u0645 \u0623\u0648 \u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u062f\u0631\u0633\u064a\u0629 \u0639\u0646\u062f\u0645\u0628\u0627\u0634\u0631\u0629 \u0627\u0644\u0645\u0648\u0642\u0641 \u0648\u0628\u0623\u0633\u0644\u0648\u0628 \u062a\u0631\u0628\u0648\u064a \u062d\u0643\u064a\u0645 \u0648\u062a\u0639\u0632\u064a\u0632 \u0627\u0644\u0633\u0644\u0648\u0643 \u0627\u0644\u0625\u064a\u062c\u0627\u0628\u064a .<\/p>\r\n","attachment_url":{"download_url":"https:\/\/s3.amazonaws.com\/classera\/111\/behavior\/3145697.docx?response-content-disposition=attachment%3Bfilename%3D%22_%C3%98%C2%A7%C3%99%C2%84%C3%98%C2%AD%C3%99%C2%81%C3%98%C2%B1_%C3%98%C2%A7%C3%99%C2%84%C3%98%C2%B4%C3%98%C2%B1%C3%99%C2%82%C3%99%C2%8A_%C3%98%C2%B9%C3%99%C2%84%C3%99%C2%89_%C3%98%C2%A7%C3%99%C2%84%C3%98%C2%AE%C3%98%C2%B4%C3%98%C2%A8.docx%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468928252&Signature=1A7mNId95GWclmid149Hrld87tY%3D"}}},{"StudentBehavior":{"id":"28311","date":"2016-05-25","details":"Test attachment 2","attachment_id":"3145698","behavior_title":"\u0627\u0644\u0639\u0628\u062b \u0641\u064a \u0627\u0644\u0635\u0641 \u0628\u0627\u0644\u0637\u0627\u0628\u0648\u0631","behavior_description":"\r\n\t\u0635\u062b\u0633\u0628\u0633\u064a\u0628<\/p>\r\n","behavior_points":"1","action_title":"\u062a\u062d\u0630\u064a\u0631","action_description":"\u0633\u0628\u0633","attachment_url":{"download_url":"https:\/\/s3.amazonaws.com\/classera\/111\/behavior\/3145698.docx?response-content-disposition=attachment%3Bfilename%3D%22_%C3%98%C2%A7%C3%99%C2%84%C3%98%C2%AD%C3%99%C2%81%C3%98%C2%B1_%C3%98%C2%A7%C3%99%C2%84%C3%98%C2%B4%C3%98%C2%B1%C3%99%C2%82%C3%99%C2%8A_%C3%98%C2%B9%C3%99%C2%84%C3%99%C2%89_%C3%98%C2%A7%C3%99%C2%84%C3%98%C2%AE%C3%98%C2%B4%C3%98%C2%A8.docx%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468928253&Signature=CVVGoH0L1ntB5yDHGk3ZLSP%2BECM%3D"}}}]}
 
-        {"transcript_attributes":[{"TranscriptAttribute":{"id":"238","title":"\u0627\u0644\u0625\u062e\u062a\u0628\u0627\u0631\u0627\u062a","points":"500","type":"0","function":"0","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":null,"finalgrade":false,"deleted":false,"created":"2014-10-26 23:57:51","modified":"2014-10-26 23:57:51"}},{"TranscriptAttribute":{"id":"239","title":"\u0627\u0644\u0648\u0627\u062c\u0628\u0627\u062a","points":"200","type":"3","function":"2","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":null,"finalgrade":false,"deleted":false,"created":"2014-10-26 23:58:36","modified":"2014-10-26 23:58:36"}},{"TranscriptAttribute":{"id":"240","title":"\u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629","points":"5","type":"3","function":"2","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":null,"finalgrade":false,"deleted":false,"created":"2015-02-26 01:34:41","modified":"2015-02-26 01:34:41"}},{"TranscriptAttribute":{"id":"247","title":"test absence","points":"5","type":"5","function":"0","level_id":null,"school_id":"16","report_card_id":null,"single_absence_point":"1","finalgrade":false,"deleted":false,"created":"2015-05-19 11:42:31","modified":"2015-05-19 11:42:31"}}],"courses":[{"Course":{"id":"938","title":"\u0641\u064a\u0632\u064a\u0627\u0621","icon":"Slice-03.png","external_url":null,"type":"0"},"Lecture":{"id":"873"}},{"Course":{"id":"834","title":"\u0627\u0644\u062d\u0627\u0633\u0628 \u0627\u0644\u0622\u0644\u064a","icon":"default","external_url":null,"type":"0"},"Lecture":{"id":"1273"}},{"Course":{"id":"1346","title":"\u0622\u062d\u064a\u0627\u0621","icon":"Slice-75.png","external_url":null,"type":"0"},"Lecture":{"id":"1474"}},{"Course":{"id":"1836","title":"English","icon":"Slice-28.png","external_url":"http:\/\/content.accelerate-ed.com\/Lesson\/Elementary\/4th_Grade\/Math4\/Multiplication\/index.html","type":"0"},"Lecture":{"id":"3486"}}],"student_grades":{"2323":{"238":"2","239":133,"240":10,"247":1},"873":{"238":null,"239":0,"240":0,"247":2},"3482":{"238":null,"239":0,"240":0,"247":5},"3486":{"238":null,"239":0,"240":0,"247":4},"1273":{"238":null,"239":0,"240":0,"247":5},"1474":{"238":null,"239":0,"240":0,"247":5}},"absences":{"873":{"unexcused":3},"2323":{"unexcused":4},"2324":{"unexcused":1},"3486":{"unexcused":1}},"total_points":{"238":{"938":"500","1836":"500","834":"500","1346":"500"},"239":{"938":"200","1836":"200","834":"200","1346":"200"},"240":{"938":"5","1836":"5","834":"5","1346":"5"},"247":{"938":"5","1836":"5","834":"5","1346":"5"}}}
-
-## Get Inbox Messages [/users/get_inbox_messages?user_id=12&semester_id=34&access_token=your_access_token]
+## Get Inbox Messages [/users/get_inbox_messages?user_id=12&access_token=your_access_token]
 
 + Parameters
     + user_id: 100 (required, number) - User ID  in form of an integer
-    + semester_id: 100 (required, number) - Semester ID in form of an integer
-
+   
 ### Get Inbox Messages [GET]
 
-This action allows to get user Inbox in specific semester
+This action allows to get user Inbox messages
 
-+ level_id (int) - user_id
-+ semester_id (int) - semester_id
++ user_id (int) - user_id
+
 
 + Response 200 (application/json)
 
-        [{"inboxView":{"id":"33_10436","message_id":"33","recipient_id":"10436","sender_id":"10386","sender_photo":"images (155).jpg","full_name":"FD TST","full_name_ara":null,"title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
-        \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","priority":"0","created":"2014-11-30 18:45:33","type":null,"read":false,"has_attachment":"0","school_id":"16","semester_id":"32"},"Message":{"id":"33","title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
+        [{"0":[{"InboxView":{"id":"9094211_78785","sender_id":"78934","full_name":"Tom Friedman","full_name_ara":null,"semester_id":"318","message_id":"9094211","title":"hi","body":"hhhhh","priority":"0","created":"2016-07-17 16:58:27","type":null,"read":false,"image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468921559&Signature=gRteGqcBjLmV0zU%2FqGRe3iCT5V0%3D"}}],"tota_count":37,"unread_count":1}
 
-        \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","approved":true,"sent":null,"created":"2014-11-30 18:45:33","modified":"2014-11-30 18:45:33","sender_id":"10386","reply_to":null,"attachment_id":null,"priority":"0","deleted":"0","type":null,"semester_id":"32","related_to":null,"related_to_type":null,"is_draft":false},"Recipient":{"id":"10436","nationality_id":"1","mawhiba_id":null,"username":"fdtsts0003","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"0","created":"2011-12-31 13:02:40","modified":"2015-06-04 16:18:41","role_id":"6","school_id":"16","first_name":"\u0645\u062d\u0645\u062f","father_name":"\u0633\u0639\u0648\u062f","grandfather_name":"\u0645\u0633\u0641\u0631","family_name":"\u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646","name_ara":null,"date_of_birth":"1995-12-07","place_of_birth":"","address":"","phone_number":"","mobile_number":"0555856777","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"student.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"1","login_name":"","google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0"}}]
+## Get message inbox details [/Users/get_message_inbox_details?message_id=10&access_token=your_access_token]
 
-## Get Outbox Messages [/users/get_outbox_messages?user_id=12&semester_id=34&access_token=your_access_token]
++ Parameters
+    + message_id: 10 (required, number) - ID of message
+    
+
+### Get message inbox details [GET]
+This action allows to get message inbox details .
+
++ message_id (int) - message_id
+
++ Response 200 (application/json)
+
+        [{"Message":{"id":"9094211","title":"hi","body":"hhhhh","created":"2016-07-17 16:58:27","priority":"0","type":null,"sender_id":"78934","semester_id":"318","read":false,"first_name":"Tom","family_name":"Friedman","image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468926155&Signature=EwFv4%2B4x8zxvR83%2BaGqHE3Tbn7I%3D"}}]
+
+## Get Outbox Messages [/users/get_outbox_messages?user_id=12&access_token=your_access_token]
 
 + Parameters
     + user_id: 100 (required, number) - User ID  in form of an integer
-    + semester_id: 100 (required, number) - Semester ID in form of an integer
+    
 
 ### Get Outbox Messages [GET]
 
-This action allows to get user outbox in specific semester
+This action allows to get user outbox messages
 
-+ level_id (int) - user_id
-+ semester_id (int) - semester_id
++ user_id (int) - user_id
 
 + Response 200 (application/json)
 
@@ -433,7 +453,83 @@ This action allows to get user outbox in specific semester
 
         \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","approved":true,"sent":null,"created":"2014-11-30 18:45:33","modified":"2014-11-30 18:45:33","sender_id":"10386","reply_to":null,"attachment_id":null,"priority":"0","deleted":"0","type":null,"semester_id":"32","related_to":null,"related_to_type":null,"is_draft":false},"Recipient":{"id":"10436","nationality_id":"1","mawhiba_id":null,"username":"fdtsts0003","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"0","created":"2011-12-31 13:02:40","modified":"2015-06-04 16:18:41","role_id":"6","school_id":"16","first_name":"\u0645\u062d\u0645\u062f","father_name":"\u0633\u0639\u0648\u062f","grandfather_name":"\u0645\u0633\u0641\u0631","family_name":"\u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646","name_ara":null,"date_of_birth":"1995-12-07","place_of_birth":"","address":"","phone_number":"","mobile_number":"0555856777","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"student.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"1","login_name":"","google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0"}}]
 
+## Get message outbox details [/Users/get_message_outbox_details?message_id=10&access_token=your_access_token]
 
++ Parameters
+    + message_id: 10 (required, number) - ID of message
+    
+
+### Get message outbox details [GET]
+This action allows to et message outbox details .
+
++ message_id (int) - message_id
+
++ Response 200 (application/json)
+
+
+        [{"Message":{"id":"10","title":"RE: Test 3","body":"\r\n\t&nbsp;\r\n\r\n\t \r\n\t\r\n\t\tTest 3\r\n\r\n\r\n\t&nbsp;\r\n\r\n\t&nbsp;\r\n\r\n\thello\r\n\r\n\t&nbsp;\r\n\r\n\ttest1\r\n","created":"2016-06-28 14:35:02","priority":"0","type":"sent","first_name":"demoa115","family_name":""},"OutboxView":{"recipient_id":"30607","school_id":"111","semester_id":"318","image_url":"https:\/\/s3.amazonaws.com\/classera\/35\/profilepic\/thumb_130\/30607.jpg?response-content-disposition=attachment%3Bfilename%3D%2230607.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468926067&Signature=fvA%2BZufgf7Pu3Ln1lmUIr7VhbhU%3D"}}]
+
+
+## Reply message [/Users/reply_message?access_token=your_access_token]
+
+### Reply message [POST]
+This action allows to Reply message. 
+
++ user_id: 100 (required, intger) 
++ message_id : 100 (required, intger) 
++ message_title: "hi" (required, string)
++ recipient_id: 101 (required, intger)  
++ message_body: "how are you?" (required, string)
+
++ Response 200 (application/json)
+  
+        {"message_id":"9094211","title":"hi","status":"Success replay message"} 
+ 
+        
+## Get user notification [/Users/get_user_notification?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    
+
+### Get user notification [GET]
+This action allows to get user notification .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        {"unseen_assessments":[],"unseen_assessments_count":0,"student_grades_list":[],"grades_count":0,"count_new_exam":1,"list_new_exam":[{"Assignment":{"id":"479283","title":"Test Title","due_datetime":"2016-11-04 00:00:00","course_title":"Math-101","course_id":"7127","status":"Launch"}}],"list_new_homework":[],"count_new_homework":0,"video_attach":[],"count_new_video":0,"document_attach":[],"count_new_doc":0,"list_new_disc":[],"count_new_disc":0,"unread_messages":[{"InboxView":{"id":"9094211_78785","message_id":"9094211","recipient_id":"78785","message_folder":null,"sender_id":"78934","sender_photo":"93105f8e5b940e2b2ed489ffae17da2d.jpg","full_name":"Tom Friedman","full_name_ara":null,"title":"hi","body":"hhhhh","priority":"0","created":"2016-07-17 16:58:27","type":null,"read":false,"has_attachment":"0","school_id":"111","semester_id":"318"}}],"unread_messages_count":1,"report_cards":[{"ReportCards":{"id":"754","title":"Layla Report","created":"2016-05-23 10:28:31"}},{"ReportCards":{"id":"750","title":"Test Android New APP!","created":"2016-04-24 10:52:55"}},{"ReportCards":{"id":"470","title":"Week-1 Report","created":"2015-11-11 12:26:15"}}],"count_new_report_cards":3}
+
+
+## Parent get child [/Users/parent_get_child?user_id=100&access_token=your_access_token]
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+  
+   
+### Parent get child [GET]
+This action allows parent to get children list .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        [{"Student":{"user_id":{"id":"78785","username":"etss0001","notification_settings":"1023","created":"2014-03-18 14:15:50","modified":"2016-06-22 12:18:07","role_id":"6","school_id":"111","first_name":"Adam","father_name":"","grandfather_name":"","family_name":"Fields","name_ara":null,"date_of_birth":"2000-03-18","place_of_birth":"3793","place_of_birth_country":"224","address":"United States of America, New Yourk","phone_number":"","mobile_number":"0555856777","email":null,"verified_email":false,"email2":null,"nationality_id":"45","dob_hijri":null,"photo_filename":"images (1).jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"1","login_name":"demos223","google_login_token":null,"number":"87547854756","old_school_id":null,"gender":"0","block_reports":false,"mawhiba_id":"54321","pioneer_id":null,"bio":"Rolando Cruz is a native of Mexico City and has lived in Portland, Oregon\r\nsince 1996. Since 2008, Rolando has been District Executive for Hispanic Outreach\r\nand responsible for the Soccer and Scouting program at the Boy Scouts of America in\r\nPortland. His bi-cultural background and focus on community collaboration has led\r\nhim to a number of volunteer opportunities and community leadership roles. Rolando\r\nreceived his Bachelor of Science in Communications at Oklahoma Christian\r\nUniversity and a Masters in Management and Organizational Leadership at Warner\r\nPacific College in Portland, Oregon. ","facebook_account":"www.facebook.com\/pages\/Classera\/304534046291945?fref=ts","twitter_account":"classera_me","google_plus_account":null,"instagram_account":"classera_me","linkedin_account":"www.linkedin.com\/company\/classera-inc-","mobile_number2":null,"educational_administration":"","external_school":"","tmp_section_id":null,"level_pioneer_id":null,"section_pioneer_id":null,"parent_pioneer_id":null,"thumb_done":"1","ios_token":null,"android_token":null,"restrict_login":false,"full_name":"Adam   Fields","school_name":"English Test School - 02","student_level":{"id":"42525","student_id":"30743","year_id":"224","level_id":"833","status":null,"created":"0000-00-00 00:00:00","modified":"0000-00-00 00:00:00"},"level_title":[{"levels":{"title":"Grade-1"}}],"image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78785.jpg?response-content-disposition=attachment%3Bfilename%3D%22images_%281%29.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468851456&Signature=hTmYKdD5q4R9iYx%2BbOyXZC%2BS0nA%3D","score_info":{"user_score":"3818.57","current_card_title":"Green","current_card_color":"#afd136","user_ratio":100,"class_index":0,"class_title":"Diamond","class_color":"#730c16"},"current_semester_id":{"year_id":"224","semester_id":"318"}}}}]
+  
+  
+## Get user classera card [/Users/get_user_classera_card?user_id=100&access_token=your_access_token]
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    
+    
+### Get user classera card [GET]
+This action allows to get user notification .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        [{"ClasseraCardsUsers":{"id":"3","card_number":"30399927095992","linked_by":"78785","class":"4","card_url":"https:\/\/classera.s3.amazonaws.com\/classera\/CLASSERA_CARDS\/card_78785_30399927095992.png"}}]
 
 ## Group Absences
 
@@ -566,6 +662,100 @@ This action allows to view attachment
 + Response 200 (application/json)
 
         {"Attachment":{"id":"32","original_filename":"kajfaslksdjpoiwjeflaskdjfpowiejfskajdfaslkjdfpaoiefasdjfalksjdfasjdfjaspdifhasdfaskjdfalksdjflasdjfasdpfijad.pdf","created":"2015-02-19 09:07:49","title":"kajfaslksdjpoiwjeflaskdjfpowiejfskajdfaslkjdfpaoiefasdjfalksjdfasjdfjaspdifhasdfaskjdfalksdjflasdjfasdpfijad.pdf","comments":null,"deleted":false,"type":"Behavior","content_type":"application\/pdf","publish_date":"2015-02-19 09:07:49","sharing_status":"0","user_id":"39674","school_id":"16","original_attachment":null,"duplicate_stss":false,"id_hash":null,"semester_id":null,"file_hash":null,"missing":false,"duplicate_xtxs":false,"blocked":false,"preparation_id":null,"publish_date_Ymd":"2015-02-19"}}
+
+
+## Get student material list  [/Attachments/get_student_material_list?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+   
+
+### Get student material list  [GET]
+This action allows to get material list.
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+        
+        {"course_material": [{"StudentReadNotifDocView": {"id": "2827098","attach_type": "Material","attach_title": "الخزف","course_title": "Math-101","attach_created": "2016-01-26 11:50:26","teacher_name": "Tom   Friedman","likes": "2"}},{"StudentReadNotifDocView": {"id": "2827098","attach_type": "Material","attach_title": "الخزف","course_title": "Math-101","attach_created": "2016-01-26 11:50:26","teacher_name": "Tom   Friedman","likes": "2"}}],"count": 15}
+
+
+## Get student all video lecture  [/Attachments/get_student_all_video_lecture?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+   
+
+### Get student all video lecture  [GET]
+This action allows to get  student all video lectures.
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+        
+        
+        {"video_lectures": [{"StudentReadNotifVideoView": {"id": "3145706","attach_type": "Video","attach_title": "Tommato2","attach_created": "2016-06-15 12:35:22","course_title": "Math-101","teacher_name": "Tom   Friedman","content_type": "YouTube","likes": "0","att_url": "http://www.youtube.com/watch?v=uyezuHhSMGs"}},{"StudentReadNotifVideoView": {"id": "2690369","attach_type": "Video","attach_title": "lesson 29","attach_created": "2015-12-29 08:28:39","course_title": "English-101","teacher_name": "Tom   Friedman","content_type": "YouTube","likes": "1","att_url": "http://www.youtube.com/watch?v=8F0NYBBKczM"}}],"count": 37}
+
+
+## Get attachment details  [/Attachments/get_attachment_details?user_id=100&attachment_id=3145706&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + attachment_id: 3145706 (required, number) - ID of the attachment 
+
+### Get attachment details  [GET]
+This action allows to get  student  attachment details.
+
++ user_id (int) - user_id
++ attachment_id (int) - attachment_id 
+
++ Response 200 (application/json)
+        
+        [{"Attachment": {"type": "Video","title": "Tommato2","user_id": "78934","comments": "","created": "2016-06-15 12:35:22","course_id": "7127","original_filename": "uyezuHhSMGs","content_type": "YouTube","course_title": "Math-101","i_likes": false,"i_understand": false,"likes": "0","understand": "0","att_url": "http://www.youtube.com/watch?v=uyezuHhSMGs"},"User": {"id": "78934","first_name": "Tom","family_name": "Friedman","image_url": "https://s3.amazonaws.com/classera/111/profilepic/thumb_130/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468843595&Signature=eVy9i0CqP2sI6TnA2WNlC6HVeJc%3D"}}]    
+
+## Get attachment comments  [/Attachments/get_attachment_comments?user_id=100&attachment_id=3145706&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + attachment_id: 3145706 (required, number) - ID of the attachment 
+
+### Get attachment comments  [GET]
+This action allows to get attachment comments.
+
++ user_id (int) - user_id
++ attachment_id (int) - attachment_id 
+
++ Response 200 (application/json)
+        
+        {"comment": [{"AttachmentComment": {"text": "Test","created": "2016-07-04 11:21:05","approved": "0"},"User": {"id": "78785", "first_name": "Adam","family_name": "Fields","image_url": "https://s3.amazonaws.com/classera/111/profilepic/thumb_130/78785.jpg?response-content-disposition=attachment%3Bfilename%3D%22images_%281%29.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468844266&Signature=1bm9wvH1aDVAWVvSgoiV3PSyMZ0%3D"}}],"count": 2}
+
+## Add reaction [/Attachments/add_reaction?access_token=your_access_token]
+
+### Add reaction  [POST]
+This action allows to add like , unlike understand and understand.
+
++ user_id: 100 (required, intger) 
++ attachment_id: 100 (required, intger) 
++ type (required, intger) : 1 
+ 
++ Response 200 (application/json)
+        
+        { "message": "Success Insert" }
+
+## Add attachment comment [/Attachments/add_attachment_comment?access_token=your_access_token]
+
+### Add attachment comment  [POST]
+This action allows student to add comment to attachment .
+
++ user_id: 100 (required, intger) 
++ attachment_id: 100 (required, intger) 
++ text: "hi" (required, string) : 1 
+ 
++ Response 200 (application/json)
+        
+         { "message": "Success Insert comment " }
 
 ## Group Guardians               
 Resources related to guardians in the API.
@@ -1218,3 +1408,377 @@ This action allows to delete lecture that doesn't have any attachments or assign
         {"status":200,"message":"Lecture has been deleted"}
         request faild
         {"status":406,"message":"The lecture could not be deleted because there are attachments and assignments related to it. you can not delete it throw the API"}
+
+## Group Assessments
+Resources related to users assessment in the API.
+
+## Get assessments  [/Assessments/get_assessments?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get Assessments [GET]
+This action allows to get user assessments.
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        {"Assessment": {"id": "1833","title": "تقييم عرض تقديمي", "created": "2015-10-22 14:03:02","assessment_type_title": "Checklist"}}
+ 
+    
+## Get Assessment Detail  [/Assessments/get_assessment_detail?user_id=100&assessment_id=1833&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assessment_id: 1833 (required, number) - ID for assessment
+
+### Get assessment detail [GET]
+This action allows to get  assessments detail.
+
++ user_id (int) - user_id
++ assessment_id (int) - assessment_id
+
++ Response 200 (application/json)
+        
+        {"assessment_grade": [{"AssessmentGrade": {"id": "61093","assessment_id": "1833","item_id": "8556","indicator_id": "39582","student_id": "30743","level": "( 1 / 5 ) 35%","comment": "","assessment_type_id": "3","indicator_title": "جودة المحتوى المقدم واعتماده على مراجع موثوقة","assessment_item_title": "Reading Skills"}},{"AssessmentGrade": {"id": "61094","assessment_id": "1833","item_id": "8556","indicator_id": "39585","student_id": "30743","level": "( 1 / 5 ) 35%","comment": "","assessment_type_id": "3","indicator_title": "الإستعانة بصور ونماذج توضيحية","assessment_item_title": "Reading Skills"}}  ],"mark": "100","student_mark": 100,"percentage": 100}
+  
+
+
+## Group Grades
+Resources related to users Grades in the API.
+
+## Get student grade  [/Grades/get_student_grade?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get student grade [GET]
+This action allows to get student  grade.
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        {"Math-101": [{"id": 777079,"title": "مشاركة","points": "100","children": [{"id": 840071,"title": "مشاركة","points": "100","children": [],"transcript_attribute_id": null,"lecture_id": "30445","grade": null}],"transcript_attribute_id": null,"lecture_id": "30445","grade": 0},{"id": 777078, "title": "مشاركة","points": "100","children": [],"transcript_attribute_id": null, "lecture_id": "30445","grade": "5"}]}
+        
+
+## Update grade notification [/Grades/update_grade_notif?access_token=your_access_token]
+
+### Update grade notif  [POST]
+This action allows to update read status. 
+
++ user_id: 100 (required, intger) 
++ grade_id: 100 (required, intger)
+
++ Response 200 (application/json)    
+
+## Group Discussions
+Resources related to user Discussions in the API.
+
+## Get student discussions  [/Discussions/get_student_discussions?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get student discussions [GET]
+This action allows to get student discussions .
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        [{"PostsUserView": {"id": "4413850","post_title": "انواع الاسماك","full_name": "Tom Friedman","post_created": "2016-07-17 11:34:52"}}]
+
+## Get discussion post  [/Discussions/get_discussion_post?user_id=100&post_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + post_id: 100 (required, number) - ID of the post
+
+### Get discussion post [GET]
+This action allows to get student post discussions .
+
++ user_id (int) - user_id
++ post_id (int) - post_id
+
++ Response 200 (application/json)
+
+        [{"PostsUserView":{"id":"4413858","post_title":"","full_name":"Tom Friedman","post_created":"2016-02-02 13:46:32","post_parentid":"4413850"}}]
+        
+## Get discussion details [/Discussions/get_discussion_details?user_id=100&post_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + post_id: 100 (required, number) - ID of the post
+
+### Get discussion details [GET]
+This action allows to get student post discussion details .
+
++ user_id (int) - user_id
++ post_id (int) - post_id
+
++ Response 200 (application/json)
+
+        [{"PostsUserView":{"id":"4413850","post_title":"\u0627\u0646\u0648\u0627\u0639 \u0627\u0644\u0627\u0633\u0645\u0627\u0643","full_name":"Tom Friedman","post_created":"2016-07-17 11:34:52","post_text":"\u0627\u0644\u0627\u0633\u0645\u0627\u0643","post_parentid":"0"},"User":{"id":"78934","first_name":"Tom","family_name":"Friedman","image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468848467&Signature=oY7S61pA8mQBZ08KnGVQI5cirLA%3D"}}]  
+        
+
+## Get discussion comment [/Discussions/get_discussion_comment?user_id=100&post_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + post_id: 100 (required, number) - ID of the post
+
+### Get discussion comment [GET]
+This action allows to get discussion comments .
+
++ user_id (int) - user_id
++ post_id (int) - post_id
+
++ Response 200 (application/json)
+
+        {"comment":[{"Post":{"id":"4413858","created":"2016-02-02 13:46:32","post":"\r\n\thttps:\/\/s3.amazonaws.com\/classera-ck2\/111\/images\/1454409884_Prophet Muhammad (SAWS).pptx\r\n"},"User":{"id":"78934","first_name":"Tom","family_name":"Friedman","image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468848653&Signature=whr8ivkjEKnmi%2BHl20uA0dLBu3Q%3D"}}],"count":1}
+        
+## Add discussion comment [/Discussions/add_discussion_comment?access_token=your_access_token]
+
+### Add discussion comment [POST]
+This action allows to Add discussion comment. 
+
++ user_id: 100 (required, intger) 
++ post_id: 100 (required, intger) 
++ text: "hi" (required, string)
+ 
++ Response 200 (application/json)
+  
+        {"message": "Success Insert comment"}   
+    
+    
+## Group Assignments
+Resources related to user Assignments in the API.
+
+## Get student exams list  [/Assignments/get_student_exams_list?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get student exams list [GET]
+This action allows to get student exams list .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+            {"data":[{"Assignment":{"id":"668575","title":"YARE","created":"2016-06-30 12:58:39","due_datetime":"2016-07-08 14:55:00","cutoff_datetime":"2016-07-09 13:55:00","allow_multiple_submissions":false,"accept_submission_attachment":false,"issue_certificates":false,"exam_for_training_course":false,"assessment_id":null,"submission_id":null,"course_title":"Math-101","course_id":"7127","status":"Missed"}}],"avaliable_courses":[{"Course":{"id":"5567","title":"Science"}}]}
+        
+## Get student homework list  [/Assignments/get_student_homework_list?user_id=100&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+
+### Get student homework list [GET]
+This action allows to get student homework list .
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        
+        {"data":[{"Assignment":{"id":"668575","title":"YARE","created":"2016-06-30 12:58:39","due_datetime":"2016-07-08 14:55:00","cutoff_datetime":"2016-07-09 13:55:00","allow_multiple_submissions":false,"accept_submission_attachment":false,"issue_certificates":false,"exam_for_training_course":false,"assessment_id":null,"submission_id":null,"course_title":"Math-101","course_id":"7127","status":"Missed"}}],"avaliable_courses":[{"Course":{"id":"5567","title":"Science"}}]}
+        
+## Get student exam detail  [/Assignments/student_exam_detail?user_id=100&assignment_id=1006&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number)   ID of  assignment
+
+### Get student exam detail [GET]
+This action allows to get student exam detail .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
+
++ Response 200 (application/json)
+
+        {"Assignment":{"0":{"Assignment":{"title":"SubExam 2","publishing_datetime":"2016-06-29 14:30:00","due_datetime":"2016-07-03 12:10:00","mark":"147","submission_mark":"0","submission_id":"15726887","total_mark":"0\/147"}},"Question":[{"Question":{"id":"3291719","type":"fillblank","text":"<p>\r\n\t\u0645\u0627 \u0647\u0648\u0627 \u0627\u0633\u0645\u0643 \u0627\u0644\u0643\u0627\u0645\u0644 \u061f<\/p>\r\n","correct_answer":".","attachment_id":null,"student_answer":null,"Subquestions":[{"Question":{"id":"3291720","type":"fillblank","difficulty":"0","text":"[1]","text_eng":null,"mark":"3.33333","bonus":false,"order":null,"correct_answer":"\u0644\u064a\u0644\u0649 \u062d\u0633\u0646","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:23:45","modified":"2016-04-04 16:23:45","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291719","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291721","type":"fillblank","difficulty":"0","text":"[2]","text_eng":null,"mark":"3.33333","bonus":false,"order":null,"correct_answer":"\u0633\u0639\u064a\u062f \u062d\u0644\u0648\u0627\u0646\u064a","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:23:45","modified":"2016-04-04 16:23:45","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291719","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291722","type":"fillblank","difficulty":"0","text":"[3]","text_eng":null,"mark":"3.33333","bonus":false,"order":null,"correct_answer":"\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0628\u0648 \u0633\u0627\u0644","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:23:45","modified":"2016-04-04 16:23:45","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291719","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"}]}},{"Question":{"id":"3291723","type":"hotspot","text":"<p>\r\n\t\u062d\u062f\u062f \u0639\u064a\u0646 \u0627\u0644\u0627\u0631\u0646\u0628<\/p>\r\n","correct_answer":"389.40625,181,441.40625,222","attachment_id":"3145559","student_answer":null,"attachment_url":"https:\/\/s3.amazonaws.com\/classera\/111\/qatt\/3145559.jpg?response-content-disposition=attachment%3Bfilename%3D%22%C3%98%C2%A3%C3%98%C2%B1%C3%99%C2%86%C3%98%C2%A8.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468913089&Signature=BbzXuLgOt0XFEzSRMwJ7Yt9ndGM%3D","position":["389.40625","181","441.40625","222"]}},{"Question":{"id":"3291724","type":"matching","text":"<p>\r\n\t\u0627\u064a\u0646 \u0627\u0644\u0627\u0631\u0646\u0628<\/p>\r\n","correct_answer":".","attachment_id":null,"student_answer":null,"Subquestions":[{"Question":{"id":"3291725","type":"matching","difficulty":"0","text":"\u0647\u0646\u0627","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u0644\u0627 \u064a\u0648\u062c\u062f ","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291726","type":"matching","difficulty":"0","text":"\u0647\u0646\u0627\u0643","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u0644\u0627 \u064a\u0648\u062c\u062f \u0627\u0631\u0646\u0628","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291727","type":"matching","difficulty":"0","text":"\u0641\u064a \u0627\u0644\u0628\u064a\u062a","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u062f\u0627\u062e\u0644 \u0627\u0644\u0642\u0641\u0635","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291728","type":"matching","difficulty":"0","text":"\u0641\u064a \u0627\u0644\u0645\u0632\u0631\u0639\u0629","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u064a\u0644\u0639\u0628","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"}]}},{"Question":{"id":"3291729","type":"mcq","text":"<p>\r\n\t<img alt=\"\" src=\"http:\/\/s3.amazonaws.com\/classera-ck2\/80\/images\/1422874226_2.jpg\" style=\"width: 180px; height: 138px;\" \/><\/p>\r\n","correct_answer":"3","attachment_id":null,"student_answer":null,"choices":{"answer_1":"<p>\r\n\t\u0627\u0644\u0633\u0627\u0639\u0629  4<\/p>\r\n","answer_2":"<p>\r\n\t\u0627\u0644\u0633\u0627\u0639\u0629 12 \u0648 50 \u062f\u0642\u064a\u0642\u0629<\/p>\r\n","answer_3":"<p>\r\n\t\u0627\u0644\u0633\u0627\u0639\u0629 5<\/p>\r\n","answer_4":"","answer_5":"","answer_6":""},"result":"wrong"}},{"Question":{"id":"3291730","type":"short","text":"<p>\r\n\t\u0627\u0643\u0645\u0644\u064a \u0627\u0644\u062c\u0645\u0644 \u0627\u0644\u062a\u0627\u0644\u064a\u0629 \u0628\u0648\u0636\u0639 \u0627\u0644\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0646\u0627\u0633\u0628\u0629 ( \u0641\u0648\u0642 - \u062a\u062d\u062a - \u0642\u0628\u0644 - \u0628\u0639\u062f )<\/p>\r\n<p>\r\n\t\u064a\u0645\u0634\u064a \u0627\u0644\u0646\u0627\u0633 .......................... \u0627\u0644\u0631\u0635\u064a\u0641<\/p>\r\n<p>\r\n\t\u0646\u0644\u0642\u064a \u0627\u0644\u062a\u062d\u064a\u0629 ....................... \u0627\u0644\u0645\u0635\u0627\u0641\u062d\u0629<\/p>\r\n<p>\r\n\t\u0639\u0627\u062f \u0648\u0627\u0644\u062f \u0639\u0645\u0631 \u0627\u0644\u0649 \u0627\u0644\u0633\u064a\u0627\u0631\u0629 ................... \u0645\u0633\u0627\u0639\u062f\u0629 \u0627\u0644\u0631\u062c\u0644 \u0627\u0644\u0645\u0633\u0646<\/p>\r\n","correct_answer":"<p>\r\n\t\u0641\u0648\u0642<\/p>\r\n<p>\r\n\t\u0642\u0628\u0644<\/p>\r\n<p>\r\n\t\u0628\u0639\u062f<\/p>\r\n","attachment_id":null,"student_answer":null,"choices":{"correct_answer":"<p>\r\n\t\u0641\u0648\u0642<\/p>\r\n<p>\r\n\t\u0642\u0628\u0644<\/p>\r\n<p>\r\n\t\u0628\u0639\u062f<\/p>\r\n"},"result":"wrong"}},{"Question":{"id":"3291731","type":"tfq","text":"<p dir=\"RTL\" style=\"margin: 0px; padding: 0px; outline: none; color: rgb(54, 54, 54); font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif; font-size: 13.6px; text-align: center; background-color: rgb(255, 228, 92);\">\r\n\t<span style=\"margin: 0px; padding: 0px; outline: none; font-size: 16px;\"><strong style=\"margin: 0px; padding: 0px; outline: none;\"> <u style=\"margin: 0px; padding: 0px; outline: none;\">\u0627\u0644\u0623\u0632\u0648\u0627\u062c \u0627\u0644\u0645\u0631\u062a\u0628\u0629  \u0627\u0644\u0623\u062a\u064a\u0629 \u0645\u062a\u0633\u0627\u0648\u064a\u0629 :-<\/u><\/strong><\/span><\/p>\r\n<p dir=\"RTL\" style=\"margin: 0px; padding: 0px; outline: none; color: rgb(54, 54, 54); font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif; font-size: 13.6px; text-align: center; background-color: rgb(255, 228, 92);\">\r\n\t<span style=\"margin: 0px; padding: 0px; outline: none; font-size: 16px;\"><strong style=\"margin: 0px; padding: 0px; outline: none;\">        (9 , 6)    =   <\/strong><\/span><strong style=\"margin: 0px; padding: 0px; outline: none; font-size: 16px;\">  (6 , 9)<\/strong><\/p>\r\n","correct_answer":"2","attachment_id":null,"student_answer":null,"choices":{"answer_1":"true","answer_2":"false"},"result":"wrong"}}]}} 
+        
+## Get student homework detail  [/Assignments/student_homework_detail?user_id=100&assignment_id=1005&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1005 (required, number)   ID of  assignment
+
+### Get student homework detail [GET]
+This action allows to get student homework detail .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
+
++ Response 200 (application/json)        
+
+        {"Assignment":{"0":{"Assignment":{"title":"SubExam 2","publishing_datetime":"2016-06-29 14:30:00","due_datetime":"2016-07-03 12:10:00","mark":"147","submission_mark":"0","submission_id":"15726887","total_mark":"0\/147"}},"Question":[{"Question":{"id":"3291719","type":"fillblank","text":"<p>\r\n\t\u0645\u0627 \u0647\u0648\u0627 \u0627\u0633\u0645\u0643 \u0627\u0644\u0643\u0627\u0645\u0644 \u061f<\/p>\r\n","correct_answer":".","attachment_id":null,"student_answer":null,"Subquestions":[{"Question":{"id":"3291720","type":"fillblank","difficulty":"0","text":"[1]","text_eng":null,"mark":"3.33333","bonus":false,"order":null,"correct_answer":"\u0644\u064a\u0644\u0649 \u062d\u0633\u0646","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:23:45","modified":"2016-04-04 16:23:45","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291719","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291721","type":"fillblank","difficulty":"0","text":"[2]","text_eng":null,"mark":"3.33333","bonus":false,"order":null,"correct_answer":"\u0633\u0639\u064a\u062f \u062d\u0644\u0648\u0627\u0646\u064a","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:23:45","modified":"2016-04-04 16:23:45","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291719","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291722","type":"fillblank","difficulty":"0","text":"[3]","text_eng":null,"mark":"3.33333","bonus":false,"order":null,"correct_answer":"\u0639\u0628\u062f\u0627\u0644\u0644\u0647 \u0627\u0628\u0648 \u0633\u0627\u0644","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:23:45","modified":"2016-04-04 16:23:45","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291719","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"}]}},{"Question":{"id":"3291723","type":"hotspot","text":"<p>\r\n\t\u062d\u062f\u062f \u0639\u064a\u0646 \u0627\u0644\u0627\u0631\u0646\u0628<\/p>\r\n","correct_answer":"389.40625,181,441.40625,222","attachment_id":"3145559","student_answer":null,"attachment_url":"https:\/\/s3.amazonaws.com\/classera\/111\/qatt\/3145559.jpg?response-content-disposition=attachment%3Bfilename%3D%22%C3%98%C2%A3%C3%98%C2%B1%C3%99%C2%86%C3%98%C2%A8.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468913089&Signature=BbzXuLgOt0XFEzSRMwJ7Yt9ndGM%3D","position":["389.40625","181","441.40625","222"]}},{"Question":{"id":"3291724","type":"matching","text":"<p>\r\n\t\u0627\u064a\u0646 \u0627\u0644\u0627\u0631\u0646\u0628<\/p>\r\n","correct_answer":".","attachment_id":null,"student_answer":null,"Subquestions":[{"Question":{"id":"3291725","type":"matching","difficulty":"0","text":"\u0647\u0646\u0627","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u0644\u0627 \u064a\u0648\u062c\u062f ","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291726","type":"matching","difficulty":"0","text":"\u0647\u0646\u0627\u0643","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u0644\u0627 \u064a\u0648\u062c\u062f \u0627\u0631\u0646\u0628","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291727","type":"matching","difficulty":"0","text":"\u0641\u064a \u0627\u0644\u0628\u064a\u062a","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u062f\u0627\u062e\u0644 \u0627\u0644\u0642\u0641\u0635","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"},{"Question":{"id":"3291728","type":"matching","difficulty":"0","text":"\u0641\u064a \u0627\u0644\u0645\u0632\u0631\u0639\u0629","text_eng":null,"mark":"3.5","bonus":false,"order":null,"correct_answer":"\u064a\u0644\u0639\u0628","answer_1":null,"answer_2":null,"answer_3":null,"answer_4":null,"answer_5":null,"answer_6":null,"created":"2016-04-04 16:27:01","modified":"2016-04-04 16:27:01","assignment_id":"668573","answer_order":null,"deleted":false,"attachment_id":null,"criterion_id":null,"taxonomy_id":null,"assignment_section_id":null,"original_question_id":null,"show_to_evaluator":null,"parent_id":"3291724","question_hint":null,"correct_answer_response":null,"wrong_answer_response":null,"student_answer":null},"result":"wrong"}]}},{"Question":{"id":"3291729","type":"mcq","text":"<p>\r\n\t<img alt=\"\" src=\"http:\/\/s3.amazonaws.com\/classera-ck2\/80\/images\/1422874226_2.jpg\" style=\"width: 180px; height: 138px;\" \/><\/p>\r\n","correct_answer":"3","attachment_id":null,"student_answer":null,"choices":{"answer_1":"<p>\r\n\t\u0627\u0644\u0633\u0627\u0639\u0629  4<\/p>\r\n","answer_2":"<p>\r\n\t\u0627\u0644\u0633\u0627\u0639\u0629 12 \u0648 50 \u062f\u0642\u064a\u0642\u0629<\/p>\r\n","answer_3":"<p>\r\n\t\u0627\u0644\u0633\u0627\u0639\u0629 5<\/p>\r\n","answer_4":"","answer_5":"","answer_6":""},"result":"wrong"}},{"Question":{"id":"3291730","type":"short","text":"<p>\r\n\t\u0627\u0643\u0645\u0644\u064a \u0627\u0644\u062c\u0645\u0644 \u0627\u0644\u062a\u0627\u0644\u064a\u0629 \u0628\u0648\u0636\u0639 \u0627\u0644\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0646\u0627\u0633\u0628\u0629 ( \u0641\u0648\u0642 - \u062a\u062d\u062a - \u0642\u0628\u0644 - \u0628\u0639\u062f )<\/p>\r\n<p>\r\n\t\u064a\u0645\u0634\u064a \u0627\u0644\u0646\u0627\u0633 .......................... \u0627\u0644\u0631\u0635\u064a\u0641<\/p>\r\n<p>\r\n\t\u0646\u0644\u0642\u064a \u0627\u0644\u062a\u062d\u064a\u0629 ....................... \u0627\u0644\u0645\u0635\u0627\u0641\u062d\u0629<\/p>\r\n<p>\r\n\t\u0639\u0627\u062f \u0648\u0627\u0644\u062f \u0639\u0645\u0631 \u0627\u0644\u0649 \u0627\u0644\u0633\u064a\u0627\u0631\u0629 ................... \u0645\u0633\u0627\u0639\u062f\u0629 \u0627\u0644\u0631\u062c\u0644 \u0627\u0644\u0645\u0633\u0646<\/p>\r\n","correct_answer":"<p>\r\n\t\u0641\u0648\u0642<\/p>\r\n<p>\r\n\t\u0642\u0628\u0644<\/p>\r\n<p>\r\n\t\u0628\u0639\u062f<\/p>\r\n","attachment_id":null,"student_answer":null,"choices":{"correct_answer":"<p>\r\n\t\u0641\u0648\u0642<\/p>\r\n<p>\r\n\t\u0642\u0628\u0644<\/p>\r\n<p>\r\n\t\u0628\u0639\u062f<\/p>\r\n"},"result":"wrong"}},{"Question":{"id":"3291731","type":"tfq","text":"<p dir=\"RTL\" style=\"margin: 0px; padding: 0px; outline: none; color: rgb(54, 54, 54); font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif; font-size: 13.6px; text-align: center; background-color: rgb(255, 228, 92);\">\r\n\t<span style=\"margin: 0px; padding: 0px; outline: none; font-size: 16px;\"><strong style=\"margin: 0px; padding: 0px; outline: none;\"> <u style=\"margin: 0px; padding: 0px; outline: none;\">\u0627\u0644\u0623\u0632\u0648\u0627\u062c \u0627\u0644\u0645\u0631\u062a\u0628\u0629  \u0627\u0644\u0623\u062a\u064a\u0629 \u0645\u062a\u0633\u0627\u0648\u064a\u0629 :-<\/u><\/strong><\/span><\/p>\r\n<p dir=\"RTL\" style=\"margin: 0px; padding: 0px; outline: none; color: rgb(54, 54, 54); font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif; font-size: 13.6px; text-align: center; background-color: rgb(255, 228, 92);\">\r\n\t<span style=\"margin: 0px; padding: 0px; outline: none; font-size: 16px;\"><strong style=\"margin: 0px; padding: 0px; outline: none;\">        (9 , 6)    =   <\/strong><\/span><strong style=\"margin: 0px; padding: 0px; outline: none; font-size: 16px;\">  (6 , 9)<\/strong><\/p>\r\n","correct_answer":"2","attachment_id":null,"student_answer":null,"choices":{"answer_1":"true","answer_2":"false"},"result":"wrong"}}]}}
+ 
+## Student assignment info  [/Assignments/student_assignment_info?user_id=100&assignment_id=1006&course_id=123&password=class52a&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number)   ID of  assignment
+    + course_id: 123 (required, number) Id of course
+    + password :"class52a" (optional , text)
+   
+### Student assignment info  [POST]
+This action allows to get student assignment info  .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
++ course_id (int) - course_id
++ password (text) - password required if exam include password
+
++ Response 200 (application/json) 
+ 
+        {"assignment_info":{"title":"QW_tom_exam_2","comments":"\u0627\u0644\u062a\u0639\u0644\u064a\u0642\u0627\u062a","created":"2016-06-14 12:35:24","publishing_datetime":"2016-06-14 11:00:00","due_datetime":"2016-08-17 12:26:00","duration":7200,"maxMark":"100","multiple_submissions":true,"max_submissions":"0","student_submissions":0,"password":true,"teacher_name":"Tom Friedman","course_title":"Math-101"}}
+    
+## Student show questions  [/Assignments/student_show_questions?user_id=100&assignment_id=1006&password=class52a&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number)   ID of  assignment
+    + password : "class52a" (optional , text)
+   
+### Student show questions [POST]
+This action allows to  student to show questions  .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
++ password (text) - password required if exam include password
+
++ Response 200 (application/json)
+
+        {"assignment_settings":{"title":"QW_tom_exam_2","comments":"\u0627\u0644\u062a\u0639\u0644\u064a\u0642\u0627\u062a","created":"2016-06-14 12:35:24","publishing_datetime":"2016-06-14 11:00:00","due_datetime":"2016-08-17 12:26:00","maxMark":"100","show_hints":true,"show_responses":false,"submit_attachments":false,"question_time":"0","started_exam":false,"time_left":7200,"starting_time":"2016-07-18 11:35:33","submission_id":"15727164","tts_time_running_out":"time is running out!"},"assignment_questions":[{"Question":{"id":"3291758","parent_id":null,"type":"tfq","text":"\r\n\tTFQ :  Are you Ready ?<\/p>\r\n","question_hint":"Hint : b7keelak yes True","mark":"16.66","attachment_id":null,"Options":["true","false"]}},{"Question":{"id":"3291759","parent_id":null,"type":"mcq","text":"\r\n\tMCQ : Choose the correct Answer <\/p>\r\n","question_hint":"Hint : el jawab Answer3 mn el a5er","mark":"16.66","attachment_id":null,"Options":["\r\n\tAnswer1 wrong<\/p>\r\n","\r\n\tAnswer2 wrong<\/p>\r\n","\r\n\tAnswer3 correct<\/p>\r\n","\r\n\tAnswer4 wrong<\/p>\r\n"]}},{"Question":{"id":"3291760","parent_id":null,"type":"short","text":"\r\n\tshort\/Essay : write about anything in your mind , just please write something plz plz<\/p>\r\n","question_hint":"oktob klmet 'something' btenja7","mark":"16.66","attachment_id":null}},{"Question":{"id":"3291761","parent_id":null,"type":"matching","text":"\r\n\tMatching : match the options with the correct answers<\/p>\r\n","question_hint":null,"mark":"16.66","attachment_id":null,"Subquestions":{"Options":["ans2","ans4","ans3","ans1"],"Questions":[{"id":"3291762","parent_id":"3291761","type":"matching","text":"op1","question_hint":null,"mark":"4.16","attachment_id":null},{"id":"3291763","parent_id":"3291761","type":"matching","text":"op2","question_hint":null,"mark":"4.16","attachment_id":null},{"id":"3291764","parent_id":"3291761","type":"matching","text":"op3","question_hint":null,"mark":"4.16","attachment_id":null},{"id":"3291765","parent_id":"3291761","type":"matching","text":"op4","question_hint":null,"mark":"4.16","attachment_id":null}]}}},{"Question":{"id":"3291766","parent_id":null,"type":"hotspot","text":"\r\n\tHotspot : highlight the word 'TEST'<\/p>\r\n","question_hint":null,"mark":"16.66","attachment_id":"3145704","attachment_url":"https:\/\/s3.amazonaws.com\/classera\/111\/qatt\/3145704.jpeg?response-content-disposition=attachment%3Bfilename%3D%22test_image.jpeg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468917335&Signature=KGhiGIv4PbHPnl7ZJlS87%2FC7zU4%3D"}},{"Question":{"id":"3291767","parent_id":null,"type":"fillblank","text":"\r\n\tfillblank : fill the blank with the correct answes<\/div>\r\\r\n\tawwal wa7ad b1 w tane wa7ad b2 w talet wa7ad b3  w rabe3 wa7ad b4<\/div>\r\n","question_hint":null,"mark":"16.66","attachment_id":null,"Subquestions":{"Blanks_number":4,"Questions_ids":["3291768","3291769","3291770","3291771"]}}}]}
+
+## Student save draft  [/Assignments/student_save_draft?user_id=100&assignment_id=1006&question_id=4&answer=2&submission_id=1515&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number) - ID of  assignment
+    + question_id : 4 (required, number) - id of question
+    + answer: 2 (required, number) - id of answer
+    + submission_id: 1515 (required, number) - id of submission
+
+### Student save draft [POST]
+This action allows to save answer on draft .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
++ question_id (int) - question_id
++ answer (int) - answer
++ submission_id - (int) - submission_id
+
++ Response 200 (application/json)
+ 
+        {"success_message" : "Draft has been saved successfully !"}
+
+
+## Student save answer [/Assignments/student_save_answer?user_id=100&assignment_id=1006&question_id=4&answer=2&submission_id=1111&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number)   ID of  assignment
+    + question_id : 4 (required, number) id of question
+    + answer: 2 (required, text) id of answer
+    + submission_id: 1111(required, number) id of submission
+
+### Student save answer [POST]
+This action allows to save answer .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
++ question_id (int) - question_id
++ answer (string) - answer
++ submission_id - (int) - submission_id
+
++ Response 200 (application/json)
+
+        {"status": "correct","question_tts_message": "mbrook"}
+        
+## Student submit exam [/Assignments/student_submit_exam?user_id=100&assignment_id=1006&submission_id=1111&course_id=1717&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number)   ID of  assignment
+    + submission_id: 1111 (required, number) id of submission
+    + course_id: 1717
+    + answer: answers[0][question_id]:3291758
+answers[0][text]:1
+
+### Student submit exam [POST]
+This action allows to Student submit exam .
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
++ submission_id - (int) - submission_id
++ course_id (int) - + course_id
++ answer (array of answer) - answer
+
+
++ Response 200 (application/json)
+
+        {"status" : "Success"}
+
+## Student exam score [/Assignments/student_exam_score?user_id=100&assignment_id=1006&access_token=your_access_token]
+
++ Parameters
+
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + assignment_id : 1006 (required, number)   ID of  assignment
+
+### Student exam score [POST]
+This action allows to Student exam mark.
+
++ user_id (int) - user_id
++ assignment_id (int) - assignment_id
+
++ Response 200 (application/json)
+
+        {"title": "QW_tom_exam_2","maxMark": "100","total_mark": "83.26","retake": 1}
+        
+
+## Group Notifications
+Resources related to user Notifications in the API.
+
+## User device data  [/Notifications/user_device_data?user_id=100&device_id=13&device_token=152gfr&OS=0&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + device_id: 13 (required, number) - Id of device
+    + device_token: 152gfr (required, text)
+    + OS: 0 (required, number) 
+
+### User device data [POST]
+This action allows to save student user device data  .
+
++ user_id (int) - user_id
++ device_id: (int) - device_id is required for android device and optional for IOS device
++ device_token: (text) - device_token
++ OS: (int) 0 for android and 1 for IOS .
+
++ Response 200 (application/json)
+
+
+## Update notificationLog status  [/Notifications/update_notificationLog_status?user_id=100&$uuid =13&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + uuid: 13 (required, number) - Id of message notification
+    
+
+### Update notificationLog status [POST]
+This action allows to   .
+
++ user_id (int) - user_id update notificationLog status
++ uuid (text) - uuid Id of message notification
+
++ Response 200 (application/json)
