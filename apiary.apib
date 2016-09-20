@@ -419,6 +419,25 @@ This action allows to get user Inbox messages
 
         [{"0":[{"InboxView":{"id":"9094211_78785","sender_id":"78934","full_name":"Tom Friedman","full_name_ara":null,"semester_id":"318","message_id":"9094211","title":"hi","body":"hhhhh","priority":"0","created":"2016-07-17 16:58:27","type":null,"read":false,"image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468921559&Signature=gRteGqcBjLmV0zU%2FqGRe3iCT5V0%3D"}}],"tota_count":37,"unread_count":1}
 
+## Search Inbox Messages [/users/search_inbox_messages?user_id=12&sender=Tom&subject=hi&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + sender : Tom (optional, string) - Sendre name
+    + subject : hi (optional, string) - Subject title message 
+###Search Inbox Messages [GET]
+
+This action allows to user search in Inbox messages by sender name or by title of message
+
++ user_id (int) - user_id
++ sender (string) - sender
++ subject (string) - subject
+
++ Response 200 (application/json)
+
+        [{"id":"9094211_78785","sender_id":"78934","full_name":"Tom Friedman","full_name_ara":null,"semester_id":"318","message_id":"9094211","title":"hi","body":"hhhhh","priority":"0","created":"2016-07-17 16:58:27","type":null,"read":false,"image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468921559&Signature=gRteGqcBjLmV0zU%2FqGRe3iCT5V0%3D"}]
+
+
 ## Get message inbox details [/Users/get_message_inbox_details?message_id=10&access_token=your_access_token]
 
 + Parameters
@@ -452,6 +471,26 @@ This action allows to get user outbox messages
         \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","priority":"0","created":"2014-11-30 18:45:33","type":null,"read":false,"has_attachment":"0","school_id":"16","semester_id":"32"},"Message":{"id":"33","title":"\u0631\u0633\u0627\u0644\u0629 \u0644\u0643\u0645 \u062e\u0627\u0635\u0629 \u0645\u062d\u0641\u0648\u0638\u0629","body":"
 
         \r\n\t\u062a\u064a\u0633\u062a \u0628\u0633\u0645 \u0627\u0644\u0644\u0647<\/p>\r\n","approved":true,"sent":null,"created":"2014-11-30 18:45:33","modified":"2014-11-30 18:45:33","sender_id":"10386","reply_to":null,"attachment_id":null,"priority":"0","deleted":"0","type":null,"semester_id":"32","related_to":null,"related_to_type":null,"is_draft":false},"Recipient":{"id":"10436","nationality_id":"1","mawhiba_id":null,"username":"fdtsts0003","password":"45e068b5c30decd5883ff5bfa4aa20f74c6e392e","notification_settings":"0","created":"2011-12-31 13:02:40","modified":"2015-06-04 16:18:41","role_id":"6","school_id":"16","first_name":"\u0645\u062d\u0645\u062f","father_name":"\u0633\u0639\u0648\u062f","grandfather_name":"\u0645\u0633\u0641\u0631","family_name":"\u0627\u0644\u062f\u0644\u064a\u062c\u0627\u0646","name_ara":null,"date_of_birth":"1995-12-07","place_of_birth":"","address":"","phone_number":"","mobile_number":"0555856777","email":"","verified_email":false,"dob_hijri":null,"photo_filename":"student.jpg","theme_id":"1","deleted":false,"status_id":"1","lang":"eng","date_format":"1","login_name":"","google_token":null,"block_reports":false,"number":null,"old_school_id":null,"gender":"0"}}]
+
+
+## Search Outbox Messages [/users/search_outbox_messages?user_id=12&title=Tom&date=2016-07-17 16:58:27&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + title : hi (optional, string) - Title of message
+    + date : 2016-07-17 16:58:27(optional, date) - Date message sent
+###Search Outbox Messages [GET]
+
+This action allows to user search in Outbox messages by sender name or by title of message
+
++ user_id (int) - user_id
++ title (string) - title
++ date (date) - date
+
++ Response 200 (application/json)
+
+        [{"id":"9094211_78785","sender_id":"78934","full_name":"Tom Friedman","full_name_ara":null,"semester_id":"318","message_id":"9094211","title":"hi","body":"hhhhh","priority":"0","created":"2016-07-17 16:58:27","type":null,"read":false,"image_url":"https:\/\/s3.amazonaws.com\/classera\/111\/profilepic\/thumb_130\/78934.jpg?response-content-disposition=attachment%3Bfilename%3D%2293105f8e5b940e2b2ed489ffae17da2d.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1468921559&Signature=gRteGqcBjLmV0zU%2FqGRe3iCT5V0%3D"}]
+
 
 ## Get message outbox details [/Users/get_message_outbox_details?message_id=10&access_token=your_access_token]
 
@@ -681,6 +720,26 @@ This action allows to get material list.
         {"course_material": [{"StudentReadNotifDocView": {"id": "2827098","attach_type": "Material","attach_title": "الخزف","course_title": "Math-101","attach_created": "2016-01-26 11:50:26","teacher_name": "Tom   Friedman","likes": "2"}},{"StudentReadNotifDocView": {"id": "2827098","attach_type": "Material","attach_title": "الخزف","course_title": "Math-101","attach_created": "2016-01-26 11:50:26","teacher_name": "Tom   Friedman","likes": "2"}}],"count": 15}
 
 
+## Get student material by search  [/Attachments/get_student_material_by_search?user_id=100&course_id=1&text=hi&access_token=your_access_token]
+
++ Parameters
+   + user_id: 100 (required, number) - ID of the user in form of an integer
+   + course_id :1 (optional, number) - course id 
+   + text : hi (optional , string) - text is the attachment title 
+
+### Get student material by search  [GET]
+This action allows to search in  material list.
+
++ user_id (int) - user_id
++ course_id (int) - course_id
++ text (string) - text 
+
+
++ Response 200 (application/json)
+
+        [{"StudentReadNotifDocView":{"id":"3145800","attach_type":"Material","attach_title":"how use it","attach_created":"2016-08-17 11:21:26","teacher_name":"Tom   Friedman","likes":"0","course_title":"Math-101"}}]
+
+
 ## Get student all video lecture  [/Attachments/get_student_all_video_lecture?user_id=100&access_token=your_access_token]
 
 + Parameters
@@ -698,6 +757,25 @@ This action allows to get  student all video lectures.
         
         {"video_lectures": [{"StudentReadNotifVideoView": {"id": "3145706","attach_type": "Video","attach_title": "Tommato2","attach_created": "2016-06-15 12:35:22","course_title": "Math-101","teacher_name": "Tom   Friedman","content_type": "YouTube","likes": "0","att_url": "http://www.youtube.com/watch?v=uyezuHhSMGs"}},{"StudentReadNotifVideoView": {"id": "2690369","attach_type": "Video","attach_title": "lesson 29","attach_created": "2015-12-29 08:28:39","course_title": "English-101","teacher_name": "Tom   Friedman","content_type": "YouTube","likes": "1","att_url": "http://www.youtube.com/watch?v=8F0NYBBKczM"}}],"count": 37}
 
+
+## Get student video lecture by search  [/Attachments/get_student_video_lecture_by_search?user_id=100&course_id=1&text=hi&created=2015-10-22 11:50:00&access_token=your_access_token]
+
++ Parameters
+   + user_id: 100 (required, number) - ID of the user in form of an integer
+   + course_id : 1 (optional, number) - course id 
+   + text : hi (optional , string) - text is the attachment title 
+   + created : 2015-10-22 11:50:00  (optional , date) - date
+### Get student video lecture by search  [GET]
+This action allows to search in   video lecture.
+
++ user_id (int) - user_id
++ course_id (int) - course_id
++ text (string) - text
++ created (date) - date
+
++ Response 200 (application/json)
+        
+        [{"StudentReadNotifVideoView":{"id":"1843509","attach_type":"Video","attach_title":"Test video","attach_created":"2015-10-22 11:50:00","course_id":"7127","teacher_name":"Tom   Friedman","content_type":"video\/mp4","likes":"0","course_title":"Math-101"}}]
 
 ## Get attachment details  [/Attachments/get_attachment_details?user_id=100&attachment_id=3145706&access_token=your_access_token]
 
@@ -1493,6 +1571,23 @@ This action allows to get student discussions .
 
         [{"PostsUserView": {"id": "4413850","post_title": "انواع الاسماك","full_name": "Tom Friedman","post_created": "2016-07-17 11:34:52"}}]
 
+## Search Student Discussion [/Discussions/search_student_discussion?user_id=12&text=Creative&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + text : hi (optional, string) - Title of discussions
+   
+###Search Student Discussion [GET]
+
+This action allows to user search in discussion
+
++ user_id (int) - user_id
++ text (string) - text
+
++ Response 200 (application/json)
+
+        [{"PostsUserView": {"id": "99287","post_title": "Creative Ideas","full_name": "Tom Friedman","post_created": "2016-08-29 15:35:24"}}]
+
 ## Get discussion post  [/Discussions/get_discussion_post?user_id=100&post_id=100&access_token=your_access_token]
 
 + Parameters
@@ -1508,6 +1603,24 @@ This action allows to get student post discussions .
 + Response 200 (application/json)
 
         [{"PostsUserView":{"id":"4413858","post_title":"","full_name":"Tom Friedman","post_created":"2016-02-02 13:46:32","post_parentid":"4413850"}}]
+ 
+## Search Discussion Post [/Discussions/search_discussion_post?user_id=12&text=Tom&post_id=125&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - User ID  in form of an integer
+    + text : hi (optional, string) - Title of discussions
+    + post_id : 125 (optional, number) - post id for discussions
+###Search Discussion Post [GET]
+
+This action allows to user search in discussion
+
++ user_id (int) - user_id
++ text (string) - text
++ post_id (int) - post_id
+
++ Response 200 (application/json) 
+
+        {"PostsUserView": {"id": "125","post_title": "Creative Ideas","full_name": "Tom Friedman","post_created": "2016-08-29 15:35:24"} 
         
 ## Get discussion details [/Discussions/get_discussion_details?user_id=100&post_id=100&access_token=your_access_token]
 
@@ -1572,6 +1685,30 @@ This action allows to get student exams list .
 + Response 200 (application/json)
 
             {"data":[{"Assignment":{"id":"668575","title":"YARE","created":"2016-06-30 12:58:39","due_datetime":"2016-07-08 14:55:00","cutoff_datetime":"2016-07-09 13:55:00","allow_multiple_submissions":false,"accept_submission_attachment":false,"issue_certificates":false,"exam_for_training_course":false,"assessment_id":null,"submission_id":null,"course_title":"Math-101","course_id":"7127","status":"Missed"}}],"avaliable_courses":[{"Course":{"id":"5567","title":"Science"}}]}
+ 
+## Get student exams by search  [/Assignments/get_student_exams_by_search?user_id=100&text=yare&due_date=2016-07-08 14:55:00&publish=&2016-07-08&course_id=1&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + course_id : 1 (optional,number)
+    + text : yare (optional,string)
+    + due_date : 2016-07-08 14:55:00 (optional,date)
+    + publish : 2016-07-08 14:55:00 (optional, date)
+
+### Get student exams by search [GET]
+This action allows to get student exams by search .
+
++ user_id (int) - user_id
++ course_id : (int) - course_id
++ text :  (string) - text
++ due_date : (date) - due_date
++ publish : (date) - publish
+
++ Response 200 (application/json)
+
+            {"data":[{"Assignment":{"id":"668575","title":"YARE","created":"2016-06-30 12:58:39","due_datetime":"2016-07-08 14:55:00","cutoff_datetime":"2016-07-09 13:55:00","allow_multiple_submissions":false,"accept_submission_attachment":false,"issue_certificates":false,"exam_for_training_course":false,"assessment_id":null,"submission_id":null,"course_title":"Math-101","course_id":"7127","status":"Missed"}}]}
+ 
+ 
         
 ## Get student homework list  [/Assignments/get_student_homework_list?user_id=100&access_token=your_access_token]
 
@@ -1588,6 +1725,29 @@ This action allows to get student homework list .
 
         
         {"data":[{"Assignment":{"id":"668575","title":"YARE","created":"2016-06-30 12:58:39","due_datetime":"2016-07-08 14:55:00","cutoff_datetime":"2016-07-09 13:55:00","allow_multiple_submissions":false,"accept_submission_attachment":false,"issue_certificates":false,"exam_for_training_course":false,"assessment_id":null,"submission_id":null,"course_title":"Math-101","course_id":"7127","status":"Missed"}}],"avaliable_courses":[{"Course":{"id":"5567","title":"Science"}}]}
+
+## Get student homework by search  [/Assignments/get_student_homework_by_search?user_id=100&text=yare&due_date=2016-07-08 14:55:00&publish=&2016-07-08&course_id=1&access_token=your_access_token]
+
++ Parameters
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + course_id : 1 (optional,number)
+    + text : yare (optional,string)
+    + due_date : 2016-07-08 14:55:00 (optional,date)
+    + publish : 2016-07-08 14:55:00 (optional, date)
+
+### Get student homework by search [GET]
+This action allows to get student homework by search .
+
++ user_id (int) - user_id
++ course_id : (int) - course_id
++ text :  (string) - text
++ due_date : (date) - due_date
++ publish : (date) - publish
+
++ Response 200 (application/json)
+
+            {"data":[{"Assignment":{"id":"668575","title":"YARE","created":"2016-06-30 12:58:39","due_datetime":"2016-07-08 14:55:00","cutoff_datetime":"2016-07-09 13:55:00","allow_multiple_submissions":false,"accept_submission_attachment":false,"issue_certificates":false,"exam_for_training_course":false,"assessment_id":null,"submission_id":null,"course_title":"Math-101","course_id":"7127","status":"Missed"}}]}
+ 
         
 ## Get student exam detail  [/Assignments/student_exam_detail?user_id=100&assignment_id=1006&access_token=your_access_token]
 
@@ -1698,21 +1858,19 @@ This action allows to save answer .
 + assignment_id (int) - assignment_id
 + question_id (int) - question_id
 + answer (string) - answer
-+ submission_id - (int) - submission_id
++ submission_id - (boxt) - submission_id
 
 + Response 200 (application/json)
 
         {"status": "correct","question_tts_message": "mbrook"}
         
-## Student submit exam [/Assignments/student_submit_exam?user_id=100&assignment_id=1006&submission_id=1111&course_id=1717&access_token=your_access_token]
-
+## Student submit exam [/Assignments/student_submit_exam?user_id=100&assignment_id=1006&submission_id=1111&course_id=1717&answer=1&access_token=your_access_token]
 + Parameters
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
     + submission_id: 1111 (required, number) id of submission
-    + course_id: 1717
-    + answer: answers[0][question_id]:3291758
-answers[0][text]:1
+    + course_id: 1717 (required, number)
+    + answer: 1 
 
 ### Student submit exam [POST]
 This action allows to Student submit exam .
