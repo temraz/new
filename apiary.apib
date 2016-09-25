@@ -65,12 +65,12 @@ This action allows you to create student, teacher and guardian account to classe
 
 Notice level_id is required only when role id = 6 (student)
 
-+ username (string, required) - username 
++ username (string, required) - if username didn't set it will be generate automatically 
 + school_id (int, required) - school_id 
 + level_id (int, required only if user is student) - level_id 
 + role_id (int, required) - role_id "Parents" => 3, "Teachers" => 4 , "Students" => 6 , "Accountants" => 7, "Managers" => 8, "Advisers" => 9, "Financial Administrators" => 10, "Teacher Supervisors" => 11, "Floor Supervisors" => 12, "Kagan Coaches" => 13
 + number (string, required) - number = government_id 
-+ password (string, required) - password 
++ password (string, required) - if password didn't set it will be generate automatically
 + first_name (string, required) - first_name 
 + father_name (string) - father_name 
 + grandfather_name (string) - grandfather_name 
@@ -81,7 +81,8 @@ Notice level_id is required only when role id = 6 (student)
 + email (string) - email 
 + place_of_birth (int) - place_of_birth 
 + date_of_birth (date) - date_of_birth YYYY-MM-DD 
-+ student_user_id (int) - required only if role_id = 3 (Parents)
++ guardian_user_id (int) - required only if role is student (6) and you want to link student with parent account  (Parents)
++ student_user_id (int) - required only if role_id is guardian (3) and you want to link parent with student account (Parents)
 + login_name (string) - login_name
 
 
