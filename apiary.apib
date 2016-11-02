@@ -140,7 +140,6 @@ Notice-3: student_government_id is required only when role id = 3 (Parent)
 This action allows you to edit student, teacher and guardian account to classera system from your website.
 
 + id (string, required) - user ID 
-+ school_id (string, required) - school_id 
 + first_name (string, required) - first_name 
 + father_name (string) - father_name 
 + grandfather_name (string) - grandfather_name 
@@ -151,6 +150,11 @@ This action allows you to edit student, teacher and guardian account to classera
 + email (string) - email 
 + place_of_birth (string) - place_of_birth 
 + date_of_birth (date) - date_of_birth YYYY-MM-DD 
+
+if you want to transfer student from school to another you have to pass this paramters 
+
++ school_id (int) - new school id
++ level_id (int) - new level id
 
 + Response 200 (application/json)
 
