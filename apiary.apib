@@ -150,6 +150,7 @@ This action allows you to edit student, teacher and guardian account to classera
 + email (string) - email 
 + place_of_birth (string) - place_of_birth 
 + date_of_birth (date) - date_of_birth YYYY-MM-DD 
++ stats_id (int) - [1 => active 2 => withdrawn]
 
 if you want to transfer student from school to another you have to pass this paramters 
 
@@ -179,6 +180,15 @@ This action allows you to edit student, teacher and guardian account to classera
 + email (string) - email 
 + place_of_birth (string) - place_of_birth 
 + date_of_birth (date) - date_of_birth YYYY-MM-DD 
++ stats_id (int) - [1 => active 2 => withdrawn]
+
+if you want to transfer student from school to another you have to pass this paramters 
+
++ school_pioneer_id (int) - new school id
++ stage_pioneer_id (int) - new stage id
++ level_pioneer_id (int) - new level id
+
+
 
 + Response 200 (application/json)
 
@@ -1469,12 +1479,12 @@ This action allows to edit lecture
 This action allows to edit lecture by only assign it to anew teacher
 
 + user_pioneer_id: 120 (required, int) 
-+ goverment_id: 1240 (required, int) 
++ government_id: 1240 (required, int) 
 + course_pioneer_id: 1210 (required, int) 
 + section_pioneer_id: 1210 (required, int) 
 
 + new_user_pioneer_id: 1120 (required, int) 
-+ new_goverment_id: 1210 (required, int) 
++ new_government_id: 1210 (required, int) 
 
 + Response 200 (application/json)
 
@@ -1486,7 +1496,7 @@ This action allows to edit lecture by only assign it to anew teacher
 This action allows to delete lecture that doesn't have any attachments or assignments 
 
 + user_pioneer_id: 120 (required, int) 
-+ goverment_id: 1240 (required, int) 
++ government_id: 1240 (required, int) 
 + course_pioneer_id: 1210 (required, int) 
 + section_pioneer_id: 1210 (required, int) 
 
