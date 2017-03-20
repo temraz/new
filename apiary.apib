@@ -41,8 +41,7 @@ This action allows your website to login directly to classera system from your w
 + Response 200 (application/json)
 
         {"0":"https:\/\/me.classera.com\/users\/api_auth_login\/5fcfd17dd69de6527882650daccc4f03","1":{"User":{"id":"78785","username":"etss0001","role_id":"6"}},"status":"true","auth_token":"43b29ce52639ea06c991d0c6b86170c1"}
- 
-        
+       
 ## Logout   [/Users/logout?Authtoken=ebe49b73134fd0c1844dff2b30a43a81&access_token=your_access_token]
 
 + Parameters
@@ -582,14 +581,26 @@ This action allows parent to get children list .
     
     
 ### Get user classera card [GET]
-This action allows to get user notification .
+This action allows to get user card .
 
 + user_id (int) - user_id
 
 + Response 200 (application/json)
+[{"ClasseraCardsUsers":{"id":"3","card_number":"30399927095992","linked_by":"78785","class":"4","card_url":"https:\/\/classera.s3.amazonaws.com\/classera\/CLASSERA_CARDS\/card_78785_30399927095992.png"}}]
 
-        [{"ClasseraCardsUsers":{"id":"3","card_number":"30399927095992","linked_by":"78785","class":"4","card_url":"https:\/\/classera.s3.amazonaws.com\/classera\/CLASSERA_CARDS\/card_78785_30399927095992.png"}}]
+## Pioneer Get Bus Tracking Link [/users/pioneer_get_bus_tracking_link?user_id=32&access_token=your_access_token]
 
+### Pioneer get bus tracking link [GET]
+
+This action allows you to get pioneer user bus tracking link.
+
++ user_id (string) - user_id.
+
++ Response 200 (application/json)
+
+        {"link":"https:\/\/ipfleet.com\/ALHUSSAN\/View\/Localization.GPSTrackingUrl\/?VehicleObserver=F330B5C866106F0079B8E456D33CAC46A86BD189"}
+ 
+ 
 ## Group Absences
 
 Resources related to users absences in the API.
