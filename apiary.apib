@@ -42,10 +42,10 @@ This action allows your website to login directly to classera system from your w
 
         {"0":"https:\/\/me.classera.com\/users\/api_auth_login\/5fcfd17dd69de6527882650daccc4f03","1":{"User":{"id":"78785","username":"etss0001","role_id":"6"}},"status":"true","auth_token":"43b29ce52639ea06c991d0c6b86170c1"}
        
-## Logout   [/Users/logout?Authtoken=ebe49b73134fd0c1844dff2b30a43a81&access_token=your_access_token]
+## Logout   [/Users/logout?Authtoken=ebe49b73134fd0c1844dff2b30a43a81 &access_token=your_access_token]
 
-+ Parameters
-    + Authtoken: ebe49b73134fd0c1844dff2b30a43a81 (required, text) - Authtoken for user 
++ Parameters :
+    + Authtoken: "ebe49b73134fd0c1844dff2b30a43a81" (required, text) - Authtoken for user 
     
 ### Logout  [POST]
 This action allows to logout from application   .
@@ -249,7 +249,7 @@ This action allows you to get user info by his mawhiba id.
                 
 ## Get user info [/users/get_user_info?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### get user info [GET]
@@ -264,7 +264,7 @@ This action allows to get all user data
 
 ## Get User School ID [/users/get_school_id?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get User School ID [GET]
@@ -279,7 +279,7 @@ This action allows to get user school_id
         
 ## Get current year & semester  [/users/get_current_semester_id?user_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get semster and year id [GET]
@@ -294,7 +294,7 @@ This action allows to get user current semster_id and year_id
  
 ## Get student services  [/users/get_student_services?user_id=78785&year_id=224&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + year_id: 100 (optional, number) - year Id integer
     
@@ -311,7 +311,7 @@ This action allows to get all student services in a specific semester
                 
 ## Get user assignments [/users/get_assignments?user_id=10436&year_id=35&lecture_id=938&access_token=&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID of the user in form of an integer
     + lecture_id: 100 (optional, number) - Lecture Id of the user in form of an integer
     + year_id: 100 (required, number) - year Id of the user in form of an integer
@@ -332,7 +332,7 @@ This action allows to get users assignments in a specific semester
            
 ## Get user Assignments/Exam mark [/users/get_student_exam_mark?user_id=12&assignment_id=121&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID of the user in form of an integer
     + assignment_id: 100 (required, number) - Assignment Id for the user in form of an integer
   
@@ -352,7 +352,7 @@ This action allows to get student exam mark
            
 ## Get student level  [/users/get_student_level?user_id=12&year_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + year_id: 100 (required, number) - Year ID in form of an integer
 
@@ -371,7 +371,7 @@ This action allows to get student level in specific year
 
 ## Get user score info  [/users/get_user_score_info?user_id=12&semester_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters : 
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + semester_id: 100 (required, number) - Year ID in form of an integer
 
@@ -390,7 +390,7 @@ This action allows to get student level in specific year
                    
 ## Get Student Reports List  [/users/get_student_reports_list?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
    + user_id: 100 (required, number) - User ID  in form of an integer
 
 ### Get Student Reports List [GET]
@@ -406,7 +406,7 @@ This action allows to get student report list
 
 ## Get student report [/users/get_student_report?user_id=12&report_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     + report_id: 100 (required, number) - Report ID in form of an integer
     
@@ -424,7 +424,7 @@ This action allows to get students reports details
 
 ## Get Inbox Messages [/users/get_inbox_messages?user_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
    
 ### Get Inbox Messages [GET]
@@ -440,7 +440,7 @@ This action allows to get user Inbox messages
 
 ## Search Inbox Messages [/users/search_inbox_messages?user_id=12&sender=Tom&subject=hi&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     + sender : Tom (optional, string) - Sendre name
     + subject : hi (optional, string) - Subject title message 
@@ -459,7 +459,7 @@ This action allows to user search in Inbox messages by sender name or by title o
 
 ## Get message inbox details [/Users/get_message_inbox_details?message_id=10&access_token=your_access_token]
 
-+ Parameters
++ Parameters : 
     + message_id: 10 (required, number) - ID of message
     
 
@@ -474,7 +474,7 @@ This action allows to get message inbox details .
 
 ## Get Outbox Messages [/users/get_outbox_messages?user_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     
 
@@ -494,7 +494,7 @@ This action allows to get user outbox messages
 
 ## Search Outbox Messages [/users/search_outbox_messages?user_id=12&title=Tom&date=2016-07-17 16:58:27&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     + title : hi (optional, string) - Title of message
     + date : 2016-07-17 16:58:27(optional, date) - Date message sent
@@ -513,7 +513,7 @@ This action allows to user search in Outbox messages by sender name or by title 
 
 ## Get message outbox details [/Users/get_message_outbox_details?message_id=10&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + message_id: 10 (required, number) - ID of message
     
 
@@ -546,7 +546,7 @@ This action allows to Reply message.
         
 ## Get user notification [/Users/get_user_notification?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     
 
@@ -561,7 +561,7 @@ This action allows to get user notification .
 
 
 ## Parent get child [/Users/parent_get_child?user_id=100&access_token=your_access_token]
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
   
    
@@ -576,7 +576,7 @@ This action allows parent to get children list .
   
   
 ## Get user classera card [/Users/get_user_classera_card?user_id=100&access_token=your_access_token]
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     
     
@@ -586,7 +586,8 @@ This action allows to get user card .
 + user_id (int) - user_id
 
 + Response 200 (application/json)
-[{"ClasseraCardsUsers":{"id":"3","card_number":"30399927095992","linked_by":"78785","class":"4","card_url":"https:\/\/classera.s3.amazonaws.com\/classera\/CLASSERA_CARDS\/card_78785_30399927095992.png"}}]
+    
+         [{"ClasseraCardsUsers":{"id":"3","card_number":"30399927095992","linked_by":"78785","class":"4","card_url":"https:\/\/classera.s3.amazonaws.com\/classera\/CLASSERA_CARDS\/card_78785_30399927095992.png"}}]
 
 ## Pioneer Get Bus Tracking Link [/users/pioneer_get_bus_tracking_link?user_id=32&access_token=your_access_token]
 
@@ -642,7 +643,7 @@ This action allows to edit course
         
 ## Get Daily Absences [/absences/get_daily_absences?user_id=100&semester_id=32&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     + semester_id: 100 (required, number) - Semester ID in form of an integer
 
@@ -661,7 +662,7 @@ This action allows you to get daily absences for student in specific semester.
 
 ## Get Courses Absences [/absences/get_courses_absences?user_id=100&semester_id=32&access_token=your_access_token]
 
-+ Parameters
++ Parameters : 
     + user_id: 100 (required, number) - User ID  in form of an integer
     + semester_id: 100 (required, number) - Semester ID in form of an integer
 
@@ -682,7 +683,7 @@ Resources related to attachments in the API.
 
 ## Get user attachments [/attachments/get_attachments?user_id=12&semester_id=10&course_id=121&type=Video&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID of the user in form of an integer
     + course_id: 100 (optional, number) - Course Id of the user in form of an integer
     + semester_id: 100 (required, number) - Semester Id of the user in form of an integer
@@ -703,7 +704,7 @@ This action allows to get users attachments in a specific semester
 
 ##  Download Attachments [/attachments/download_attachment?attachment_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + attachment_id: 100 (required, number) - Attachment ID in form of an integer
    
 
@@ -719,7 +720,7 @@ This action allows to download attachment
 
 ##  View attachment [/attachments/view_attachment?attachment_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters : 
     + attachment_id: 100 (required, number) - Attachment ID in form of an integer
    
 
@@ -736,7 +737,7 @@ This action allows to view attachment
 
 ## Get student material list  [/Attachments/get_student_material_list?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
    
 
@@ -753,7 +754,7 @@ This action allows to get material list.
 
 ## Get student material by search  [/Attachments/get_student_material_by_search?user_id=100&course_id=1&text=hi&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
    + user_id: 100 (required, number) - ID of the user in form of an integer
    + course_id :1 (optional, number) - course id 
    + text : hi (optional , string) - text is the attachment title 
@@ -773,7 +774,7 @@ This action allows to search in  material list.
 
 ## Get student all video lecture  [/Attachments/get_student_all_video_lecture?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
    
 
@@ -791,7 +792,7 @@ This action allows to get  student all video lectures.
 
 ## Get student video lecture by search  [/Attachments/get_student_video_lecture_by_search?user_id=100&course_id=1&text=hi&created=2015-10-22 11:50:00&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
    + user_id: 100 (required, number) - ID of the user in form of an integer
    + course_id : 1 (optional, number) - course id 
    + text : hi (optional , string) - text is the attachment title 
@@ -810,7 +811,7 @@ This action allows to search in   video lecture.
 
 ## Get attachment details  [/Attachments/get_attachment_details?user_id=100&attachment_id=3145706&access_token=your_access_token]
 
-+ Parameters
++ Parameters : 
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + attachment_id: 3145706 (required, number) - ID of the attachment 
 
@@ -826,7 +827,7 @@ This action allows to get  student  attachment details.
 
 ## Get attachment comments  [/Attachments/get_attachment_comments?user_id=100&attachment_id=3145706&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + attachment_id: 3145706 (required, number) - ID of the attachment 
 
@@ -871,7 +872,7 @@ Resources related to guardians in the API.
 
 ## Get Children [/guardians/get_chidlren?user_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID of the user in form of an integer
     
 ### Get Children [GET]
@@ -888,7 +889,7 @@ This action allows to get gurdian's children in the system
 
 ## Get get student gurdians [/guardians/get_student_gurdians?user_id=12&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID of the user in form of an integer
     
 ### Get get student gurdians [GET]
@@ -909,7 +910,7 @@ Resources related to behaviors in the API.
 
 ## Get Student Behaviors [/behaviors/get_student_behaviors?user_id=12&show_to_guardian=1&semester_id=32&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID of the user in form of an integer
     + semester_id: 100 (required, number) - Semester ID in form of an integer
     + show_to_guardian : 1 (required, number) - show_to_guardian in form of an integer of 0 or 1
@@ -931,7 +932,7 @@ Resources related to behaviors in the API.
 
 ## Get year semester [/years/get_year_semesters?year_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + year_id: 100 (required, number)
     
 ### Get Student Behaviors  [GET]
@@ -947,7 +948,7 @@ This action allows to get all semesters in a specific year
 
 ## Get pioneer current semester and year ID [/years/get_pioneer_current_semester_year_id?school_refrence_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + school_refrence_id: 100 (required, number)
     
 ### Get pioneer current semester and year ID  [GET]
@@ -966,7 +967,7 @@ Resources related to behaviors in the API.
 
 ## Get stage [/stages/get_stage?stage_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + stage_id: 100 (required, number)
     
 ### Get stage Data  [GET]
@@ -982,7 +983,7 @@ This action allows to get stage data in the system
         
 ## Get school stages [/stages/get_school_stages?school_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + school_id: 100 (required, number) 
     
 ### Get school stages  [GET]
@@ -1062,7 +1063,7 @@ Resources related to behaviors in the API.
 
 ## Get level [/levels/get_level?level_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + level_id: 100 (required, number)
     
 ### Get level Data  [GET]
@@ -1078,7 +1079,7 @@ This action allows to get level data in the system
         
 ## Get stage levels [/levels/get_stage_levels?stage_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + stage_id: 100 (required, number)
     
 ### Get stage levels  [GET]
@@ -1194,7 +1195,7 @@ Resources related to behaviors in the API.
 
 ## Get section [/sections/get_section?sectoin_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + sectoin_id: 100 (required, number)
     
 ### Get section Data  [GET]
@@ -1210,7 +1211,7 @@ This action allows to get section data in the system
 
 ## Get level sections [/sections/get_level_sections?level_id=67&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + level_id: 100 (required, number)
     
 ### Get level sections Data  [GET]
@@ -1360,7 +1361,7 @@ Resources related to courses in the API.
 
 ## Get student courses  [/courses/get_student_courses?user_id=10436&semester_id=32&access_token=your_access_token]
 
-+ Parameters
++ Parameters : 
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + semester_id: 100 (required, number) - Semester Id of the user in form of an integer
     
@@ -1523,7 +1524,7 @@ Resources related to users assessment in the API.
 
 ## Get assessments  [/Assessments/get_assessments?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get Assessments [GET]
@@ -1539,7 +1540,7 @@ This action allows to get user assessments.
     
 ## Get Assessment Detail  [/Assessments/get_assessment_detail?user_id=100&assessment_id=1833&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assessment_id: 1833 (required, number) - ID for assessment
 
@@ -1560,7 +1561,7 @@ Resources related to users Grades in the API.
 
 ## Get student grade  [/Grades/get_student_grade?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get student grade [GET]
@@ -1589,7 +1590,7 @@ Resources related to user Discussions in the API.
 
 ## Get student discussions  [/Discussions/get_student_discussions?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get student discussions [GET]
@@ -1604,7 +1605,7 @@ This action allows to get student discussions .
 
 ## Search Student Discussion [/Discussions/search_student_discussion?user_id=12&text=Creative&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     + text : hi (optional, string) - Title of discussions
    
@@ -1621,7 +1622,7 @@ This action allows to user search in discussion
 
 ## Get discussion post  [/Discussions/get_discussion_post?user_id=100&post_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + post_id: 100 (required, number) - ID of the post
 
@@ -1637,7 +1638,7 @@ This action allows to get student post discussions .
  
 ## Search Discussion Post [/Discussions/search_discussion_post?user_id=12&text=Tom&post_id=125&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - User ID  in form of an integer
     + text : hi (optional, string) - Title of discussions
     + post_id : 125 (optional, number) - post id for discussions
@@ -1655,7 +1656,7 @@ This action allows to user search in discussion
         
 ## Get discussion details [/Discussions/get_discussion_details?user_id=100&post_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + post_id: 100 (required, number) - ID of the post
 
@@ -1672,7 +1673,7 @@ This action allows to get student post discussion details .
 
 ## Get discussion comment [/Discussions/get_discussion_comment?user_id=100&post_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + post_id: 100 (required, number) - ID of the post
 
@@ -1705,7 +1706,7 @@ Resources related to user Assignments in the API.
 
 ## Get student exams list  [/Assignments/get_student_exams_list?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get student exams list [GET]
@@ -1719,7 +1720,7 @@ This action allows to get student exams list .
  
 ## Get student exams by search  [/Assignments/get_student_exams_by_search?user_id=100&text=yare&due_date=2016-07-08 14:55:00&publish=&2016-07-08&course_id=1&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + course_id : 1 (optional,number)
     + text : yare (optional,string)
@@ -1743,7 +1744,7 @@ This action allows to get student exams by search .
         
 ## Get student homework list  [/Assignments/get_student_homework_list?user_id=100&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
 
 ### Get student homework list [GET]
@@ -1759,7 +1760,7 @@ This action allows to get student homework list .
 
 ## Get student homework by search  [/Assignments/get_student_homework_by_search?user_id=100&text=yare&due_date=2016-07-08 14:55:00&publish=&2016-07-08&course_id=1&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + course_id : 1 (optional,number)
     + text : yare (optional,string)
@@ -1782,7 +1783,7 @@ This action allows to get student homework by search .
         
 ## Get student exam detail  [/Assignments/student_exam_detail?user_id=100&assignment_id=1006&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
 
@@ -1798,7 +1799,7 @@ This action allows to get student exam detail .
         
 ## Get student homework detail  [/Assignments/student_homework_detail?user_id=100&assignment_id=1005&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1005 (required, number)   ID of  assignment
 
@@ -1814,7 +1815,7 @@ This action allows to get student homework detail .
  
 ## Student assignment info  [/Assignments/student_assignment_info?user_id=100&assignment_id=1006&course_id=123&password=class52a&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
     + course_id: 123 (required, number) Id of course
@@ -1834,7 +1835,7 @@ This action allows to get student assignment info  .
     
 ## Student show questions  [/Assignments/student_show_questions?user_id=100&assignment_id=1006&password=class52a&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
     + password : "class52a" (optional , text)
@@ -1852,7 +1853,7 @@ This action allows to  student to show questions  .
 
 ## Student save draft  [/Assignments/student_save_draft?user_id=100&assignment_id=1006&question_id=4&answer=2&submission_id=1515&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number) - ID of  assignment
     + question_id : 4 (required, number) - id of question
@@ -1875,7 +1876,7 @@ This action allows to save answer on draft .
 
 ## Student save answer [/Assignments/student_save_answer?user_id=100&assignment_id=1006&question_id=4&answer=2&submission_id=1111&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
     + question_id : 4 (required, number) id of question
@@ -1896,7 +1897,7 @@ This action allows to save answer .
         {"status": "correct","question_tts_message": "mbrook"}
         
 ## Student submit exam [/Assignments/student_submit_exam?user_id=100&assignment_id=1006&submission_id=1111&course_id=1717&answer=1&access_token=your_access_token]
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
     + submission_id: 1111 (required, number) id of submission
@@ -1919,7 +1920,7 @@ This action allows to Student submit exam .
 
 ## Student exam score [/Assignments/student_exam_score?user_id=100&assignment_id=1006&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
 
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + assignment_id : 1006 (required, number)   ID of  assignment
@@ -1940,7 +1941,7 @@ Resources related to user Notifications in the API.
 
 ## User device data  [/Notifications/user_device_data?user_id=100&device_id=13&device_token=152gfr&OS=0&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + device_id: 13 (required, number) - Id of device
     + device_token: 152gfr (required, text)
@@ -1959,7 +1960,7 @@ This action allows to save student user device data  .
 
 ## Update notificationLog status  [/Notifications/update_notificationLog_status?user_id=100&$uuid =13&access_token=your_access_token]
 
-+ Parameters
++ Parameters :
     + user_id: 100 (required, number) - ID of the user in form of an integer
     + uuid: 13 (required, number) - Id of message notification
     
@@ -1971,3 +1972,35 @@ This action allows to   .
 + uuid (text) - uuid Id of message notification
 
 + Response 200 (application/json)
+
+
+## Group Announcements
+Resources related to user Announcements in the API.
+
+## Get all announcement  [/Announcement/get_all_announcement?user_id=100&device_id=13&gfr&OS=0&access_token=your_access_token]
+
++ Parameters :
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+   
+### Get all announcement [GET]
+This action allows to get all announcement .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+    
+        {"id": "519","title": "Test Annoucments 2","details": "<p>\r\n\tTest Annoucments 2</p>\r\n","school_id": "111","start": "2016-04-23 14:13:27","end": "2016-04-25 14:13:00","deleted": false,"created": "2016-04-24 14:13:49","modified": "2016-04-24 14:13:49"}
+
+## Get announcement details  [/Announcement/get_announcement_details?announcement_id=100&access_token=your_access_token]
+
++ Parameters :
+    + announcement_id: 100 (required, number) - ID of the announcement in form of an integer
+   
+### Get announcement details [GET]
+This action allows to get announcement details .
+
++ announcement_id (int) - announcement_id
+
++ Response 200 (application/json)
+    
+        {"id": "519","title": "Test Annoucments 2","details": "<p>\r\n\tTest Annoucments 2</p>\r\n","school_id": "111","start": "2016-04-23 14:13:27","end": "2016-04-25 14:13:00","deleted": false,"created": "2016-04-24 14:13:49","modified": "2016-04-24 14:13:49"}
