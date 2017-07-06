@@ -2004,3 +2004,86 @@ This action allows to get announcement details .
 + Response 200 (application/json)
     
         {"id": "519","title": "Test Annoucments 2","details": "<p>\r\n\tTest Annoucments 2</p>\r\n","school_id": "111","start": "2016-04-23 14:13:27","end": "2016-04-25 14:13:00","deleted": false,"created": "2016-04-24 14:13:49","modified": "2016-04-24 14:13:49"}
+        
+
+## Group SupportClaims
+Resources related to Ticketing system in the API.
+
+## Get all tickets  [/SupportClaims/get_all_tickets?&access_token=your_access_token]
+
++ Parameters :
+    + id: 100 (optional, number) - ID of the ticket in form of an integer
+    + status: 1 (optional, number) - Status of the ticket in form of a tinyintetgar
+    + date: 2017-07-02 (optional, date) - Date of created ticket in form of a date
+    + title: Issue in reports (optional, text) - Title of the ticket in form of a text
+    + module: 1 (optional, number) - Module of which secteion the ticket is related to, in form of a date
+    + type: 2 (optional, number) - Type of the ticket in form of a number
+### Get all tickets [GET]
+This action allows to get all tickets for logged in user .
+
++ id (int) - id
++ type (int) - type
++ module (int) - module
++ title (text) - title
++ status (int) - status
++ date (date) - date
+
++ Response 200 (application/json)
+    
+        {"tickets":[{"SupportClaim":{"id":"2348","title":"Client Ticket Test","body":"Client Ticket Test","user_id":"88723","status":"1","url":"","school_id":"111","type":"1","module":"2","assign_to":"39815","general_problem":false,"school_problem":"111","created":"2017-03-27 15:16:10","modified":"2017-06-07 13:51:37","team":false,"priority":"1","priority_title":"Low","priority_title_ara":"منخفض","type_title":"System Bug","type_title_ara":"خطأ بالنظام","status_title":"Open","comments_count":37},"ClasseraModule":{"title_eng":"Reports","title_ara":"التقارير"},"School":{"name":"English Test School - 022","english_name":"English Test School - 022"},"User":{"id":"88723","first_name":"School","family_name":"Admin","school_id":"111","avatar":"https://s3.amazonaws.com/classera/111/profilepic/thumb_200/88723.jpg?response-content-disposition=attachment%3Bfilename%3D%22steve_harvey.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1499063982&Signature=9%2Fut8nC%2BesjY2CYyoOwwoDJKJ%2FU%3D"}}],"statistics":{"Open":"1","Inprogress":"1","Pending":"2","Closed":"1"},"total_count":5}
+
+## Get ticket details  [/SupportClaims/get_ticket_details?id=100&access_token=your_access_token]
+
++ Parameters :
+    + id: 100 (required, number) - ID of the ticket in form of an integer
+   
+### Get ticket details [GET]
+This action allows to get ticket details .
+
++ id (int) - id
+
++ Response 200 (application/json)
+    
+        {"ticket_details":{"SupportClaim":{"id":"2353","title":"Pending ticket","body":"Pending ticket","user_id":"88723","status":"3","url":"","school_id":"111","type":"2","module":"11","assign_to":null,"general_problem":true,"school_problem":null,"created":"2017-06-11 11:09:56","modified":"2017-07-02 09:57:50","team":false,"priority":"2","priority_title":"Medium","priority_title_ara":"متوسط","type_title":"New Feature Request","type_title_ara":"طلب خاصية جديدة","status_title":"Pending"},"ClasseraModule":{"title_eng":"Virtual Class Rooms","title_ara":"الفصول الذكية"},"School":{"name":"English Test School - 022","english_name":"English Test School - 022"},"User":{"school_id":"111","first_name":"School","family_name":"Admin","id":"88723","avatar":"https://s3.amazonaws.com/classera/111/profilepic/thumb_200/88723.jpg?response-content-disposition=attachment%3Bfilename%3D%22steve_harvey.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1499065076&Signature=JcEfDWsZ4Q7L4P0%2BQJlQWASsRkk%3D"},"TicketComment":[{"id":"4311","body":"Test From API","user_id":"2639078","ticket_id":"2353","created":"2017-07-02 09:57:48","modified":"2017-07-02 09:57:48","type":false,"User":{"id":"2639078","first_name":"Support","family_name":"Team","school_id":"36","avatar":"https://me.classera.com/img/classera_logo_120x120.png"},"CommentAttachment":[{"id":"581","reference_id":"4311","original_filename":"original_file_name/test","attachment_link":"this_is_attachment_link","reference_type":"2","created":"2017-07-02 09:57:48","modified":"2017-07-02 09:57:48"},{"id":"582","reference_id":"4311","original_filename":"original_file_name/test/two","attachment_link":"this_is_attachment_link/two","reference_type":"2","created":"2017-07-02 09:57:48","modified":"2017-07-02 09:57:48"},{"id":"583","reference_id":"4311","original_filename":"original_file_name/test/three","attachment_link":"this_is_attachment_link/three","reference_type":"2","created":"2017-07-02 09:57:48","modified":"2017-07-02 09:57:48"}]},{"id":"4312","body":"Test From API","user_id":"2639078","ticket_id":"2353","created":"2017-07-02 09:57:50","modified":"2017-07-02 09:57:50","type":false,"User":{"id":"2639078","first_name":"Support","family_name":"Team","school_id":"36","avatar":"https://me.classera.com/img/classera_logo_120x120.png"},"CommentAttachment":[{"id":"584","reference_id":"4312","original_filename":"original_file_name/test","attachment_link":"this_is_attachment_link","reference_type":"2","created":"2017-07-02 09:57:50","modified":"2017-07-02 09:57:50"},{"id":"585","reference_id":"4312","original_filename":"original_file_name/test/two","attachment_link":"this_is_attachment_link/two","reference_type":"2","created":"2017-07-02 09:57:50","modified":"2017-07-02 09:57:50"},{"id":"586","reference_id":"4312","original_filename":"original_file_name/test/three","attachment_link":"this_is_attachment_link/three","reference_type":"2","created":"2017-07-02 09:57:50","modified":"2017-07-02 09:57:50"}]}],"TicketAttachment":[]},"comments_count":2}
+        
+## Add comment [/SupportClaims/add_comment?access_token=your_access_token]
+
++ Parameters :
+    + ticket_id: 100 (required, number) - ID of the ticket in form of an integer
+    + body:Test From API (required, text) -Body of the comment in form of an integer
+    + type:1 (required, number) - Type of the comment that added by clients in form of an integer
+    + attachments[index][original_filename]: original_file_name/file.extension - Comment's attchment file name in form of a text
+    + attachments[index][attachment_link]: "https://s3.amazonaws.com/classera/111/profilepic/thumb_200/88723.jpg" - Comment's attachment link in form of a text
+   
+### Add comment [POST]
+This action allows to add a comments on ticket.
+
++ ticket_id (int) - ticket_id
++ body (text) - body
++ type (number) type
++ attachment[index][original_filename] (array) attachment[index][original_filename]
++ attachment[index][attachment_link] (array) attachment[index][attachment_link]
+
++ Response 200 (application/json)
+    
+        {"TicketComment":{"ticket_id":"2353","user_id":"2639078","type":0,"body":"Test From API","modified":"2017-07-02 09:57:50","created":"2017-07-02 09:57:50","id":"4312"}}
+        
+## Group Rating
+Resources related to rating system in the API.
+
+## Rate Tim presentation  [/rates/rate_tim_presentation?&access_token=your_access_token]
+
++ Parameters :
+    + rating_value: 4 (required, intger) - range from (1 to 5)
+    + email: adam@gmail.com (optional, email) - your email
+
+### Rate Tim presentation [GET]
+This action allows to get all tickets for logged in user .
+
++ rating_value (int)
++ email (varchar)
+
+
++ Response 200 (application/json)
+    
+        {"status":"success","message":"Your rate has been saved"}
