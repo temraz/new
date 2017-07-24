@@ -600,7 +600,24 @@ This action allows you to get pioneer user bus tracking link.
 + Response 200 (application/json)
 
         {"link":"https:\/\/ipfleet.com\/ALHUSSAN\/View\/Localization.GPSTrackingUrl\/?VehicleObserver=F330B5C866106F0079B8E456D33CAC46A86BD189"}
- 
+
+##Edit Personal Information [/Users/edit_personal_information?access_token=your_access_token]
+### Edit Personal Information [POST]
+
+This action allows you to edit personal information of an user account to classera system from your website.
+
++ user_id (string, required) - user ID 
++ first_name (string, required) - first_name 
++ father_name (string) - father_name 
++ grandfather_name (string) - grandfather_name 
++ family_name (string, required) - family_name 
++ place_of_birth (string) - place_of_birth 
++ place_of_birth_country (string) - place_of_birth_country
++ date_of_birth (date) - date_of_birth YYYY-MM-DD 
+
++ Response 200 (application/json)
+
+        {"success":"1","message":"Personal Information Updated"}  
  
 ## Group Absences
 
@@ -2071,14 +2088,14 @@ This action allows to add a comments on ticket.
 ## Group Rating
 Resources related to rating system in the API.
 
-## Rate Tim presentation  [/rates/rate_tim_presentation?&access_token=your_access_token]
+## Rate Tim presentation  [/rates/rate_tim_presentation?access_token=your_access_token]
 
 + Parameters :
     + rating_value: 4 (required, intger) - range from (1 to 5)
     + email: adam@gmail.com (optional, email) - your email
 
-### Rate Tim presentation [GET]
-This action allows to get all tickets for logged in user .
+### Rate Tim presentation [POST]
+This action allows to rate temraz API presentation.
 
 + rating_value (int)
 + email (varchar)
