@@ -944,6 +944,40 @@ This action allows to get student behaviors in the system
 
         [{"StudentBehavior":{"id":"3","date":"2015-02-19"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]},{"StudentBehavior":{"id":"4","date":"2015-04-21"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]},{"StudentBehavior":{"id":"9","date":"2015-03-15"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]}]
 
+## Edit Student Behavior [/Behaviors/edit_student_behavior?access_token=your_access_token]
+### Edit Student Behavior [POST]
+
+This action allows you to edit a student behavior to classera system from your website.
++ id (string, required) - Behavior ID
++ student_user_id (string, required) - User ID
++ behavior_id (string) - the ID of a behavior type 
++ grandfather_name (string) - grandfather_name 
++ details (string) - details of the behavior 
++ date (date) - date YYYY-MM-DD
++ show_to_guardian (int) - [1 => show, 0=> hide]
++ show_to_student (int) - [1 => show, 0=> hide] 
+
++ Response 200 (application/json)
+
+        {"success":"1","message":"Behavior Updated"}
+        
+## Group Reports
+Resources related to Reports in the API.
+
+## Supervisor Activation [/Reports/schadmin_tsupv_viewing_report?access_token=your_access_token]
+### Supervisor Activation [GET]
+
+This action allow you to generate reports about the supervisors activities in Classera from your website.
+
++ Parameters :
+    + user_id: 100 (required, number)
+    + start: 2017-1-1 (date)
+    + end: 2017-1-2 (date)
+    
++ Response 200 (application/json)
+
+        {"tsupv_viewing_data": {"data_count_for_tsupvs": {"100": {"assignments": 3,"preparations": 0,"attachments": 3}},"viewed_data_count_for_tsupvs": {"100": {"assignments": 2,"preparations": 0,"attachments": 1}}},"supervisors_names": {"100": "Supervisor Name"}}
+
 ## Group Years               
 Resources related to behaviors in the API.
 
@@ -1394,6 +1428,19 @@ This action allows to get all student courses in a specific semester
         ["status" => ( 0 = inprogress, 1 = success, -1 = failed) ]
         [{"Course":{"id":"818","title":"\u0631\u064a\u0627\u0636\u064a\u0627\u062a","icon":"course_math.png","type":false},"Lecture":{"id":"2323"},"CourseStatus":{"status":"0"}},{"Course":{"id":"834","title":"\u0627\u0644\u062d\u0627\u0633\u0628 \u0627\u0644\u0622\u0644\u064a","icon":"default","type":false},"Lecture":{"id":"1273"},"CourseStatus":{"status":"0"}},{"Course":{"id":"938","title":"\u0641\u064a\u0632\u064a\u0627\u0621","icon":"Slice-03.png","type":false},"Lecture":{"id":"873"},"CourseStatus":{"status":"0"}},{"Course":{"id":"1346","title":"\u0622\u062d\u064a\u0627\u0621","icon":"Slice-75.png","type":false},"Lecture":{"id":"1474"},"CourseStatus":{"status":"0"}},{"Course":{"id":"1347","title":"\u0622\u062d\u064a\u0627\u0621","icon":"course_science.png","type":false},"Lecture":{"id":"3482"},"CourseStatus":{"status":"0"}},{"Course":{"id":"1836","title":"English","icon":"Slice-28.png","type":false},"Lecture":{"id":"3486"},"CourseStatus":{"status":"0"}},{"Course":{"id":"3288","title":"Java course","icon":"course_science.png","type":true},"Lecture":{"id":"7923"},"CourseStatus":{"status":"-1"}},{"Course":{"id":"3289","title":"Bootstrap","icon":"exams.png","type":true},"Lecture":{"id":"7924"},"CourseStatus":{"status":"1"}},{"Course":{"id":"3293","title":"paython","icon":"audio_library.png","type":true},"Lecture":{"id":"7925"},"CourseStatus":{"status":"0"}}]
         
+## View Course [/Courses/View?course_id=100&access_token=your_access_token]
+
+## View Course [GET] 
+
+This action allow you to view a course
+
++ Parameters :
+    + course_id 100 (required, int)
+
++ Response 200 (application/json)
+
+        {"Course":{"id":"1","title":"Math-101","title_ara":"\u0631\u064a\u0627\u0636\u064a\u0627\u062a","level_id":"1","school_id":"1","pass_grade":null,"max_grade":null,"participation_grade":null,"midterm_grade":null,"final_exam_grade":null,"lectures":"1","icon":"1474254281_calculator-pencil.png","external_url":null,"course_template_id":"3","type":"0","course_category_id":"128","order":"1","hide_in_grade_reports":false,"mawhiba_service_id":null,"created":"2017-06-23 00:02:16","modified":"2017-07-24 12:18:48","pioneer_id":null,"school_pioneer_id":null,"stage_pioneer_id":null,"level_pioneer_id":null,"credit_hours":null,"credit_value":"1.00","deleted":false}}
+
 ## Add course [/courses/add?access_token=your_access_token]
 
 ### Add course  [POST]
@@ -1439,7 +1486,7 @@ This action allows to edit course
 + Response 200 (application/json)
 
         {"message":"The course has been saved"}      
-
+        
 ## Pioneer edit course [/courses/pioneer_edit?access_token=your_access_token]
 
 ### Pioneer edit course  [POST]
@@ -1501,7 +1548,7 @@ This action allows to edit lecture
 + Response 200 (application/json)
 
         {"message":"The lecture has been saved"}      
-
+        
 ## Pioneer edit lecture [/lectures/pioneer_edit?access_token=your_access_token]
 
 ### Pioneer edit lecture  [POST]
@@ -1535,6 +1582,20 @@ This action allows to delete lecture that doesn't have any attachments or assign
         {"status":200,"message":"Lecture has been deleted"}
         request faild
         {"status":406,"message":"The lecture could not be deleted because there are attachments and assignments related to it. you can not delete it throw the API"}
+
+## View Lecture [/Lectures/View?lecture_id=100&access_token=your_access_token]
+
+## View lecture [GET] 
+
+This action allow you to view a lecture
+
++ Parameters :
+    + lecture_id 100 (required, int)
+
++ Response 200 (application/json)
+
+        {"Lecture":{"id":"1","section_id":"1","course_id":"2","teacher_id":"1","year_id":"1","semester_id":"1","language":null,"type":"0","country":"0","city":"0","location":null,"date_from":"0000-00-00","date_to":"0000-00-00","course_duration":"0","hours_number":"0","duration_from":"00:00:00","duration_to":"00:00:00","gender":false,"course_type":false,"open_registration":"0","allow_anonymous_registration":false,"registration_from":"0000-00-00 00:00:00","registration_to":"0000-00-00 00:00:00","capacity":"0","course_fees":null,"total_cost":null,"target_users":"","required_courses":null,"course_conditions":null,"total_points":"100","created":"2017-07-05 19:30:09","modified":"2017-07-10 20:54:55","deleted":false}}
+
 
 ## Group Assessments
 Resources related to users assessment in the API.
@@ -2084,6 +2145,20 @@ This action allows to add a comments on ticket.
 + Response 200 (application/json)
     
         {"TicketComment":{"ticket_id":"2353","user_id":"2639078","type":0,"body":"Test From API","modified":"2017-07-02 09:57:50","created":"2017-07-02 09:57:50","id":"4312"}}
+
+## Group Supervisors
+Resources related to Supervisor actions in system in the API.
+
+## Communication Statistics [supervisors/communication_statistics/?access_token=your_access_token&user_id=100]
+
++ Parameters :
+    + user_id: 100 (required, intger) - user ID of the supervisor
+    + from : 2017-1-1 (date) - YYYY-MM-DD
+    + to : 2017-1-2 (date - YYYY-MM-DD
+
++ Response 200 (application/json)
+
+        {"teachers":[{"UserTeacherView":{"id":"2","number":"999125347199","ID_Num":null,"teacher_id":"2","teacher_user_id":"6","teacher_full_name":"Peter Jan","teacher_full_name_ara":"\u0628\u064a\u062a\u0631 \u062c\u0627\u0646","status_id":"1","status_title":"Active","teacher_date_of_birth":"2017-07-03","teacher_place_of_birth":"","teacher_address":"","teacher_phone_number":"","teacher_mobile_number":"","teacher_email":null,"school_id":"1","teacher_nationality_id":"1","last_activity_date":"2017-07-12 09:13:52"}},{"UserTeacherView":{"id":"3","number":"9997777799","ID_Num":"1234567890","teacher_id":"3","teacher_user_id":"41","teacher_full_name":"A NAME","teacher_full_name_ara":"","status_id":"1","status_title":"Active","teacher_date_of_birth":"2017-07-18","teacher_place_of_birth":"","teacher_address":"","teacher_phone_number":"","teacher_mobile_number":"","teacher_email":null,"school_id":"1","teacher_nationality_id":"1","last_activity_date":"2017-07-18 14:22:09"}}],"stats":{"2":{"VCR":{"count":0,"date":null},"Rooms":{"count":1,"date":null},"Posts":{"count":1,"date":null},"Messages":{"count":1,"date":null}},"3":{"VCR":{"count":0,"date":null},"Rooms":{"count":0,"date":null},"Posts":{"count":0,"date":null},"Messages":{"count":0,"date":null}}}}
         
 ## Group Rating
 Resources related to rating system in the API.
