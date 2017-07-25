@@ -2416,6 +2416,34 @@ This action allows to add a comments on ticket.
 ## Group Supervisors
 Resources related to Supervisor actions in system in the API.
 
+# Teacher's Statistics[/supervisors/teachers_details?access_token=your_access_token]
+
+    
+    + sup_id: 2 (int, required) Supervisor User id.
+    + school_id: 1 (int, required) School id.
+    + from: 2017-3-3 (date, Format: YYYY-MM-DD).
+    + to: 2017-3-4 (date, Format: YYYY-MM-DD).
+    
+### Teacher's Statistics [GET]
+    + sup_id (int)
+    + school_id (int)
+    + from (date, Format: YYYY-MM-DD)
+    + to (date, Format: YYYY-MM-DD)
+    
++ Response 200 (application/json)
+
+        {
+            "stats": {
+                "Teacher_id": {
+                    "Course_id": {
+                        "Type": {
+                            "Attributes": "Values"
+                            }
+                        }
+                    }
+                }
+        
+
 ## Communication Statistics [supervisors/communication_statistics/?access_token=your_access_token&user_id=100]
 
 + Parameters :
