@@ -1127,8 +1127,8 @@ This action allows to get student behaviors in the system
 + Response 200 (application/json)
 
         [{"StudentBehavior":{"id":"3","date":"2015-02-19"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]},{"StudentBehavior":{"id":"4","date":"2015-04-21"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]},{"StudentBehavior":{"id":"9","date":"2015-03-15"},"Behavior":{"title":"\u0645\u0634\u0627\u063a\u0628\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0641\u0635\u0644","BehaviorGroup":[]},"Action":{"title":null},"Student":[]}]
-
-## Add Student Behavior [/Behaviors/edit_student_behavior?access_token=your_access_token]
+        
+        ## Add Student Behavior [/Behaviors/add_student_behavior?access_token=your_access_token]
 ### Add Student Behavior [POST]
 
 This action allows you to add a student behavior to classera system from your website.
@@ -1153,7 +1153,8 @@ This action allows you to add a student behavior to classera system from your we
 + Response 200 (application/json)
 
         {"status":"success","message":"Behavior added successfully"}
-        Added
+        
+
 
 ## Edit Student Behavior [/Behaviors/edit_student_behavior?access_token=your_access_token]
 ### Edit Student Behavior [POST]
