@@ -619,6 +619,25 @@ This action allows you to edit personal information of an user account to classe
 
         {"success":"1","message":"Personal Information Updated"}
         
+##Edit Contact Information [/Users/edit_contact_information?access_token=your_access_token]
+### Edit Contact Information [POST]
+
+This action allows you to edit contact information of an user account to classera system from your website.
+
++ user_id (string, required) - user ID 
++ address (string) - first_name 
++ phone_number (string) - phone_number 
++ mobile_number (string) - mobile_number 
++ email (string) - email 
++ facebook_account (string) - facebook_account 
++ twitter_account (string) - twitter_account
++ linkedin_account (date) - linkedin_account
++ instagram_account (date) - instagram_account 
+
++ Response 200 (application/json)
+
+        {"success":"1","message":"Contact Information Updated"}
+        
 ## Group Public Profile
 
 Resources related to Public Profiles in the API.
