@@ -1351,19 +1351,24 @@ This action allows you to edit a student behavior to classera system from your w
 Resources related to Reports in the API.
 
 ## Supervisor Activation [/Reports/schadmin_tsupv_viewing_report?access_token=your_access_token]
-### Supervisor Activation [GET]
-
-This action allow you to generate reports about the supervisors activities in Classera from your website.
 
 + Parameters :
     + user_id: 100 (required, number)
     + start: 2017-1-1 (date)
     + end: 2017-1-2 (date)
+
+### Supervisor Activation [GET]
+
+This action allow you to generate reports about the supervisors activities in Classera from your website.
+
++ user_id: (int)
++ start: (date, format: YYYY-MM-DD)
++ end: (date, format: YYYY-MM-DD)
     
 + Response 200 (application/json)
 
         {"tsupv_viewing_data": {"data_count_for_tsupvs": {"100": {"assignments": 3,"preparations": 0,"attachments": 3}},"viewed_data_count_for_tsupvs": {"100": {"assignments": 2,"preparations": 0,"attachments": 1}}},"supervisors_names": {"100": "Supervisor Name"}}
-
+    
 ## Group Years               
 Resources related to behaviors in the API.
 
