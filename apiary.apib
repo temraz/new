@@ -387,7 +387,62 @@ This action allows to get student level in specific year
 
         {"user_score":"1200","current_card_title":"Green","current_card_color":"#afd136","user_ratio":33.3333333333,"class_index":4,"class_title":"Green","class_color":"#afd136"}
         
-                   
+
+## Get Users Top Scores [/users/get_users_top_scores?access_token=your_access_token&role_id=6&all_schools=1&limit=3&user_id=31&lang=ara]
+
+### Get Users Top Scores [GET]
+
+This action allows you to get top scores of students or teachers.
+
++ user_id (string, required) - user ID 
++ role_id (int, required) - role ID of the targeted users (students or teachers) 
++ all_schools (string, required) - include all schools ( 0 or 1)
++ limit (int, required) - number of results
++ lang  (string, required) - allow arabic language if found
+
++ Response 200 (application/json)
+
+        
+        {
+            "ScoresDetailsView": {
+                "user_id": "39",
+                "username": "clss0019",
+                "score": "3000",
+                "semester_id": "1",
+                "full_name": "Abody yousef ashour Kash",
+                "full_name_ara": "عبدالرحمن قشقري"
+            },
+            "School": {
+                "name": "Classera"
+            }
+        },
+        {
+            "ScoresDetailsView": {
+                "user_id": "33",
+                "username": "clss0012",
+                "score": "2000",
+                "semester_id": "1",
+                "full_name": "Medo Justin",
+                "full_name_ara": null
+            },
+            "School": {
+                "name": "Classera"
+            }
+        },
+        {
+            "ScoresDetailsView": {
+                "user_id": "34",
+                "username": "clss0011",
+                "score": "1000",
+                "semester_id": "1",
+                "full_name": "mohammed jamal aziz janbi",
+                "full_name_ara": "محمد جمال عبدالعزيز جنبي"
+            },
+            "School": {
+                "name": "Classera"
+            }
+        }
+        
 ## Get Student Reports List  [/users/get_student_reports_list?user_id=100&access_token=your_access_token]
 
 + Parameters :
