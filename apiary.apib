@@ -1816,16 +1816,18 @@ This action allows to get all student courses in a specific semester
         
 ## View Course [/Courses/View?course_id=100&access_token=your_access_token]
 
++ Parameters :
+    + course_id 100 (required, int)  - course ID
+
 ## View Course [GET] 
 
 This action allow you to view a course
 
-+ Parameters :
-    + course_id 100 (required, int)
+    + course_id (int)
 
 + Response 200 (application/json)
 
-        {"Course":{"id":"1","title":"Math-101","title_ara":"\u0631\u064a\u0627\u0636\u064a\u0627\u062a","level_id":"1","school_id":"1","pass_grade":null,"max_grade":null,"participation_grade":null,"midterm_grade":null,"final_exam_grade":null,"lectures":"1","icon":"1474254281_calculator-pencil.png","external_url":null,"course_template_id":"3","type":"0","course_category_id":"128","order":"1","hide_in_grade_reports":false,"mawhiba_service_id":null,"created":"2017-06-23 00:02:16","modified":"2017-07-24 12:18:48","pioneer_id":null,"school_pioneer_id":null,"stage_pioneer_id":null,"level_pioneer_id":null,"credit_hours":null,"credit_value":"1.00","deleted":false}}
+        {"Course":{"id":"100","title":"Math-101","title_ara":"\u0631\u064a\u0627\u0636\u064a\u0627\u062a","level_id":"1","school_id":"1","pass_grade":null,"max_grade":null,"participation_grade":null,"midterm_grade":null,"final_exam_grade":null,"lectures":"1","icon":"1474254281_calculator-pencil.png","external_url":null,"course_template_id":"3","type":"0","course_category_id":"128","order":"1","hide_in_grade_reports":false,"mawhiba_service_id":null,"created":"2017-06-23 00:02:16","modified":"2017-07-24 12:18:48","pioneer_id":null,"school_pioneer_id":null,"stage_pioneer_id":null,"level_pioneer_id":null,"credit_hours":null,"credit_value":"1.00","deleted":false}}
 
 ## Add course [/courses/add?access_token=your_access_token]
 
