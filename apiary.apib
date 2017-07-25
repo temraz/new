@@ -693,93 +693,11 @@ This action allows you to edit contact information of an user account to classer
 
         {"success":"1","message":"Contact Information Updated"}
         
-        
-##List User Skills [/Users/list_user_skills?user_id=34&access_token=your_access_token]
-### List User Skills [GET]
-
-This action will list all the skills the user has .
-
-+ user_id (string, required) - user ID 
-
-+ Response 200 (application/json)
-        {
-    "0": {
-        "UsersSkill": {
-            "id": "2",
-            "user_id": "34",
-            "skills_category_id": null,
-            "skill": "Cyclist",
-            "skill_level": "Talented",
-            "created": "2017-07-17 15:01:40",
-            "modified": "2017-07-17 15:01:40"
-        }
-    },
-    "1": {
-        "UsersSkill": {
-            "id": "3",
-            "user_id": "34",
-            "skills_category_id": null,
-            "skill": "Freediving",
-            "skill_level": "Advanced",
-            "created": "2017-07-17 15:01:56",
-            "modified": "2017-07-17 15:01:56"
-        }
-    },
-    "2": {
-        "UsersSkill": {
-            "id": "5",
-            "user_id": "34",
-            "skills_category_id": null,
-            "skill": "swimming",
-            "skill_level": "Beginner",
-            "created": "2017-07-17 16:35:26",
-            "modified": "2017-07-17 17:23:20"
-        }
-    },
-    "3": {
-        "UsersSkill": {
-            "id": "18",
-            "user_id": "34",
-            "skills_category_id": null,
-            "skill": "test2",
-            "skill_level": "Beginner",
-            "created": "2017-07-25 09:33:10",
-            "modified": "2017-07-25 10:56:47"
-        }
-    },
-    "4": {
-        "UsersSkill": {
-            "id": "19",
-            "user_id": "34",
-            "skills_category_id": null,
-            "skill": "test",
-            "skill_level": "Beginner",
-            "created": "2017-07-25 10:10:21",
-            "modified": "2017-07-25 10:56:16"
-        }
-    },
-    "success": "1"
-    }
-
-##List User Skills [/Users/delete_user_skill?user_id=34&access_token=your_access_token]
-### List User Skills [GET]
-
-This action will list all the skills the user has .
-
-+ user_id (string, required) - user ID 
-
-+ Response 200 (application/json)
-
-
-
-
-
-        
 ## Group Public Profile
 
 Resources related to Public Profiles in the API.
 
-## Get Public Profile [/users/get_public_profile?user_id=2&access_token=your_access_token]
+## Get Public Profile [/users/get_public_profile?access_token=your_access_token]
 
 ### Get Public Profile [GET]
 
@@ -1944,6 +1862,302 @@ This action allow you to view a lecture
 + Response 200 (application/json)
 
         {"Lecture":{"id":"1","section_id":"1","course_id":"2","teacher_id":"1","year_id":"1","semester_id":"1","language":null,"type":"0","country":"0","city":"0","location":null,"date_from":"0000-00-00","date_to":"0000-00-00","course_duration":"0","hours_number":"0","duration_from":"00:00:00","duration_to":"00:00:00","gender":false,"course_type":false,"open_registration":"0","allow_anonymous_registration":false,"registration_from":"0000-00-00 00:00:00","registration_to":"0000-00-00 00:00:00","capacity":"0","course_fees":null,"total_cost":null,"target_users":"","required_courses":null,"course_conditions":null,"total_points":"100","created":"2017-07-05 19:30:09","modified":"2017-07-10 20:54:55","deleted":false}}
+
+## Group Scores
+
+Resources related to Top Scores of students, teachers and sections.
+
+## Get Top Sections Scores [/scores/top_sections_scores?access_token=your_access_token&limit=4&user_id=31]
+
+### Get Top Sections Scores [GET]
+
+This action returns top sections scores.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1",
+                "title": "Grade 7 - A",
+                "stage_title": " Intermediate ",
+                "average": 1000
+            },
+            {
+                "id": "2",
+                "title": "Grade 7 - ب",
+                "stage_title": " Intermediate ",
+                "average": 0
+            }
+        ]
+
+
+## Get Top Students Scores in School [/scores/top_scores_students_school?access_token=your_access_token&limit=3&user_id=31]
+
+### Get Top Students Scores in School [GET]
+
+This action returns top students scores in school.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "39",
+                    "username": "clss0019",
+                    "school_id": "1",
+                    "full_name": "Abody yousef ashour Kash"
+                },
+                "LatestScore": {
+                    "score": 3000
+                },
+                "Level": {
+                    "title": "Grade 7"
+                }
+            },
+            {
+                "User": {
+                    "id": "33",
+                    "username": "clss0012",
+                    "school_id": "1",
+                    "full_name": "Medo   Justin"
+                },
+                "LatestScore": {
+                    "score": 2000
+                },
+                "Level": {
+                    "title": "Grade 7"
+                }
+            },
+            {
+                "User": {
+                    "id": "34",
+                    "username": "clss0011",
+                    "school_id": "1",
+                    "full_name": "mohammed jamal aziz janbi"
+                },
+                "LatestScore": {
+                    "score": 1000
+                },
+                "Level": {
+                    "title": "Grade 7"
+                }
+            }
+        ]
+
+
+## Get Top Students Scores in School Group [/scores/top_scores_students_schoolgroup?access_token=your_access_token&limit=3&user_id=31]
+
+### Get Top Students Scores in School Group [GET]
+
+This action returns top students scores in school Group.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "39",
+                    "username": "clss0019",
+                    "school_id": "1",
+                    "full_name": "Abody yousef ashour Kash"
+                },
+                "LatestScore": {
+                    "score": 3000
+                },
+                "School": {
+                    "school_group_id": "1",
+                    "name": "Classera"
+                }
+            },
+            {
+                "User": {
+                    "id": "33",
+                    "username": "clss0012",
+                    "school_id": "1",
+                    "full_name": "Medo   Justin"
+                },
+                "LatestScore": {
+                    "score": 2000
+                },
+                "School": {
+                    "school_group_id": "1",
+                    "name": "Classera"
+                }
+            },
+            {
+                "User": {
+                    "id": "34",
+                    "username": "clss0011",
+                    "school_id": "1",
+                    "full_name": "mohammed jamal aziz janbi"
+                },
+                "LatestScore": {
+                    "score": 1000
+                },
+                "School": {
+                    "school_group_id": "1",
+                    "name": "Classera"
+                }
+            }
+        ]
+
+
+## Get Top Students Scores in Classera ME [/scores/top_scores_students_ME?access_token=your_access_token&limit=3&user_id=31]
+
+### Get Top Students Scores in Classera ME [GET]
+
+This action returns top students scores in Classera ME.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "39",
+                    "username": "clss0019",
+                    "school_id": "1",
+                    "full_name": "Abody yousef ashour Kash"
+                },
+                "LatestScore": {
+                    "score": 3000
+                },
+                "School": {
+                    "name": "Classera"
+                }
+            },
+            {
+                "User": {
+                    "id": "33",
+                    "username": "clss0012",
+                    "school_id": "1",
+                    "full_name": "Medo   Justin"
+                },
+                "LatestScore": {
+                    "score": 2000
+                },
+                "School": {
+                    "name": "Classera"
+                }
+            },
+            {
+                "User": {
+                    "id": "34",
+                    "username": "clss0011",
+                    "school_id": "1",
+                    "full_name": "mohammed jamal aziz janbi"
+                },
+                "LatestScore": {
+                    "score": 1000
+                },
+                "School": {
+                    "name": "Classera"
+                }
+            }
+        ]
+
+
+## Get Top Teachers Scores in School [/scores/top_scores_teachers?access_token=your_access_token&limit=3&user_id=31]
+
+### Get Top Teachers Scores in School [GET]
+
+This action returns top teachers scores in school.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "41",
+                    "username": "clst0003",
+                    "school_id": "1",
+                    "full_name": "Abody   Kashgary"
+                },
+                "LatestScore": {
+                    "score": 5000
+                }
+            }
+        ]
+
+## Get Top Teachers Scores in School Group [/scores/top_scores_teachers_schoolgroup?access_token=your_access_token&limit=3&user_id=31]
+
+### Get Top Teachers Scores in School Group [GET]
+
+This action returns top teachers scores in school Group.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "41",
+                    "username": "clst0003",
+                    "school_id": "1",
+                    "full_name": "Abody   Kashgary"
+                },
+                "LatestScore": {
+                    "score": 5000
+                },
+                "School": {
+                    "school_group_id": "1",
+                    "name": "Classera"
+                }
+            }
+        ]
+
+
+## Get Top Teachers Scores in Classera ME [/scores/top_scores_teachers_ME?access_token=your_access_token&limit=3&user_id=31]
+
+### Get Top Teachers Scores in Classera ME [GET]
+
+This action returns top Teachers scores in Classera ME.
+
++ user_id (int , required) - user ID.
++ limit (int , required) - limit.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "41",
+                    "username": "clst0003",
+                    "school_id": "1",
+                    "full_name": "Abody   Kashgary"
+                },
+                "LatestScore": {
+                    "score": 5000
+                },
+                "School": {
+                    "name": "Classera"
+                }
+            }
+        ]
+
 
 
 ## Group Assessments
