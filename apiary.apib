@@ -2863,12 +2863,18 @@ Resources related to Supervisor actions in system in the API.
                 }
         
 
-## Communication Statistics [supervisors/communication_statistics/?access_token=your_access_token&user_id=100]
+## Communication Statistics [/supervisors/communication_statistics/?access_token=your_access_token&user_id=100]
 
 + Parameters :
     + user_id: 100 (required, intger) - user ID of the supervisor
     + from : 2017-1-1 (date) - YYYY-MM-DD
     + to : 2017-1-2 (date - YYYY-MM-DD
+    
+## Communication Statistics [GET]
+
++ user_id: (int)
++ from : (date, Format: YYYY-MM-DD)
++ to : (date, Format: YYYY-MM-DD)
 
 + Response 200 (application/json)
 
