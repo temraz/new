@@ -693,11 +693,93 @@ This action allows you to edit contact information of an user account to classer
 
         {"success":"1","message":"Contact Information Updated"}
         
+        
+##List User Skills [/Users/list_user_skills?user_id=34&access_token=your_access_token]
+### List User Skills [GET]
+
+This action will list all the skills the user has .
+
++ user_id (string, required) - user ID 
+
++ Response 200 (application/json)
+        {
+    "0": {
+        "UsersSkill": {
+            "id": "2",
+            "user_id": "34",
+            "skills_category_id": null,
+            "skill": "Cyclist",
+            "skill_level": "Talented",
+            "created": "2017-07-17 15:01:40",
+            "modified": "2017-07-17 15:01:40"
+        }
+    },
+    "1": {
+        "UsersSkill": {
+            "id": "3",
+            "user_id": "34",
+            "skills_category_id": null,
+            "skill": "Freediving",
+            "skill_level": "Advanced",
+            "created": "2017-07-17 15:01:56",
+            "modified": "2017-07-17 15:01:56"
+        }
+    },
+    "2": {
+        "UsersSkill": {
+            "id": "5",
+            "user_id": "34",
+            "skills_category_id": null,
+            "skill": "swimming",
+            "skill_level": "Beginner",
+            "created": "2017-07-17 16:35:26",
+            "modified": "2017-07-17 17:23:20"
+        }
+    },
+    "3": {
+        "UsersSkill": {
+            "id": "18",
+            "user_id": "34",
+            "skills_category_id": null,
+            "skill": "test2",
+            "skill_level": "Beginner",
+            "created": "2017-07-25 09:33:10",
+            "modified": "2017-07-25 10:56:47"
+        }
+    },
+    "4": {
+        "UsersSkill": {
+            "id": "19",
+            "user_id": "34",
+            "skills_category_id": null,
+            "skill": "test",
+            "skill_level": "Beginner",
+            "created": "2017-07-25 10:10:21",
+            "modified": "2017-07-25 10:56:16"
+        }
+    },
+    "success": "1"
+    }
+
+##List User Skills [/Users/delete_user_skill?user_id=34&access_token=your_access_token]
+### List User Skills [GET]
+
+This action will list all the skills the user has .
+
++ user_id (string, required) - user ID 
+
++ Response 200 (application/json)
+
+
+
+
+
+        
 ## Group Public Profile
 
 Resources related to Public Profiles in the API.
 
-## Get Public Profile [/users/get_public_profile?access_token=your_access_token]
+## Get Public Profile [/users/get_public_profile?user_id=2&access_token=your_access_token]
 
 ### Get Public Profile [GET]
 
