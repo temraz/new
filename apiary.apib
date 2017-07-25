@@ -1973,16 +1973,18 @@ This action allows to delete lecture that doesn't have any attachments or assign
 
 ## View Lecture [/Lectures/View?lecture_id=100&access_token=your_access_token]
 
++ Parameters :
+    + lecture_id 100 (required, int)
+
 ## View lecture [GET] 
 
 This action allow you to view a lecture
 
-+ Parameters :
-    + lecture_id 100 (required, int)
+    + lecture_id (int)
 
 + Response 200 (application/json)
 
-        {"Lecture":{"id":"1","section_id":"1","course_id":"2","teacher_id":"1","year_id":"1","semester_id":"1","language":null,"type":"0","country":"0","city":"0","location":null,"date_from":"0000-00-00","date_to":"0000-00-00","course_duration":"0","hours_number":"0","duration_from":"00:00:00","duration_to":"00:00:00","gender":false,"course_type":false,"open_registration":"0","allow_anonymous_registration":false,"registration_from":"0000-00-00 00:00:00","registration_to":"0000-00-00 00:00:00","capacity":"0","course_fees":null,"total_cost":null,"target_users":"","required_courses":null,"course_conditions":null,"total_points":"100","created":"2017-07-05 19:30:09","modified":"2017-07-10 20:54:55","deleted":false}}
+        {"Lecture":{"id":"100","section_id":"1","course_id":"2","teacher_id":"1","year_id":"1","semester_id":"1","language":null,"type":"0","country":"0","city":"0","location":null,"date_from":"0000-00-00","date_to":"0000-00-00","course_duration":"0","hours_number":"0","duration_from":"00:00:00","duration_to":"00:00:00","gender":false,"course_type":false,"open_registration":"0","allow_anonymous_registration":false,"registration_from":"0000-00-00 00:00:00","registration_to":"0000-00-00 00:00:00","capacity":"0","course_fees":null,"total_cost":null,"target_users":"","required_courses":null,"course_conditions":null,"total_points":"100","created":"2017-07-05 19:30:09","modified":"2017-07-10 20:54:55","deleted":false}}
 
 ## Group Scores
 
