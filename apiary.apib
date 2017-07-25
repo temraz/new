@@ -617,7 +617,172 @@ This action allows you to edit personal information of an user account to classe
 
 + Response 200 (application/json)
 
-        {"success":"1","message":"Personal Information Updated"}  
+        {"success":"1","message":"Personal Information Updated"}
+        
+## Group Public Profile
+
+Resources related to Public Profiles in the API.
+
+## Get Public Profile [/users/get_public_profile?access_token=your_access_token]
+
+### Get Public Profile [GET]
+
+This action returns public profile information.
+
++ user_id (int) - target user id.
+
+        
+
+
+        
++ Response 200 (application/json)
+
+        {
+        "livesin_city_en": "City",
+        "livesin_city_ar": "مدينةة",
+        "livesin_country_en": "Country",
+        "livesin_country_ar": "الدولة",
+        "student_level_title": "Level",
+        "section_title": "Section",
+        "transfers": [],
+        "user_profile_pic": "",
+        "userEducations": [
+            {
+                "UsersEducation": {
+                    "id": "Education_id",
+                    "user_id": "user_id",
+                    "country_id": "country_id",
+                    "city_id": "city_id",
+                    "school": "school name",
+                    "from_year": "starting year",
+                    "to_year": "end year",
+                    "degree": "degree",
+                    "field_of_study": "Field",
+                    "description": "field description",
+                    "modified": "2017-07-17 15:04:42",
+                    "created": "2017-07-17 15:04:42"
+                }
+            }
+        ],
+        "userExperiances": [
+            {
+                "UsersWorksExperiance": {
+                    "id": "Work experience id",
+                    "user_id": "user_id",
+                    "start_date": "starting date",
+                    "end_date": "end date",
+                    "job_title": "Job title",
+                    "job_type": "Job type",
+                    "company_name": "Company name",
+                    "description": "Job description",
+                    "experiance_certificate": "Certifcation",
+                    "created": "2017-07-17 15:01:17",
+                    "modified": "2017-07-19 14:02:18"
+                }
+            }
+        ],
+        "userSkills": [
+            {
+                "UsersSkill": {
+                    "id": "Skill id",
+                    "user_id": "user_id",
+                    "skills_category_id": "category id",
+                    "skill": "Skill",
+                    "skill_level": "Level",
+                    "created": "2017-07-17 15:01:40",
+                    "modified": "2017-07-17 15:01:40"
+                }
+            }
+        ],
+        "userInterests": [
+            {
+                "UsersInterest": {
+                    "id": "Interest id",
+                    "user_id": "user_id",
+                    "interest": "Interest title",
+                    "description": "interest description",
+                    "created": "2017-07-17 15:02:18",
+                    "modified": "2017-07-17 15:02:18"
+                }
+            }
+        ],
+        "userLanguages": [
+            {
+                "UsersLanguage": {
+                    "id": "language id",
+                    "user_id": "user_id",
+                    "language": "Language",
+                    "proficiency": "proficiency",
+                    "created": "2017-07-17 15:02:40",
+                    "modified": "2017-07-17 15:02:40"
+                }
+            }
+        ],
+        "latest_eportfolios": [
+            {
+                "Eportfolio": {
+                    "id": "EPortfolio id",
+                    "title": "Eportfolio title",
+                    "brief": "Eportfolio brief description",
+                    "details": "<p>\r\n\tdetails</p>\r\n",
+                    "user_id": "user_id",
+                    "user_role_id": "role_id",
+                    "reference_type": "Eportfolio",
+                    "reference_sub_type": null,
+                    "reference_id": null,
+                    "type_id": "1",
+                    "course_id": "7",
+                    "semester_id": "1",
+                    "school_id": "1",
+                    "level_id": null,
+                    "attachment_id": "5",
+                    "date": "2017-07-19 11:24:00",
+                    "status": "1",
+                    "sharing_status": "2",
+                    "eportfolio": true,
+                    "image": "IMG_1261.JPG",
+                    "deleted": false,
+                    "modified": "2017-07-19 11:25:30",
+                    "created": "2017-07-19 11:25:30",
+                    "total_views": "1"
+                },
+                "Attachment": {
+                    "id": "5",
+                    "original_filename": "FullSizeRender.jpg",
+                    "created": "2017-07-19 11:24:41",
+                    "title": "FullSizeRender.jpg",
+                    "comments": null,
+                    "deleted": false,
+                    "type": "ePortfolio",
+                    "type_reference_id": null,
+                    "content_type": "image/jpeg",
+                    "publish_date": "2017-07-19 11:24:41",
+                    "sharing_status": "0",
+                    "user_id": "34",
+                    "school_id": "1",
+                    "original_attachment": null,
+                    "duplicate_stss": false,
+                    "id_hash": null,
+                    "semester_id": null,
+                    "file_hash": null,
+                    "missing": false,
+                    "duplicate_xtxs": false,
+                    "blocked": false,
+                    "preparation_id": "2",
+                    "course_id": null,
+                    "expiry_date": null,
+                    "allow_download": "1",
+                    "publish_date_Ymd": "2017-07-19"
+                },
+                "EportfolioType": {
+                    "id": "1",
+                    "type_eng": "type",
+                    "type_ara": "الفئة"
+                },
+                "Tag": []
+            }
+        ]   
+        }
  
 ## Group Absences
 
