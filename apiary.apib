@@ -2844,7 +2844,7 @@ This action allows to add a comments on ticket.
 ## Group Supervisors
 Resources related to Supervisor actions in system in the API.
 
-# Teacher's Statistics[/supervisors/teachers_details?access_token=your_access_token]
+## Teacher's Statistics [/supervisors/teachers_details?access_token=your_access_token]
 
     
     + sup_id: 2 (int, required) Supervisor User id.
@@ -2870,6 +2870,65 @@ Resources related to Supervisor actions in system in the API.
                         }
                     }
                 }
+                
+
+## Workload Report [/teachers/workload_report/?access_token=your_access_token&user_id=7&lang=ara]
+    
+### Workload Report [GET]
+
+This action returns Teachers' workload report.
+
++ user_id (int , required) - supervisor ID.
++ lang (string) - language (allow arabic language).
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "TeacherTimeslotsView": {
+                    "id": "3",
+                    "number": "9997777799",
+                    "ID_Num": "1234567890",
+                    "teacher_id": "3",
+                    "teacher_user_id": "41",
+                    "teacher_full_name_ara": "",
+                    "status_id": "1",
+                    "teacher_date_of_birth": "2017-07-18",
+                    "teacher_place_of_birth": "",
+                    "teacher_address": "",
+                    "teacher_phone_number": "",
+                    "teacher_mobile_number": "",
+                    "teacher_email": null,
+                    "school_id": "1",
+                    "lecture_id": "7",
+                    "timeslots_count": "1",
+                    "semester_id": "1",
+                    "teacher_full_name": "Abody Kashgary"
+                }
+            },
+            {
+                "TeacherTimeslotsView": {
+                    "id": "2",
+                    "number": "999125347199",
+                    "ID_Num": null,
+                    "teacher_id": "2",
+                    "teacher_user_id": "6",
+                    "teacher_full_name_ara": "بيتر جان",
+                    "status_id": "1",
+                    "teacher_date_of_birth": "2017-07-03",
+                    "teacher_place_of_birth": "",
+                    "teacher_address": "",
+                    "teacher_phone_number": "",
+                    "teacher_mobile_number": "",
+                    "teacher_email": null,
+                    "school_id": "1",
+                    "lecture_id": "3",
+                    "timeslots_count": "3",
+                    "semester_id": "1",
+                    "teacher_full_name": "بيتر جان"
+                }
+            }
+        ]
         
 
 ## Communication Statistics [/supervisors/communication_statistics/?access_token=your_access_token&user_id=100]
