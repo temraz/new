@@ -2889,17 +2889,17 @@ Resources related to Supervisor actions in system in the API.
 
 ## Teacher's Statistics [/supervisors/teachers_details?access_token=your_access_token]
 
-    
-    + sup_id: 2 (int, required) Supervisor User id.
-    + school_id: 1 (int, required) School id.
-    + from: 2017-3-3 (date, Format: YYYY-MM-DD).
-    + to: 2017-3-4 (date, Format: YYYY-MM-DD).
-    
++ Parameters :
++ sup_id: 2 (int, required) Supervisor User id.
++ school_id: 1 (int, required) School id.
++ from: 2017-3-3 (date, Format: YYYY-MM-DD).
++ to: 2017-3-4 (date, Format: YYYY-MM-DD).
+        
 ### Teacher's Statistics [GET]
-    + sup_id (int)
-    + school_id (int)
-    + from (date, Format: YYYY-MM-DD)
-    + to (date, Format: YYYY-MM-DD)
++ sup_id: (int)
++ school_id: (int)
++ from: (date)
++ to: (date)
     
 + Response 200 (application/json)
 
@@ -2909,11 +2909,42 @@ Resources related to Supervisor actions in system in the API.
                     "Course_id": {
                         "Type": {
                             "Attributes": "Values"
-                            }
                         }
                     }
+                },
+            "teachers": [
+                "UserDetailsView" : {
+                        "id": "2",
+                        "number": "999125347199",
+                        "ID_Num": null,
+                        "teacher_id": "2",
+                        "teacher_user_id": "6",
+                        "teacher_full_name": "Teacher",
+                        "teacher_full_name_ara": "معلم",
+                        "status_id": "1",
+                        "status_title": "Active",
+                        "teacher_date_of_birth": "2017-07-03",
+                        "teacher_place_of_birth": "",
+                        "teacher_address": "",
+                        "teacher_phone_number": "",
+                        "teacher_mobile_number": "",
+                        "teacher_email": null,
+                        "school_id": "1",
+                        "teacher_nationality_id": "1",
+                        "last_activity_date": "2017-07-12 09:13:52"
+                },
+                "Course": [
+                {
+                    "LectureDetailsView": {
+                        "course_id": "1",
+                        "course_title": "Math-101",
+                        "level_title": "Grade 7"
+                    }
                 }
-                
+                ]
+            ]
+        }
+
 
 ## Workload Report [/teachers/workload_report/?access_token=your_access_token&user_id=7&lang=ara]
     
