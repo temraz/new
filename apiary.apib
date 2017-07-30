@@ -3040,3 +3040,49 @@ This action allows to rate temraz API presentation.
 + Response 200 (application/json)
     
         {"status":"success","message":"Your rate has been saved"}
+        
+# Group RealtimeFeed
+Resources related to Realtime feed.
+
+## Get Activites [/Users/activities_in_a_single_second?access_token=your_access_token]
+This action allows you to add a student behavior to classera system from your website.
+
+### Get Activites [GET]
+
++ school_id (int, required) - Target school id.
++ minute (int) - number of minutes to check, last minute if left empty.
+
++ Response 200 (application/json)
+    
+        {"activities_per_minute":[],
+            "activities_in_a_single_minute":[
+            {"0":{"visits":"1"}, "Online":{"time":"2017-07-26 11:59:19"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 11:59:58"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:00:56"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:01:05"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:01:08"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:01:14"}}
+            ,{"0":{"visits":"3"},"Online":{"time":"2017-07-26 12:01:19"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:01:26"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:04:26"}}
+            ,{"0":{"visits":"1"},"Online":{"time":"2017-07-26 12:07:41"}}
+            ]
+        }
+            
+## Get Visits by Role [/Users/visits_by_role?access_token=your_access_token]
+This action returns current visits based on roles.
+### Visits by role [GET]
++ school_id (int, required) - Target school id.
+
++ Response 200 (application/json)
+
+        {"Students":0,"Teachers":0,"Parents":0,"Supervisors":0,"KaganCoaches":0,"Advisers":0,"Managers":0,"Admins":1}
+    
+## Get SMS Usage [/Users/get_sms_usage?access_token=your_access_token]
+This action returns current SMS usage.
+### Get SMS Usage [GET]
++ school_id (int, required) - Target school id.
+
++ Response 200 (application/json)
+
+        {"total":NUM,"remaining":NUM}
