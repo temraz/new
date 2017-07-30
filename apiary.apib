@@ -2707,7 +2707,52 @@ This action allows to Student exam mark.
 + Response 200 (application/json)
 
         {"title": "QW_tom_exam_2","maxMark": "100","total_mark": "83.26","retake": 1}
-        
+
+
+## List teacher assignments [/Assignments/st_teacher_assignments?supervisor_id=6&teacher_id=51&access_token==your_access_token]
+### List teacher assignments [GET] 
+This action will list all assignments (with thier information) for a teacher
+
++ teacher_id (int) - user_id
++ supervisior_id (int) - user_id
++ course_id (optional,int) - course_id 
++ semester_id (optional,int) - semester_id 
++ type (optional,int) - type(Exam or Homework)    
+
++ Response 200 (application/json)
+
+            [
+            {
+                "Assignment": {
+                    "id": "4",
+                    "title": "test22",
+                    "publishing_datetime": "2017-07-19 11:42:03",
+                    "due_datetime": "2018-07-20 00:00:00",
+                    "multi_publish_datetime": false,
+                    "semester_id": "1",
+                    "type": "Exam",
+                    "course_id": "6",
+                    "created": "2017-07-19 11:41:05",
+                    "viewed": true
+                }
+            },
+            {
+                "Assignment": {
+                    "id": "5",
+                    "title": "tesst22222222",
+                    "publishing_datetime": "2017-07-19 12:00:00",
+                    "due_datetime": "2017-07-22 11:45:00",
+                    "multi_publish_datetime": false,
+                    "semester_id": "1",
+                    "type": "Homework",
+                    "course_id": "6",
+                    "created": "2017-07-19 11:46:06",
+                    "viewed": true
+                }
+            }
+        ]
+
+
 
 ## Group Notifications
 Resources related to user Notifications in the API.
@@ -2948,6 +2993,36 @@ This action returns Teachers' workload report.
 
         {"teachers":[{"UserTeacherView":{"id":"2","number":"999125347199","ID_Num":null,"teacher_id":"2","teacher_user_id":"6","teacher_full_name":"Peter Jan","teacher_full_name_ara":"\u0628\u064a\u062a\u0631 \u062c\u0627\u0646","status_id":"1","status_title":"Active","teacher_date_of_birth":"2017-07-03","teacher_place_of_birth":"","teacher_address":"","teacher_phone_number":"","teacher_mobile_number":"","teacher_email":null,"school_id":"1","teacher_nationality_id":"1","last_activity_date":"2017-07-12 09:13:52"}},{"UserTeacherView":{"id":"3","number":"9997777799","ID_Num":"1234567890","teacher_id":"3","teacher_user_id":"41","teacher_full_name":"A NAME","teacher_full_name_ara":"","status_id":"1","status_title":"Active","teacher_date_of_birth":"2017-07-18","teacher_place_of_birth":"","teacher_address":"","teacher_phone_number":"","teacher_mobile_number":"","teacher_email":null,"school_id":"1","teacher_nationality_id":"1","last_activity_date":"2017-07-18 14:22:09"}}],"stats":{"2":{"VCR":{"count":0,"date":null},"Rooms":{"count":1,"date":null},"Posts":{"count":1,"date":null},"Messages":{"count":1,"date":null}},"3":{"VCR":{"count":0,"date":null},"Rooms":{"count":0,"date":null},"Posts":{"count":0,"date":null},"Messages":{"count":0,"date":null}}}}
         
+## Group Dashboard
+Resources related to dashboard.
+
+## get total absences  [/dashboards/get_dashboard_total_absences?school_id=1&user_id=31&access_token=your_access_token]
+
++ Parameters :
+    + user_id: user_id(required, intger) 
+    + school_id: school_id(optional, email) if none has been filled then the function will search for the whole gruop based on the user id
+
+### Rate Tim presentation [GET]
+This action will list the full day absences for a school or group of schools
+during the week .
+
++ user_id (int)
++ school_id(int)
+
+
++ Response 200 (application/json)
+    
+                {
+            "day0": 0,
+            "day1": 0,
+            "day2": 0,
+            "day3": 0,
+            "day4": 0,
+            "day5": 0,
+            "day6": 0
+        }
+
+
 ## Group Rating
 Resources related to rating system in the API.
 
