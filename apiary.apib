@@ -1309,17 +1309,17 @@ This action allows you to add a student behavior to classera system from your we
 
 + student_id (int, required) - Student's User id.
 + behavior_id (string, required) - Behavior id.
-+ action_id (int) - Action id.
++ action_id (int, required) - Action id.
 + date (date, Format: YYYY-MM-DD, required) - behavior date. 
 + details (string) - behavior details. 
-+ created_id (int) - User id of the recorder of said behavior. 
-+ year_id (int) - Year id.
-+ show_to_guardian (int) - [1 => show, 0=> hide].
-+ show_to_student (int) - [1 => show, 0=> hide].
-+ blocked (int) - [1 => blocked].
-+ blocked_by (int) - blocker user id.
-+ lecture_id (int) - lecture id associated with said behavior.
-+ timeslot_id (int) - timeslot id associated with said behavior.
++ created_id (int, required) - User id of the recorder of said behavior. 
++ year_id (int, required) - Year id.
++ show_to_guardian (int, required) - [1 => show, 0=> hide].
++ show_to_student (int, required) - [1 => show, 0=> hide].
++ blocked (int, required) - [1 => blocked].
++ blocked_by (int, required) - blocker user id.
++ lecture_id (int, required) - lecture id associated with said behavior.
++ timeslot_id (int, required) - timeslot id associated with said behavior.
 
 + Response 200 (application/json)
 
