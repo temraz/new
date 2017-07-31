@@ -2890,12 +2890,14 @@ Resources related to Supervisor actions in system in the API.
 ## Teacher's Statistics [/supervisors/teachers_details?access_token=your_access_token]
 
 + Parameters :
++ show_interaction: 1 (int), either 0 or 1.
 + sup_id: 2 (int, required) Supervisor User id.
 + school_id: 1 (int, required) School id.
 + from: 2017-3-3 (date, Format: YYYY-MM-DD).
 + to: 2017-3-4 (date, Format: YYYY-MM-DD).
         
 ### Teacher's Statistics [GET]
++ show_interaction: (int)
 + sup_id: (int)
 + school_id: (int)
 + from: (date)
