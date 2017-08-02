@@ -1352,6 +1352,39 @@ This action allows you to edit a student behavior to classera system from your w
 ## Group Reports
 Resources related to Reports in the API.
 
+## Compare General Schools Activation Records for Admin/Manager's Schools [/Reports/compare_activation_percentages?access_token=your_access_token]
+An API function for admins and managers to show a comparison between the activation percentages in all current semesters of all the schools that belongs to them.
+
++ user_id : 100 (required, int) - Admin or Manager User id.
+
+### Compare Activation Percentages [GET]
+
++ Parameters :
+    + user_id 
+    
++ response 200 (application/json)
+
+        [
+            {
+                "rank": 1,
+                "school_id": 1,
+                "school_name": "Classera Dummy School 1",
+                "teachers_activation_percent": 66.67,
+                "students_activation_percent": 100,
+                "students_participation_percent": 2.94,
+                "overall_activation_percent": 78.57
+            },
+            {
+                "rank": 2,
+                "school_id": 8,
+                "school_name": "Classera Dummy School 2",
+                "teachers_activation_percent": 0,
+                "students_activation_percent": 0,
+                "students_participation_percent": 0,
+                "overall_activation_percent": 0
+            }
+        ]
+
 ## Supervisor Activation [/Reports/schadmin_tsupv_viewing_report?access_token=your_access_token]
 
 + Parameters :
