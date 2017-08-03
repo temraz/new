@@ -3159,3 +3159,27 @@ This action returns current SMS usage.
 + Response 200 (application/json)
 
         {"total":NUM,"remaining":NUM}
+        
+## Get SMS Report [/ShortMessages/get_sms_report?access_token=your_access_token]
+This action returns SMS report. data depends on role id.
+### Get SMS Report [GET]
++ user_id (int, required) - Manager's, Admin's, Teacher Supervisor's or Adviser's User id.
+
++ response 200 (application/json)
+
+        [
+            {
+                "SmsReportView": {
+                    "id": "NUM",
+                    "message_id": NUM,
+                    "body": "BODY",
+                    "sender": "SENDER_NAME",
+                    "receiver": "RECIEVER_NAME",
+                    "mobile": "MOBILE_NUM",
+                    "number_of_units": "NUM",
+                    "type": "TYPE",
+                    "status": "STATUS",
+                    "created": "DATE"
+                }
+            }
+        ]
