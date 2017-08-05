@@ -2862,6 +2862,32 @@ This action allows to get announcement details .
         {"id": "519","title": "Test Annoucments 2","details": "<p>\r\n\tTest Annoucments 2</p>\r\n","school_id": "111","start": "2016-04-23 14:13:27","end": "2016-04-25 14:13:00","deleted": false,"created": "2016-04-24 14:13:49","modified": "2016-04-24 14:13:49"}
         
 
+## Add new announcement [/Announcement/add_new_announcement?access_token=your_access_token]
+
++ Parameters :
+    + user_id.
+    + school_id.
+    + title.
+    + details.
+    + start_date (date)
+    + end_date (date)
+    + roles array (The target role IDs who can see the announcement.)
+   
+### Add new announcement [POST]
+This action allow admin/manager to add a new announcement .
+
++ user_id (int) -id
++ school_id (int) -id
++ title (text) -title
++ details(text) -details
++ start_date (date) 
++ end_date (date)
++ roles array (The target role IDs who can see the announcement.)
++ Response 200 (application/json)
+    
+            {"success":"1","message":"The announcement has been saved"}         
+
+
 ## Group SupportClaims
 Resources related to Ticketing system in the API.
 
