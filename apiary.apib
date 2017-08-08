@@ -2510,6 +2510,196 @@ This action allows to Add discussion comment.
 + Response 200 (application/json)
   
         {"message": "Success Insert comment"}   
+        
+        
+## Get Teacher discussions  [/posts/teacher_discussion/?access_token=your_access_token&user_id=2]
+
++ Parameters :
+    + user_id: 100 (required, number) - ID of the teacher in form of an integer
+
+### Get Teacher discussions [GET]
+This action allows supervisor to get teacher's discussions .
+
++ user_id (int) - user_id
+
+
++ Response 200 (application/json)
+
+        Array
+        (
+            [0] => Array
+                (
+                    [Posts] => Array
+                        (
+                            [id] => 1
+                            [title] => المشاريع
+                            [post] => المشاريع التي تختص بمادة العلوم 
+                            [user_id] => 6
+                            [created] => 2017-07-10 21:21:36
+                            [comments_count] => 2
+                        )
+        
+                    [user] => Array
+                        (
+                            [id] => 6
+                            [username] => clst0002
+                            [password] => 7c6815995b46a0e525635b43abb6b6509c46ab4d
+                            [notification_settings] => 0
+                            [created] => 2017-07-03 14:05:41
+                            [modified] => 2017-07-25 16:12:23
+                            [role_id] => 4
+                            [school_id] => 1
+                            [main_account_id] => 
+                            [first_name] => Peter
+                            [father_name] => 
+                            [grandfather_name] => 
+                            [family_name] => Jan
+                            [name_ara] => بيتر جان
+                            [guardian_id] => 
+                            [father_mobile] => 
+                            [mother_mobile] => 
+                            [date_of_birth] => 2017-07-03
+                            [place_of_birth] => 
+                            [place_of_birth_ara] => 
+                            [place_of_birth_country] => 
+                            [address] => 
+                            [phone_number] => 
+                            [mobile_number] => 
+                            [email] => 
+                            [verified_email] => 
+                            [email2] => 
+                            [nationality_id] => 1
+                            [dob_hijri] => 
+                            [photo_filename] => 
+                            [theme_id] => 1
+                            [deleted] => 
+                            [status_id] => 1
+                            [lang] => eng
+                            [date_format] => 0
+                            [login_name] => 
+                            [google_token] => 
+                            [google_login_token] => 
+                            [number] => 999125347199
+                            [valid_number] => 1
+                            [passport_number] => 
+                            [old_school_id] => 
+                            [gender] => 0
+                            [block_reports] => 
+                            [mawhiba_id] => 
+                            [pioneer_id] => 
+                            [bio] => 
+                            [facebook_account] => 
+                            [twitter_account] => 
+                            [google_plus_account] => 
+                            [instagram_account] => 
+                            [linkedin_account] => 
+                            [mobile_number2] => 
+                            [educational_administration] => 
+                            [external_school] => 
+                            [tmp_section_id] => 
+                            [level_pioneer_id] => 
+                            [section_pioneer_id] => 
+                            [parent_pioneer_id] => 
+                            [thumb_done] => 0
+                            [android_token] => 
+                            [ios_token] => 
+                            [restrict_login] => 
+                            [mawhiba_program_id] => 
+                            [last_activity_date] => 2017-07-12 09:13:52
+                            [fake_data] => 
+                            [duplicated] => 
+                            [scholarship_number] => 
+                        )
+        
+                )
+        
+            [1] => Array
+                (
+                    [Posts] => Array
+                        (
+                            [id] => 4
+                            [title] => الغرفة العجيبة
+                            [post] => 
+                            [user_id] => 6
+                            [created] => 2017-08-08 15:59:25
+                            [comments_count] => 0
+                        )
+        
+                    [user] => Array
+                        (
+                            [id] => 6
+                            [username] => clst0002
+                            [password] => 7c6815995b46a0e525635b43abb6b6509c46ab4d
+                            [notification_settings] => 0
+                            [created] => 2017-07-03 14:05:41
+                            [modified] => 2017-07-25 16:12:23
+                            [role_id] => 4
+                            [school_id] => 1
+                            [main_account_id] => 
+                            [first_name] => Peter
+                            [father_name] => 
+                            [grandfather_name] => 
+                            [family_name] => Jan
+                            [name_ara] => بيتر جان
+                            [guardian_id] => 
+                            [father_mobile] => 
+                            [mother_mobile] => 
+                            [date_of_birth] => 2017-07-03
+                            [place_of_birth] => 
+                            [place_of_birth_ara] => 
+                            [place_of_birth_country] => 
+                            [address] => 
+                            [phone_number] => 
+                            [mobile_number] => 
+                            [email] => 
+                            [verified_email] => 
+                            [email2] => 
+                            [nationality_id] => 1
+                            [dob_hijri] => 
+                            [photo_filename] => 
+                            [theme_id] => 1
+                            [deleted] => 
+                            [status_id] => 1
+                            [lang] => eng
+                            [date_format] => 0
+                            [login_name] => 
+                            [google_token] => 
+                            [google_login_token] => 
+                            [number] => 999125347199
+                            [valid_number] => 1
+                            [passport_number] => 
+                            [old_school_id] => 
+                            [gender] => 0
+                            [block_reports] => 
+                            [mawhiba_id] => 
+                            [pioneer_id] => 
+                            [bio] => 
+                            [facebook_account] => 
+                            [twitter_account] => 
+                            [google_plus_account] => 
+                            [instagram_account] => 
+                            [linkedin_account] => 
+                            [mobile_number2] => 
+                            [educational_administration] => 
+                            [external_school] => 
+                            [tmp_section_id] => 
+                            [level_pioneer_id] => 
+                            [section_pioneer_id] => 
+                            [parent_pioneer_id] => 
+                            [thumb_done] => 0
+                            [android_token] => 
+                            [ios_token] => 
+                            [restrict_login] => 
+                            [mawhiba_program_id] => 
+                            [last_activity_date] => 2017-07-12 09:13:52
+                            [fake_data] => 
+                            [duplicated] => 
+                            [scholarship_number] => 
+                        )
+        
+                )
+        
+        )
     
     
 ## Group Assignments
