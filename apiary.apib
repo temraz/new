@@ -977,8 +977,302 @@ This action allows you to edit personal information of an user account to classe
 + Response 200 (application/json)
 
         {"success":"1","message":"Personal Information Updated"}
+      
+      
+## Get School Public Profile [/publicprofiles/school?access_token=your_access_token&school_id=1]
+
+### Get School Public Profile [GET]
+
+This action returns School public profile.
+
++ school_id (int) - target school id.
+
         
- 
+
+
+        
++ Response 200 (application/json)
+
+        [
+            {
+                "City": {
+                    "ID": "3174",
+                    "Name_English": "Jeddah",
+                    "Name_Arabic": "جدة",
+                    "Country_Id": "186",
+                    "CountryCode": "SAU",
+                    "District": "Mekka",
+                    "mawhiba_id": "2"
+                },
+                "Country": {
+                    "ID": "186",
+                    "Name_English": "Saudi Arabia",
+                    "Name_Arabic": "المملكة العربية السعودية",
+                    "Code": "SAU",
+                    "Code2": "SA",
+                    "Continent": "Asia",
+                    "Region": "Middle East"
+                }
+            },
+            [
+                {
+                    "Eportfolio": {
+                        "id": "4",
+                        "title": "t22",
+                        "brief": "t22",
+                        "details": "<p>\r\n\tt22</p>\r\n",
+                        "user_id": "31",
+                        "user_role_id": "2",
+                        "reference_type": "Eportfolio",
+                        "reference_sub_type": null,
+                        "reference_id": null,
+                        "type_id": "1",
+                        "course_id": null,
+                        "semester_id": "1",
+                        "school_id": "1",
+                        "level_id": null,
+                        "attachment_id": null,
+                        "date": "2017-07-24 11:58:00",
+                        "status": "1",
+                        "sharing_status": "3",
+                        "eportfolio": true,
+                        "image": null,
+                        "deleted": false,
+                        "modified": "2017-07-24 11:59:18",
+                        "created": "2017-07-24 11:59:18",
+                        "total_views": "0"
+                    },
+                    "Attachment": {
+                        "id": null,
+                        "original_filename": null,
+                        "created": null,
+                        "title": null,
+                        "comments": null,
+                        "deleted": null,
+                        "type": null,
+                        "type_reference_id": null,
+                        "content_type": null,
+                        "publish_date": null,
+                        "sharing_status": null,
+                        "user_id": null,
+                        "school_id": null,
+                        "original_attachment": null,
+                        "duplicate_stss": null,
+                        "id_hash": null,
+                        "semester_id": null,
+                        "file_hash": null,
+                        "missing": null,
+                        "duplicate_xtxs": null,
+                        "blocked": null,
+                        "preparation_id": null,
+                        "course_id": null,
+                        "expiry_date": null,
+                        "allow_download": null,
+                        "publish_date_Ymd": null
+                    },
+                    "EportfolioType": {
+                        "id": "1",
+                        "type_eng": "Homework",
+                        "type_ara": "وظيفة"
+                    },
+                    "Tag": []
+                },
+                {
+                    "Eportfolio": {
+                        "id": "3",
+                        "title": "test EPortfolio",
+                        "brief": "test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio test EPortfolio ",
+                        "details": "<p>\r\n\ttest EPortfoliotest EPortfoliotest EPortfoliotest EPortfoliotest EPortfoliotest EPortfoliotest EPortfolio</p>\r\n",
+                        "user_id": "31",
+                        "user_role_id": "2",
+                        "reference_type": "Eportfolio",
+                        "reference_sub_type": null,
+                        "reference_id": null,
+                        "type_id": "2",
+                        "course_id": null,
+                        "semester_id": "1",
+                        "school_id": "1",
+                        "level_id": null,
+                        "attachment_id": null,
+                        "date": "2017-07-21 09:08:00",
+                        "status": "1",
+                        "sharing_status": "2",
+                        "eportfolio": true,
+                        "image": null,
+                        "deleted": false,
+                        "modified": "2017-07-21 09:10:09",
+                        "created": "2017-07-21 09:10:09",
+                        "total_views": "5"
+                    },
+                    "Attachment": {
+                        "id": null,
+                        "original_filename": null,
+                        "created": null,
+                        "title": null,
+                        "comments": null,
+                        "deleted": null,
+                        "type": null,
+                        "type_reference_id": null,
+                        "content_type": null,
+                        "publish_date": null,
+                        "sharing_status": null,
+                        "user_id": null,
+                        "school_id": null,
+                        "original_attachment": null,
+                        "duplicate_stss": null,
+                        "id_hash": null,
+                        "semester_id": null,
+                        "file_hash": null,
+                        "missing": null,
+                        "duplicate_xtxs": null,
+                        "blocked": null,
+                        "preparation_id": null,
+                        "course_id": null,
+                        "expiry_date": null,
+                        "allow_download": null,
+                        "publish_date_Ymd": null
+                    },
+                    "EportfolioType": {
+                        "id": "2",
+                        "type_eng": "Research",
+                        "type_ara": "بحث"
+                    },
+                    "Tag": []
+                },
+                {
+                    "Eportfolio": {
+                        "id": "2",
+                        "title": "Test new",
+                        "brief": "test test",
+                        "details": "<p>\r\n\tdetails</p>\r\n",
+                        "user_id": "34",
+                        "user_role_id": "6",
+                        "reference_type": "Eportfolio",
+                        "reference_sub_type": null,
+                        "reference_id": null,
+                        "type_id": "1",
+                        "course_id": "7",
+                        "semester_id": "1",
+                        "school_id": "1",
+                        "level_id": null,
+                        "attachment_id": "5",
+                        "date": "2017-07-19 11:24:00",
+                        "status": "1",
+                        "sharing_status": "2",
+                        "eportfolio": true,
+                        "image": "IMG_1261.JPG",
+                        "deleted": false,
+                        "modified": "2017-07-19 11:25:30",
+                        "created": "2017-07-19 11:25:30",
+                        "total_views": "1"
+                    },
+                    "Attachment": {
+                        "id": "5",
+                        "original_filename": "FullSizeRender.jpg",
+                        "created": "2017-07-19 11:24:41",
+                        "title": "FullSizeRender.jpg",
+                        "comments": null,
+                        "deleted": false,
+                        "type": "ePortfolio",
+                        "type_reference_id": null,
+                        "content_type": "image/jpeg",
+                        "publish_date": "2017-07-19 11:24:41",
+                        "sharing_status": "0",
+                        "user_id": "34",
+                        "school_id": "1",
+                        "original_attachment": null,
+                        "duplicate_stss": false,
+                        "id_hash": null,
+                        "semester_id": null,
+                        "file_hash": null,
+                        "missing": false,
+                        "duplicate_xtxs": false,
+                        "blocked": false,
+                        "preparation_id": "2",
+                        "course_id": null,
+                        "expiry_date": null,
+                        "allow_download": "1",
+                        "publish_date_Ymd": "2017-07-19"
+                    },
+                    "EportfolioType": {
+                        "id": "1",
+                        "type_eng": "Homework",
+                        "type_ara": "وظيفة"
+                    },
+                    "Tag": []
+                }
+            ],
+            {
+                "School": {
+                    "id": "1",
+                    "name": "Classera",
+                    "english_name": "Classera",
+                    "prefix": "cls",
+                    "city": "Jeddah",
+                    "country_id": "186",
+                    "city_id": "3174",
+                    "school_group_id": "106",
+                    "management": true,
+                    "number": "0",
+                    "address": "",
+                    "about_school": "",
+                    "phone_number": "",
+                    "fax_number": "",
+                    "email": "",
+                    "website": "",
+                    "logo": "https://s3.amazonaws.com/classera/1/Schlogo/1.png",
+                    "lang": "ara",
+                    "timezone": "Asia/Riyadh",
+                    "date_format": "1",
+                    "type": "0",
+                    "registration_open": "1",
+                    "created": "2017-06-01 00:00:00",
+                    "modified": "2017-07-20 09:39:49",
+                    "pioneer_id": null,
+                    "facebook_account": " ",
+                    "twitter_account": " ",
+                    "google_plus_account": " ",
+                    "instagram_account": " ",
+                    "linkedin_account": " ",
+                    "allow_users_open_publicprofile": "1",
+                    "allow_users_upload_eportfolios": "1",
+                    "allow_users_upload_posts": "1",
+                    "publicprofiles_privecy_level_id": "2",
+                    "allow_students_change_password": "1",
+                    "allow_teachers_change_password": "1",
+                    "allow_others_change_password": "1",
+                    "allow_students_change_login_name": "1",
+                    "allow_teachers_change_login_name": "1",
+                    "allow_others_change_login_name": "1",
+                    "allow_students_change_profile_pic": "1",
+                    "show_american_question_bank": true,
+                    "allow_smart_mate_generation": true,
+                    "allow_teacher_to_link_preparation_standards": true,
+                    "deleted": false,
+                    "id_hash": "1",
+                    "gpa_base": "4.00",
+                    "allow_students_change_phone_number": true,
+                    "allow_parents_change_phone_number": true,
+                    "sms_sender_name": "",
+                    "allow_tsupv_approve_preparation": false,
+                    "allow_discussion_board": true,
+                    "allow_students_create_discussions": true,
+                    "absences_notification_limit": "0",
+                    "lectures_absences_notification_limit": "0",
+                    "absences_notification_excused": false,
+                    "lectures_absences_notification_excused": false,
+                    "absences_notification": true,
+                    "lectures_absences_notification": true,
+                    "allow_tsupv_show_messages_between_teachers_and_students": false,
+                    "is_mawhiba_olympics_exam_school": "0",
+                    "mawhiba_portal_exam_id": null,
+                    "allow_managers_add_announcements": false,
+                    "allow_reset_password_via_sms": true
+                }
+            }
+        ]
+
+
 ## Group Absences
 
 Resources related to users absences in the API.
