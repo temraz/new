@@ -1643,6 +1643,55 @@ This action allows you to edit a student behavior to classera system from your w
 
         {"success":"1","message":"Behavior Updated"}
         
+## Behavior Summary [/Behaviors/behaviors_summary?access_token=your_access_token]
+
++ Parameters :
+    + user_id:100 (string, required) - user id of adviser, school admin or manager.
+    + semester_id:1 (string) - the default is the current semeter
+    + from:2017-1-1 (date, YYYY-MM-DD) - a starting date for query (if used 'to' is required)
+    + to:2017-2-1 (date, YYYY-MM-DD) - an ending date for query (if used 'from' is required)
+
+### Behavior Summary [GET]
+
+This action allows you to get report of behavior for your students from classera to your website.
+
++ user_id (string, required) 
++ semester_id (string) 
++ from (date, YYYY-MM-DD) 
++ to (date, YYYY-MM-DD)
+        
++ response 200 (application/json)
+
+            {
+        "StudentBehaviorsView": {
+            "id": "107",
+            "student_id": "6",
+            "full_name": "mohammed jamal aziz janbi",
+            "name_ara": "محمد جمال عبدالعزيز جنبي",
+            "level_id": "1",
+            "level_title": "Grade 7",
+            "section_id": "1",
+            "section_title": "A",
+            "behavior_id": "1",
+            "behavior_title": "اجتهاد الطالب في النشاطات المدرسية - student participated always in school activities  ",
+            "behavior_points": "1",
+            "action_id": "1",
+            "action_title": "الإجراء الأول First procedure ",
+            "behavior_type": "1",
+            "behavior_group_title": "السلوكيات الايجيابية - Positive Behaviors ",
+            "show_to_guardian": false,
+            "date": "2017-08-08",
+            "details": "You are awesome HERO",
+            "attachment_id": null,
+            "created_by": "6",
+            "created_by_role": "Teacher",
+            "created_by_full_name": "Peter   Jan",
+            "school_id": "1",
+            "semester_id": "1",
+            "year_id": "1"
+                                }
+            }
+        
 ## Group Reports
 Resources related to Reports in the API.
 
