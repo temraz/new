@@ -1699,8 +1699,8 @@ Resources related to Reports in the API.
 An API function for admins and managers to show a comparison between the activation percentages in all current semesters of all the schools that belongs to them.
 
 + user_id : 100 (required, int) - Admin or Manager User id.
-+ start : 2017-8-1 (required, date) - start date
-+ end : 2017-8-2 (required, date) - end date
++ start : 2017-8-1 (date) - start date, default: one week from current date
++ end : 2017-8-2 (date) - end date, default: current date
 
 ### Compare Activation Percentages [GET]
 
@@ -3742,3 +3742,6 @@ This action returns SMS report. data depends on role id.
                 }
             }
         ]
+        
+# Group ShortMessages
+##
