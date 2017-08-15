@@ -1699,8 +1699,8 @@ Resources related to Reports in the API.
 An API function for admins and managers to show a comparison between the activation percentages in all current semesters of all the schools that belongs to them.
 
 + user_id : 100 (required, int) - Admin or Manager User id.
-+ start : 2017-8-1 (date) - start date, default: one week from current date
-+ end : 2017-8-2 (date) - end date, default: current date
++ start : 2017-8-1 (date) - start date, default: one week from current date.
++ end : 2017-8-2 (date) - end date, default: current date.
 
 ### Compare Activation Percentages [GET]
 
@@ -3744,4 +3744,40 @@ This action returns SMS report. data depends on role id.
         ]
         
 # Group ShortMessages
-##
+## Send SMS to IDs [/Shortmessages/send_sms_to_ids?access_token=your_access_token]
+This action allows a valid and authorized user to send SMS messages based on target user ids.
+
+### Send SMS to IDs [POST]
+
++ sender_user_id (int, required) - Sender User id.
++ recipients_user_ids (int, required) - target user ids, seperated by ','.
++ message_body (String, required) - Text to send.
++ type (int) - type of SMS message, default is 0.
+
++ Response 200 (application/json)
+    
+        {'STATUS': 'Incomplete',
+        'SMS':{
+            'id': 'Sent SMS',
+            'id': 'Invalid Number',
+            'id': 'Invalid User'
+            }
+        }
+## Send SMS to Numbers [/Shortmessages/send_sms_to_numbers?access_token=your_access_token]
+This action allows a user to send SMS messages based on target user numbers.
+
+### Send SMS to Numbers [POST]
+
++ sender_user_id (int, required) - Sender User id.
++ recipients_user_numbers (int, required) - target numbers, seperated by ','.
++ message_body (String, required) - Text to send.
++ type (int) - type of SMS message, default is 0.
+
++ Response 200 (application/json)
+    
+        {'STATUS': 'Incomplete',
+        'SMS':{
+            'NUMBER': 'Sent SMS',
+            'NUMBER': 'Invalid Number'
+            }
+        }
