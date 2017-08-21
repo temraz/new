@@ -2707,6 +2707,28 @@ This action allows to get  assessments detail.
 + Response 200 (application/json)
         
         {"assessment_grade": [{"AssessmentGrade": {"id": "61093","assessment_id": "1833","item_id": "8556","indicator_id": "39582","student_id": "30743","level": "( 1 / 5 ) 35%","comment": "","assessment_type_id": "3","indicator_title": "جودة المحتوى المقدم واعتماده على مراجع موثوقة","assessment_item_title": "Reading Skills"}},{"AssessmentGrade": {"id": "61094","assessment_id": "1833","item_id": "8556","indicator_id": "39585","student_id": "30743","level": "( 1 / 5 ) 35%","comment": "","assessment_type_id": "3","indicator_title": "الإستعانة بصور ونماذج توضيحية","assessment_item_title": "Reading Skills"}}  ],"mark": "100","student_mark": 100,"percentage": 100}
+        
+
+## Admin Publish Survey [/assessments/schadmin_publish_survey?access_token=your_access_token]
+This action publishes a target assessment.
+### Publish Survey [POST]
+
++ user_id (int, required) - Admin User id.
++ evaluatees_type (int, required) - 0 (general), 1 (Course), 2 (School), 3 (User)
++ evaluators_roles (int, required) - target evaluators' roles. e.g. 2,3,4,5,6,7,8,14,60
++ assessment_id (int, required) - target assessment id.
++ show_tsupv_his_teachers (boolean) - Teacher supervisor can view his teachers.
++ evaluators_users (int) - User ids of evaluators. e.g. 1,2,3,4,5
++ evaluator_school (int) - School ids of evaluators' schools. e.g. 1,2,3,4,5
++ evaluate_schools (int, conditionally required) - School ids under evaluation, needed when evaluatees_type = 2.
++ evaluate_lectures (int, conditionally required) - Lecture ids under evaluation, needed when evaluatees_type = 1.
++ evaluatees_school (int, conditionally required) - School ids of evaluatees' users under evaluation, needed when evaluatees_type = 3.
++ evaluatees_roles (int, conditionally required) - role ids of evaluatees' users under evaluation, needed when evaluatees_type = 3.
++ evaluatees_users (int, conditionally required) - user ids of evaluatees' users under evaluation, needed when evaluatees_type = 3.
+
++ Response 200 (application/json)
+
+        {"success":"1","success message":"The survey has been published"}
   
 
 
