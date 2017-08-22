@@ -2729,6 +2729,88 @@ This action publishes a target assessment.
 + Response 200 (application/json)
 
         {"success":"1","success message":"The survey has been published"}
+        
+        
+## Group Indicetors
+Resources related to assessment indicators in the API.
+
+## Add Indicators  [/assessmentItemIndicators/add?access_token=your_access_token]
+
+
+### Add Indicators [POST]
+This action allows to add indicator.
+
++ assessment_item_id (int) - assessment_item_id
++ title (string) - title
++ type (string) - type (survey) 
+
+
++ Response 200 (application/json)
+
+        {
+            "success": "1",
+            "success_message": "The item indicator has been saved"
+        }
+        
+## Edit Indicators  [/assessmentItemIndicators/edit?access_token=your_access_token]
+
+
+### Edit Indicators [POST]
+This action allows to edit indicator.
+
++ id (int) - id
++ title (string) - title
+
+
++ Response 200 (application/json)
+
+        {
+            "success": "1",
+            "success_message": "Your indicator has been edited"
+        } 
+
+## View Indicators  [/assessmentItemIndicators/View?access_token=your_access_token&id=1]
+
+
+### View Indicators [GET]
+This action allows to view indicator.
+
++ id (int) - id
+
+
+
++ Response 200 (application/json)
+
+        {
+            "assessmentItemIndicator": {
+                "id": "11",
+                "assessment_item_id": "1",
+                "title": "",
+                "parent_id": null,
+                "created": "2017-08-20 14:28:40",
+                "modified": "2017-08-20 14:28:40",
+                "deleted": "1"
+            }
+        } 
+        
+        
+## Delete Indicators  [/assessmentItemIndicators/delete?&access_token=your_access_token&id=1]
+
+
+### Delete Indicators [GET]
+This action allows to delete indicator.
+
++ id (int) - id
+
+
++ Response 200 (application/json)
+
+        {
+            "success": "1",
+            "message": "item indicator deleted"
+        }
+        
+
   
 
 
