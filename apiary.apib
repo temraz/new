@@ -3138,6 +3138,42 @@ this action allows to view entered evaluations.
                 "has_evaluation": 1
             }
         ]
+        
+## List assigned surveys  [/Assessments/list_surveys?access_token=your_access_token]
+
++ Parameters :
++ user_id: (required, number) - User id.
+    
+### List assinged surveys [GET]
+this action lists surveys assigned to user.
+
++ user_id (int)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Assessment": {
+                    "id": "1",
+                    "title": "test edit api",
+                    "created": "2017-08-15 12:57:27"
+                }
+            },
+            {
+                "Assessment": {
+                    "id": "24",
+                    "title": "API Test 8",
+                    "created": "2017-08-20 10:39:46"
+                }
+            },
+            {
+                "Assessment": {
+                    "id": "28",
+                    "title": "API Test 9",
+                    "created": "2017-08-21 10:05:55"
+                }
+            }
+        ]
     
     
         
