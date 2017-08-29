@@ -3074,6 +3074,71 @@ this action allows to view survey detailed report.
             },
             "evaluators_count": 1
         }
+        
+## Entered Evaluations  [/Assessments/users_who_evaluate?access_token=your_access_token]
+
++ Parameters :
++ user_id: (required, number) - User id of the function user.
++ assessment_id: (required, number) - Assessment id of the assessment under comparison.
++ reference_id: (required, number) - assessment evaluatee reference id.
++ reference_table: (required, String) - 'users', 'lectures' or 'schools'.
+    
+### Entered Evaluations [GET]
+this action allows to view entered evaluations.
+
++ user_id (int)
++ assessment_id (int)
++ reference_id (int)
++ reference_table (string)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "User": {
+                    "id": "6",
+                    "first_name": "Peter",
+                    "father_name": "",
+                    "grandfather_name": "",
+                    "family_name": "Jan",
+                    "school_id": "1"
+                },
+                "School": {
+                    "name": "classera2",
+                    "english_name": "Classera"
+                }
+            },
+            {
+                "User": {
+                    "id": "31",
+                    "first_name": "Classera",
+                    "father_name": "",
+                    "grandfather_name": "",
+                    "family_name": "Trainee",
+                    "school_id": "1"
+                },
+                "School": {
+                    "name": "classera2",
+                    "english_name": "Classera"
+                }
+            },
+            {
+                "User": {
+                    "id": "41",
+                    "first_name": "Abody",
+                    "father_name": "",
+                    "grandfather_name": "",
+                    "family_name": "Kashgary",
+                    "school_id": "1"
+                },
+                "School": {
+                    "name": "classera2",
+                    "english_name": "Classera"
+                },
+                "has_evaluation": 1
+            }
+        ]
+    
     
         
 ## Group Indicetors
