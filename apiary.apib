@@ -2966,7 +2966,115 @@ this action allows to compare a target evaluatee with other evaluatees under the
             ],
             "assessment_percentage": 133.34,
             "evaluators_count": 1
-        }    
+        }   
+        
+## Evaluation detailed report  [/Assessments/schadmin_survey_detailed_result_report?access_token=your_access_token]
+
++ Parameters :
+    + user_id: 100 (required, number) - User id of the function user.
+    + assessment_id:  (required, number) - Assessment id of the assessment under comparison.
+    + reference_id: (required, number) - assessment evaluatee reference id.
+    + reference_table: (required, String) - 'users', 'lectures' or 'schools'.
+        
+### Evaluation detailed report [GET]
+this action allows to view survey detailed report.
+
++ user_id (int)
++ assessment_id (int)
++ reference_id (int)
++ reference_table (string)
+
++ Response 200 (application/json)
+        
+        {
+            "assessment_items": [
+                {
+                    "AssessmentItem": {
+                        "id": "23",
+                        "assessment_id": "28",
+                        "title": "t9_item",
+                        "parent_id": null,
+                        "weight": "100",
+                        "created": "2017-08-23 09:10:35",
+                        "modified": "2017-08-23 09:10:35",
+                        "deleted": "0",
+                        "percentage": 133.34,
+                        "indicators": [
+                            {
+                                "AssessmentItemIndicator": {
+                                    "id": "35",
+                                    "assessment_item_id": "23",
+                                    "title": "t9_item1_indicator",
+                                    "parent_id": null,
+                                    "created": "2017-08-23 09:10:52",
+                                    "modified": "2017-08-23 09:10:52",
+                                    "deleted": "0",
+                                    "percentage": 0
+                                }
+                            },
+                            {
+                                "AssessmentItemIndicator": {
+                                    "id": "36",
+                                    "assessment_item_id": "23",
+                                    "title": "t9_item1_indicator2",
+                                    "parent_id": null,
+                                    "created": "2017-08-23 09:13:10",
+                                    "modified": "2017-08-23 09:13:10",
+                                    "deleted": "0",
+                                    "percentage": 133.34
+                                }
+                            },
+                            {
+                                "AssessmentItemIndicator": {
+                                    "id": "37",
+                                    "assessment_item_id": "23",
+                                    "title": "t9_item1_indicator3",
+                                    "parent_id": null,
+                                    "created": "2017-08-23 09:13:22",
+                                    "modified": "2017-08-23 09:13:22",
+                                    "deleted": "0",
+                                    "percentage": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "assessment_percentage": 133.34,
+            "assessment": {
+                "Assessment": {
+                    "id": "28",
+                    "is_survey": "1",
+                    "is_template": "0",
+                    "parent_id": null,
+                    "title": "API Test 9",
+                    "course_template_id": null,
+                    "school_id": "1",
+                    "created_by": "31",
+                    "description": "Made by API function",
+                    "notes": null,
+                    "assessment_type_id": "1",
+                    "assessment_task_id": null,
+                    "levels": "3",
+                    "purpose": null,
+                    "mark": "100",
+                    "grade_category_id": null,
+                    "semester_id": "1",
+                    "course_id": null,
+                    "allow_multiple_evaluations": false,
+                    "allow_delete_evaluation": true,
+                    "allow_evaluatees_show_result": true,
+                    "deleted": "0",
+                    "not_able_to_delete": false,
+                    "show_indicators_in_teacher_report": true,
+                    "close_evaluation": null,
+                    "modified": "2017-08-21 10:05:55",
+                    "created": "2017-08-21 10:05:55"
+                }
+            },
+            "evaluators_count": 1
+        }
+    
         
 ## Group Indicetors
 Resources related to assessment indicators in the API.
