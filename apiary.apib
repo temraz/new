@@ -3303,6 +3303,25 @@ this action lists surveys assigned to user.
                 }
             ]
         }
+        
+## Teacher add assessment  [/Assessments/teacher_add?access_token=your_access_token]
+
++ Parameters :
++ user_id: (required, number) - User id.
++ assessment_id: (required, int) - assessment id.
++ course_id: (required, int) - Course id.
+    
+### Teacher ad assessment [POST]
+this action allows a teacher to add an assessment to a course.
+
++ user_id (int)
++ assessnment_id (int)
+
++ Response 200 (application/json)
+
+        { "success" : "1", "success message" : "The assessment has been saved" }
+        
+
     
         
 ## Group Indicetors
