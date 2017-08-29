@@ -2730,6 +2730,22 @@ This action publishes a target assessment.
 
         {"success":"1","success message":"The survey has been published"}
         
+## Evaluate Assessment  [/Assessments/survey_evaluatees?access_token=your_access_token]
+
++ Parameters :
+    + user_id: 100 (required, number) - ID of the user in form of an integer
+    + form_data:  [{"type": "rubric", "result": {"item_id": "lvl-indicator_id"},"comment": {"item_id": "COMMENT"},"Assessment": {"refrence": "publishing_type","refrence_id": "evaluation_target","assessment_id": "assessment_id"}}] (required, String in JSON format) - Evaluation form data.
+
+### Evaluate Assessment [POST]
+This action allows to get  assessments detail.
+
++ user_id (int) - user_id
++ form_data (String) - form_data
+
++ Response 200 (application/json)
+        
+        {"success" : "1", "success message" : "Your evaluation has been saved" }
+        
         
 ## Group Indicetors
 Resources related to assessment indicators in the API.
