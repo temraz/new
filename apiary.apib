@@ -3174,7 +3174,135 @@ this action lists surveys assigned to user.
                 }
             }
         ]
+        
+## Evaluator view Evaluations  [/Assessments/list_assessment_evals?access_token=your_access_token]
+
++ Parameters :
++ user_id: (required, number) - User id.
++ assessment_id: (required, int) - assessment id.
     
+### Evaluator view Evaluations [GET]
+this action lists surveys assigned to user.
+
++ user_id (int)
++ assessnment_id (int)
+
++ Response 200 (application/json)
+
+        {
+            "assessment": {
+                "Assessment": {
+                    "id": "79",
+                    "is_survey": "1",
+                    "is_template": "0",
+                    "parent_id": null,
+                    "title": "API Test 11",
+                    "course_template_id": null,
+                    "school_id": "1",
+                    "created_by": "31",
+                    "description": "Made by API function...to test API publishing and evaluating",
+                    "notes": null,
+                    "assessment_type_id": "2",
+                    "assessment_task_id": null,
+                    "levels": "3",
+                    "purpose": null,
+                    "mark": "100",
+                    "grade_category_id": null,
+                    "semester_id": "1",
+                    "course_id": null,
+                    "allow_multiple_evaluations": false,
+                    "allow_delete_evaluation": true,
+                    "allow_evaluatees_show_result": true,
+                    "deleted": "0",
+                    "not_able_to_delete": false,
+                    "show_indicators_in_teacher_report": true,
+                    "close_evaluation": null,
+                    "modified": "2017-08-23 09:33:48",
+                    "created": "2017-08-23 09:33:48"
+                }
+            },
+            "evaluatee_users": [
+                {
+                    "User": {
+                        "id": "6",
+                        "name": "Peter   Jan",
+                        "school": "classera2",
+                        "evaluated": 0
+                    }
+                }
+            ],
+            "assessments": {
+                "Assessment": {
+                    "id": "79",
+                    "is_survey": "1",
+                    "is_template": "0",
+                    "parent_id": null,
+                    "title": "API Test 11",
+                    "course_template_id": null,
+                    "school_id": "1",
+                    "created_by": "31",
+                    "description": "Made by API function...to test API publishing and evaluating",
+                    "notes": null,
+                    "assessment_type_id": "2",
+                    "assessment_task_id": null,
+                    "levels": "3",
+                    "purpose": null,
+                    "mark": "100",
+                    "grade_category_id": null,
+                    "semester_id": "1",
+                    "course_id": null,
+                    "allow_multiple_evaluations": false,
+                    "allow_delete_evaluation": true,
+                    "allow_evaluatees_show_result": true,
+                    "deleted": "0",
+                    "not_able_to_delete": false,
+                    "show_indicators_in_teacher_report": true,
+                    "close_evaluation": null,
+                    "modified": "2017-08-23 09:33:48",
+                    "created": "2017-08-23 09:33:48"
+                }
+            },
+            "assessmentType": {
+                "AssessmentType": {
+                    "id": "2",
+                    "title": "Rating Scale",
+                    "title_ara": "سلم تقديرات",
+                    "school_id": null,
+                    "created": "2015-02-14 17:28:34",
+                    "modified": "2015-02-14 17:28:34",
+                    "deleted": "0"
+                }
+            },
+            "data": [
+                {
+                    "item": {
+                        "AssessmentItem": {
+                            "id": "24",
+                            "assessment_id": "79",
+                            "title": "ttgl",
+                            "parent_id": null,
+                            "weight": "100",
+                            "created": "2017-08-23 09:47:38",
+                            "modified": "2017-08-23 09:47:38",
+                            "deleted": "0"
+                        },
+                        "indicators": [
+                            {
+                                "AssessmentItemIndicator": {
+                                    "id": "38",
+                                    "assessment_item_id": "24",
+                                    "title": "ttgl_1",
+                                    "parent_id": null,
+                                    "created": "2017-08-23 09:51:19",
+                                    "modified": "2017-08-23 09:51:19",
+                                    "deleted": "0"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
     
         
 ## Group Indicetors
