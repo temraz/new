@@ -132,6 +132,38 @@ Notice-3: student_government_id is required only when role id = 3 (Parent)
 
         {"message":"user has been saved"}
 
+## Update User Contacts [/users/update_user_contacts?access_token=your_access_token]
+
+### Update User Contacts [POST]
+
+This action allows you to update student and guardian data.
+
++ classer_id (string, required) - Classera ID 
++ student_number (string, required) - national ID 
++ student_mobile (string) - student mobile number 
++ passport_number (string) - passport_number 
++ nationality_id (int) - nationality_id
++ date_of_birth (date) - date YYYY-MM-DD
++ place_of_birth_english (int) - place_of_birth_english 
++ place_of_birth_ara (int) - place_of_birth_ara 
++ previous_school_english_name (string) - previous_school_english_name 
++ previous_school_arabic_name (string) - previous_school_arabic_name 
++ admission_date (date) - admission_date YYYY-MM-DD 
++ status_id (int) - [1 => active, 2 => withdrawn]
+
+If you want to update guardian data
+
++ parent1_mobile (number) - parent1_mobile 
++ parent1_email (number) -  parent1_email
++ parent2_mobile (number) -  parent2_mobile
++ parent2_email (number) -  parent2_email
+
+
++ Response 200 (application/json)
+
+        {"status":{"success":1,"message":"Data has been updated"}}
+        
+        
 ## Edit Users [/users/edit_user?access_token=your_access_token]
 
 ### Edit User [POST]
@@ -4478,3 +4510,164 @@ This action allows a user to send SMS messages based on target user numbers.
             'NUMBER': 'Invalid Number'
             }
         }
+        
+
+## Group Chats
+Resources related to user Chats in the API.
+
+## Add school admin permission  [/Chats/schadmin_add_permission?&school_id=111&source_role_id=2&target_role_id=5&access_token=your_access_token]
+
++ Parameters :
+    + school_id:   (required, number) - ID of the user in form of an integer
+    + source_role_id:    (required, number) role_id
+    + target_role_id:   (required, number) role_id
+   
+### Schadmin Add Permission [POST]
+This action allows to school admin to add permission denied on chat between the roles .
+
++ school_id (int) - school_id
++ source_role_id (int) - source_role_id
++ target_role_id (int) - target_role_id
+
++ Response 200 (application/json)
+    
+        {"status" : "ok"}
+        
+
+## Delete school admin permission  [/Chats/schadmin_delete_permission?&school_id=111&source_role_id=2&target_role_id=5&access_token=your_access_token]
+
++ Parameters :
+    + school_id:   (required, number) - ID of the user in form of an integer
+    + source_role_id:    (required, number) - role_id
+    + target_role_id:   (required, number) - role_id
+   
+### Schadmin Delete Permission [POST]
+This action allows to school admin to remove chat permission denied between the roles .
+
++ school_id (int) - school_id
++ source_role_id (int) - source_role_id
++ target_role_id (int) - target_role_id
+
++ Response 200 (application/json)
+    
+        [{"status" : "ok"}]
+        
+    
+
+## Get school admin permission  [/Chats/schadmin_permission?&school_id=111&role_id=2&access_token=your_access_token]
+
++ Parameters :
+    + school_id:  (required, number) - ID of the user in form of an integer
+    + role_id:   (required, number) - role_id
+    
+   
+### Schadmin Permission [GET]
+This action allows to school admin to get all chat permission denied between the roles .
+
++ school_id (int) - school_id
++ role_id (int) - role_id
+
++ Response 200 (application/json)
+
+        [{"ChatPermissionsDenied": {"id":1,"creator_id": 78785 ,"school_id": 111 ,"source_role_id": 1 ,"target_role_id": 2 ,"created": 78789}}]
+
+
+
+## Get Block Users  [/ChatsUsers/get_block_users?&user_id=111&access_token=your_access_token]
+
++ Parameters :
+    + user_id:  (required, number) - ID of the user in form of an integer
+  
+   
+### get block users [GET]
+This action allows to get all users you are blocked him.
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        [{"User": {"id":111,"first_name":"Tom","family_name": "soso","role_id":2}}]
+
+
+
+
+## Block Users   [/ChatsUsers/block_users?&user_block_id=111&access_token=your_access_token]
+
++ Parameters :
+    + user_block_id:  (required, number) - ID of the user in form of an integer
+  
+   
+### block users [POST]
+This action allows to block other users .
+
++ user_block_id (int) - user_block_id
+
++ Response 200 (application/json)
+
+        [{"status": "This user is blocked"}]
+
+
+
+## Unblock Users   [/ChatsUsers/unblock_users?&user_block_id=111&access_token=your_access_token]
+
++ Parameters :
+    + user_block_id:  (required, number) - ID of the user in form of an integer
+  
+   
+### unblock users [POST]
+This action allows to unblock other users .
+
++ user_block_id (int) - user_block_id
+
++ Response 200 (application/json)
+
+        [{"status": "OK"}]
+        
+        
+
+## Get Chat User List [/ChatsUsers/chat_user_list?&user_id=111&access_token=your_access_token]
+
++ Parameters :
+    + user_id:  (required, number) - ID of the user in form of an integer
+  
+   
+### chat user list [GET]
+This action allows to get user list .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        [{"User":{"id":"750005","first_name":"Admission","family_name":"Officer","role_id":"14","school_id":"111"}}] 
+
+
+## Get Chat User Section [/ChatsUsers/get_chat_user_section?&user_id=111&access_token=your_access_token]
+
++ Parameters :
+    + user_id:  (required, number) - ID of the user in form of an integer
+  
+   
+### chat user section [GET]
+This action allows to get onle student user list by section .
+
++ user_id (int) - user_id
+
++ Response 200 (application/json)
+
+        [{"User":{"id":"750005","first_name":"Admission","family_name":"Officer","role_id":"14","school_id":"111"}}] 
+
+
+## Check Blocked [/ChatsUsers/check_blocked?&block_user_id=111&access_token=your_access_token]
+
++ Parameters :
+    + block_user_id:  (required, number) - ID of the user in form of an integer
+  
+   
+###  check blocked [GET]
+This action allows to get if other user blocked me .
+
++ block_user_id (int) - block_user_id
+
++ Response 200 (application/json)
+
+        [{"status": "OK"}]
