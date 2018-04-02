@@ -20,6 +20,107 @@ The REST APIs provides programmatic access to read and write classera data.read 
 
 Resources related to users in the API.
 
+## Refresh Token [/Users/refresh_token?access_token=your_access_token]
+### Refresh Token [POST]
+This action will regenrate the expired auth_token.
++ refresh_token (string, required) - Expired Auth token
+
++ Request (application/json)
+
+        {
+            "auth_token": "token"
+        }
++ Response 200 (application/json)
+
+        {"auth_token": "z1xF1opYL2wtEoFubhx+fAq2up7JmEvLywnu5VFZ3EaOqpUlfaBtsnMj4jTEfhug8g4hhB+y2i59fCoS5HPibm+iT2fQGBNpRqfN66oWji+TULeMRD4BVa/uqzaOF3EVMDN+ygDBaUbauP3zcZjp0BRPByScbfWYQzEfwUQdlcM/GelpMMEf44Wfje9rBJhtyL3bwg/l57XYXyhxZJFIgezJNjdySWVcqUU3O5tgJa7/FCQWla1gpCJOHlhHnRWy"}
+## Generate Authtoken [/Users/generate_authtoken?access_token=your_access_token]
+### Generate Authtoken [Post]
+This action will generate an authtoken upon the provided access_token.
++ access_token (string, required) - Access token 
+
++ Request (application/json)
+
+        {
+            "access_token": "token",
+        }
++ Response 200 (application/json)
+
+        {"auth_token": "z1xF1opYL2wtEoFubhx+fAq2up7JmEvLywnu5VFZ3EaOqpUlfaBtsnMj4jTEfhug8g4hhB+y2i59fCoS5HPibm+iT2fQGBNpRqfN66oWji+TULeMRD4BVa/uqzaOF3EVMDN+ygDBaUbauP3zcZjp0BRPByScbfWYQzEfwUQdlcM/GelpMMEf44Wfje9rBJhtyL3bwg/l57XYXyhxZJFIgezJNjdySWVcqUU3O5tgJa7/FCQWla1gpCJOHlhHnRWy"}
+
+
+## Parent Call Child [/Users/parent_call_child?access_token=your_access_token]
+### Parent Call Child [POST]
+This action will save a record of child call.
+
++ student_user_id (int, required) - Student user ID
++ school_id (int, required) - School_id user ID of the student
+
++ Request (application/json)
+
+        {
+            "gurdian_user_id": "id",
+            "studnet_user_id": "id",
+            "school_id": "id",
+        }
++ Response 200 (application/json)
+
+        {"status": "OK"}
+ 
+## Get Calls Requests [/Users/get_calls_requests?access_token=your_access_token]        
+### Get Calls Requests [GET]        
+This action allows to school admin view all calls request related to his school.              
++ school_id (int, required) - School ID     
++ cursor (int, optional) - Cursor       
++ limit (int, optional)  - Limit        
++ Response 200 (application/json)
+
+        {
+            "StudentsRequest": {
+                "id": "72",
+                "student_user_id": "78787",
+                "gurdian_user_id": "78787",
+                "school_id": "111",
+                "created": "2017-10-08 14:10:26",
+                "modified": "2017-10-08 14:10:26"
+            },
+            "Users": {
+                "id": "78787",
+                "first_name": "Sarah",
+                "family_name": "James",
+                "school_id": "111",
+                "avatar": "https://s3.amazonaws.com/classera/111/profilepic/thumb_200/78787.jpg?response-content-disposition=attachment%3Bfilename%3D%22sarah.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1508159843&Signature=fHEGEnBGmfS1CfQixO9SUiKIeyw%3D"
+            }
+        }
+    
+
+
+## Teacher Get Calls Requests [/Users/teacher_get_calls_requests?access_token=your_access_token]        
+### Teacher Get Calls Requests [GET]        
+This action allows to school admin view all calls request related to his school.              
++ section_id (int, required) - School ID     
++ cursor (int, optional) - Cursor       
++ limit (int, optional)  - Limit        
++ Response 200 (application/json)
+
+        {
+            "StudentsRequest": {
+                "id": "72",
+                "student_user_id": "78787",
+                "gurdian_user_id": "78787",
+                "school_id": "111",
+                "created": "2017-10-08 14:10:26",
+                "modified": "2017-10-08 14:10:26"
+            },
+            "Users": {
+                "id": "78787",
+                "first_name": "Sarah",
+                "family_name": "James",
+                "school_id": "111",
+                "avatar": "https://s3.amazonaws.com/classera/111/profilepic/thumb_200/78787.jpg?response-content-disposition=attachment%3Bfilename%3D%22sarah.jpg%22&AWSAccessKeyId=AKIAINQWGSCNCBOYK2PQ&Expires=1508159843&Signature=fHEGEnBGmfS1CfQixO9SUiKIeyw%3D"
+            }
+        }
+    
+  
 ## Users Login [/users/users_login?access_token=your_access_token]
 
 ### Login [POST]
@@ -104,6 +205,10 @@ Notice-2: student_pioneer_id is required only when role id = 3 (Parent)
 
 Notice-3: student_government_id is required only when role id = 3 (Parent)
 
+Notice-3: guardian_pioneer_id is required only when role id = 6 (required only if role is student (6) and you want to link student with existing parent account) (Parent)
+
+Notice-4: guardian_government_id is required only when role id = 6 (required only if role is student (6) and you want to link student with existing parent account) (Parent)
+
 
 + pioneer_id (string, integr required) - pioneer_id
 + government_id (string, integr required) - government_id
@@ -127,6 +232,8 @@ Notice-3: student_government_id is required only when role id = 3 (Parent)
 
 + student_pioneer_id (string, integr require only if role_id = 3 parent) - student_pioneer_id
 + student_government_id (integr require only if role_id = 3 parent) - student_government_id
++ guardian_pioneer_id (integr required only when role id = 6 (required only if role is student (6) and you want to link student with parent account )) - guardian_pioneer_id
++ guardian_government_id (integr required only when role id = 6 (required only if role is student (6) and you want to link student with existing parent account)) - guardian_government_id
 
 + Response 200 (application/json)
 
@@ -823,8 +930,6 @@ This action will allow the user to edit a skill
         {"success":"1","message":"Skill has been edited"}
 
 
-
-
         
 ## Group Public Profile
 
@@ -1378,6 +1483,112 @@ This action allows you to get courses absences for student in specific semester.
 + Response 200 (application/json)
 
         [{"StudentCoursesView":{"id":"28","date":"2014-10-16","excused":false,"comments":null}},{"StudentAbsencesView":{"id":"85","date":"2014-12-03","excused":true,"comments":null}}]
+
+## Get Total Absences  [/Users/get_dashboard_total_absences?school_id=school_id&user_id=user_id&access_token=your_access_token]
+
++ Parameters :
+    + user_id: user_id(required, intger) 
+    + school_id: school_id(optional, email) if none has been filled then the function will search for the whole gruop based on the user id
+
+### Get Total Absences [GET]
+This action will list the full day absences for a school or group of schools
+during the week .
+
++ user_id (int)
++ school_id(int)
+
+
++ Response 200 (application/json)
+    
+        {
+            "day0": 0,
+            "day1": 0,
+            "day2": 0,
+            "day3": 0,
+            "day4": 0,
+            "day5": 0,
+            "day6": 0
+        }
+
+## Group Attendance
+Resources related to teacher take attendance for students.
+
+## Get Lectuer Timslote [/absences/get_lectuer_timslote?lecture_id=100&access_token=your_access_token]
+
++ Parameters : 
+    + lecture_id: 100 (required, number) - lecture ID  in form of an integer
+   
+
+### Get Lectuer Timslote [GET]
+
+This action allows you to get lectuer timslote for lectuer.
+
++ lecture_id (int) - lecture_id
+
+
++ Response 200 (application/json)
+    
+        [{"TeacherLecturetimeslotsView": {"timeslot_id": "10143","time_from": "08:00:00","time_to": "09:00:00","timeslot_title": "second ","course_title": "Math-10144"}}]  
+  
+        
+## Return Timeslot To Add [/absences/return_timeslot_to_add?&access_token=your_access_token]
+
+### Return Timeslot To Add [GET]
+
+This action allows you to get timeslot in school to added to lectuer .
+
++ Response 200 (application/json)
+
+        [{"Timeslot": {"id": "10143", "title": "second ","order": "0","time_from": "08:00:00","time_to": "09:00:00","school_id": "111", "created": "2016-07-26 15:16:10","modified": "2016-07-26 15:16:10" }}]
+
+
+## Teacher Add Timeslots [/absences/teacher_add_timeslots?access_token=your_access_token]
+
+### Teacher Add Timeslots  [POST]
+
+This action allows teacher to add a timeslot for lecturer 
+
++ lecture_id: 2021 (required, intger)
++ timeslot_id: 12514 (required, intger)
++ section_id: 1252 (required, intger)
+
++ Response 200 (application/json)
+
+        [{"LecturesTimeslot":{"timeslot_id":"10147","lecture_id":"914195","day":"1","modified":"2017-10-15 11:49:17","created":"2017-10-15 11:49:17","id":"162637"}}]
+
+
+# Get Student Attendance List [/absences/get_student_attendance_list?course_id=100&lecture_id=32&access_token=your_access_token]
+
++ Parameters : 
+    + course_id: 100 (required, number) - Course ID  in form of an integer
+    + lecture_id: 32 (required, number) -  Lecture ID in form of an integer
+
+### Get Student Attendance List [GET]
+
+This action allows you to get all student in lecture.
+
++ course_id (int) - course_id
++ lecture_id (int) - lecture_id
+
++ Response 200 (application/json)
+
+        [{"StudentDetailsView": {"id": "51099","student_user_id": "141041","full_name": "احمد سعد محمد الشريوفي الحربي","full_name_ara": null,"profilepic": "/img/thumb.png"},"Absence": {"id": null,"date": null,"student_id": null,"excused": null,"user_id": null,"comments": null,"year_id": null,"semester_id": null,"type": null,"durationlate": null,"lecture_id": null,"excused_reason": null,"full_day": null,"from": null,"to": null,"timeslot_id": null,"created": null,"modified": null}}]
+
+## Teacher add attendance [/absences/teacher_add_attendance?access_token=your_access_token]
+
+### Teacher add attendance  [POST]
+
+This action allows teacher to add a attendance for student
+
++ student_user_id: 100 (required, intger)
++ lecture_id: 2021 (required, intger)
++ excused: 1 or 0 (required, intger) 
++ timeslot_id: 12514 (required, intger)
++ type:(required, intger) 1
+
++ Response 200 (application/json)
+
+        {"status":"ok"}
 
 
 ## Group Attachments               
@@ -4351,36 +4562,6 @@ This action returns Teachers' workload report.
 
         {"teachers":[{"UserTeacherView":{"id":"2","number":"999125347199","ID_Num":null,"teacher_id":"2","teacher_user_id":"6","teacher_full_name":"Peter Jan","teacher_full_name_ara":"\u0628\u064a\u062a\u0631 \u062c\u0627\u0646","status_id":"1","status_title":"Active","teacher_date_of_birth":"2017-07-03","teacher_place_of_birth":"","teacher_address":"","teacher_phone_number":"","teacher_mobile_number":"","teacher_email":null,"school_id":"1","teacher_nationality_id":"1","last_activity_date":"2017-07-12 09:13:52"}},{"UserTeacherView":{"id":"3","number":"9997777799","ID_Num":"1234567890","teacher_id":"3","teacher_user_id":"41","teacher_full_name":"A NAME","teacher_full_name_ara":"","status_id":"1","status_title":"Active","teacher_date_of_birth":"2017-07-18","teacher_place_of_birth":"","teacher_address":"","teacher_phone_number":"","teacher_mobile_number":"","teacher_email":null,"school_id":"1","teacher_nationality_id":"1","last_activity_date":"2017-07-18 14:22:09"}}],"stats":{"2":{"VCR":{"count":0,"date":null},"Rooms":{"count":1,"date":null},"Posts":{"count":1,"date":null},"Messages":{"count":1,"date":null}},"3":{"VCR":{"count":0,"date":null},"Rooms":{"count":0,"date":null},"Posts":{"count":0,"date":null},"Messages":{"count":0,"date":null}}}}
         
-## Group Dashboard
-Resources related to dashboard.
-
-## get total absences  [/dashboards/get_dashboard_total_absences?school_id=1&user_id=31&access_token=your_access_token]
-
-+ Parameters :
-    + user_id: user_id(required, intger) 
-    + school_id: school_id(optional, email) if none has been filled then the function will search for the whole gruop based on the user id
-
-### Rate Tim presentation [GET]
-This action will list the full day absences for a school or group of schools
-during the week .
-
-+ user_id (int)
-+ school_id(int)
-
-
-+ Response 200 (application/json)
-    
-                {
-            "day0": 0,
-            "day1": 0,
-            "day2": 0,
-            "day3": 0,
-            "day4": 0,
-            "day5": 0,
-            "day6": 0
-        }
-
-
 ## Group Rating
 Resources related to rating system in the API.
 
@@ -4670,3 +4851,71 @@ This action allows to get if other user blocked me .
 + Response 200 (application/json)
 
         [{"status": "OK"}]
+        
+
+
+## Group Teacher               
+Resources related to Teacher in the API.
+
+## Get Teacher Lectures [/Teacher/get_teacher_lectures?course_id=100&access_token=your_access_token]
+
++ Parameters :
+    + course_id: 100 (required, number) - Course ID 
+    
+### Get Teacher Lectures [GET]
+
+This action allows to get lectuers in the teacher course. 
+
++ course_id (int) - course_id
+
++ Response 200 (application/json)
+
+        [{"LectureDetailsView": {"id": "30446", "section_id": "1675","section_title": "B","section_title_ara": "ب","level_id": "833","level_title": "Grade-1","level_title_ara": "الصف الاول"}}
+## Group Vcrs
+Resources related to Vcrs in the API.
+
+## Student Get Smart Classrooms [/Vcrs/student_get_smart_classrooms?access_token=your_access_token]
+### Student Get Smart Classrooms [GET]
++ semester_id (int, required) - Semester ID
++ p (int, optional) - Page
++ r (int, optional) - Limit
++ old (datatype, optional) - Old flag to get the recoreded classes, if you want to get them just assign value to this flag.
+
++ Response 200 (application/json)
+
+        
+        {
+            "Vcr": {
+                "id": "152553",
+                "title": "test_ak_for_error",
+                "starting_time": "2017-09-14 14:16:00",
+                "duration": "60"
+            },
+            "Course": {
+                "title": "English-101"
+            }
+        }
+
+## View Recording [/Vcrs/view_recording?access_token=your_access_token]
+### view_recording [GET]
+This action will return a session url for the smart classroom(Not ended yet)
++ id (int, required) - Vcr ID
++ Response 200 (application/json)
+
+        
+        { "link": "https://live.wiziq.com/aliveext/Recorded.aspx?SessionCode=NmDVtUYY9Sw%3d" }
+        
+## Group Financial Transactions
+Resources related to Vcrs in the API.
+
+## update user status [/financial_transactions/update_user_status?access_token=your_access_token&status_id=18&classera_user_id=12]
+### update user status [GET]
++ status_id (int, required) - allowed values (1 => Active, 18=>Initially Accepted)
++ classera_user_id (int, required) - classera_user_id
+
++ Response 200 (application/json)
+    success
+       {"message":"User status has been updated"}
+    faild
+       {"error":"validation","error_message":"Provided status_id is not allowed"}
+       {"error":"not_found","error_message":"There is no user related to this data"}
