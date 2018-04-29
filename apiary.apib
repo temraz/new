@@ -4628,6 +4628,18 @@ This action returns current SMS usage.
 
         {"total":NUM,"remaining":NUM}
         
+
+        
+# Group ShortMessages
+
+## Get Balance [/ShortMessages/get_balance?access_token=your_access_token&school_id=12]
+This action returns school SMS balance and last charge.
+### Get SMS Report [GET]
++ school_id (int, required) 
+
++ response 200 (application/json)
+    {"balance":"1388","last_charge":"4000"}
+        
 ## Get SMS Report [/ShortMessages/get_sms_report?access_token=your_access_token]
 This action returns SMS report. data depends on role id.
 ### Get SMS Report [GET]
@@ -4652,7 +4664,6 @@ This action returns SMS report. data depends on role id.
             }
         ]
         
-# Group ShortMessages
 ## Send SMS to IDs [/Shortmessages/send_sms_to_ids?access_token=your_access_token]
 This action allows a valid and authorized user to send SMS messages based on target user ids.
 
@@ -4910,7 +4921,7 @@ Resources related to Vcrs in the API.
 
 ## update user status [/financial_transactions/update_user_status?access_token=your_access_token&status_id=18&classera_user_id=12]
 ### update user status [GET]
-+ status_id (int, required) - allowed values (1 => Active, 18=>Initially Accepted)
++ status_id (int, required) - allowed values (17 => Accepted)
 + classera_user_id (int, required) - classera_user_id
 
 + Response 200 (application/json)
